@@ -409,7 +409,6 @@ class(GB_CC) <- "MP"
 
 
 #### Age-Comp SRA ####
-
 #' Internal function for CompSRA MP
 #'
 #' @param x Simulation number
@@ -421,64 +420,57 @@ class(GB_CC) <- "MP"
 #' @export
 #'
 CompSRA_ <- function(x, Data, reps=100) {
-  maxage <- Data@MaxAge
-  TAC <- Bt_K <- FMSY <- Ac <- rep(NA, reps)
-  predout <- list()
-  for (i in 1:reps) {
-    Mc <- trlnorm(1, Data@Mort[x], Data@CV_Mort)
-    hc <- sample_steepness2(1, Data@steep[x], Data@CV_steep[x])
-    Linfc <- trlnorm(1, Data@vbLinf[x], Data@CV_vbLinf[x])
-    Kc <- trlnorm(1, Data@vbK[x], Data@CV_vbK[x])
-    if (Data@vbt0[x] != 0 & Data@CV_vbt0[x] != tiny) {
-      t0c <- -trlnorm(1, -Data@vbt0[x], Data@CV_vbt0[x])
-    } else {
-      t0c <- Data@vbt0[x]
-    }
-    t0c[!is.finite(t0c)] <- 0
-    LFSc <- trlnorm(1, Data@LFS[x], Data@CV_LFS[x])
-    LFCc <- trlnorm(1, Data@LFC[x], Data@CV_LFC[x])
-    AMc <- trlnorm(1, iVB(Data@vbt0[x], Data@vbK[x], Data@vbLinf[x], Data@L50[x]), Data@CV_L50[x])
-    ac <- trlnorm(1, Data@wla[x], Data@CV_wla[x])
-    bc <- trlnorm(1, Data@wlb[x], Data@CV_wlb[x])
-    Catch <- Data@Cat[x, ]
-    ny <- length(Catch)
-    nyCAA <- dim(Data@CAA)[2]
-    CAA <- Data@CAA[x, max(nyCAA - 2, 1):nyCAA, ]  # takes last three years as the sample (or last year if there is only one)
-
-    Nac <- exp(-Mc * ((1:maxage) - 1))  # put a rough range on estimate of R0 assuming a mean harvest rate of 10%
-    Lac <- Linfc * (1 - exp(-Kc * ((1:maxage) - t0c)))
-    Wac <- ac * Lac^bc
-    AFC <- log(1 - min(0.99, LFCc/Linfc))/-Kc + t0c
-    AFS <- log(1 - min(0.99, LFSc/Linfc))/-Kc + t0c
-    if (AFC >= 0.7 * maxage) AFC <- 0.7 * maxage
-    if (AFS >= 0.9 * maxage) AFS <- 0.9 * maxage
-
-    KES <- max(2, ceiling(mean(c(AFC, AFS))))
-    pred <- Nac * Wac
-    pred[1:(KES - 1)] <- 0
-    pred <- pred/sum(pred)
-    pred <- ((mean(Catch, na.rm=TRUE)/0.1) * pred/Wac)/exp(-(1:maxage) * Mc)
-    pred <- pred[pred > 0]
-    R0range <- c(mean(pred)/1000, mean(pred) * 1000)
-
-    fit <- optimize(SRAfunc, log(R0range), Mc, hc, maxage, LFSc, LFCc, Linfc,
-                    Kc, t0c, AMc, ac, bc, Catch, CAA)
-    getvals <- SRAfunc(fit$minimum, Mc, hc, maxage, LFSc, LFCc, Linfc, Kc, t0c,
-                       AMc, ac, bc, Catch, CAA, opt = 2)
-    Ac[i] <- getvals$B
-    Bt_K[i] <-  getvals$D
-    predout[[i]] <- getvals$pred
-
-    fit2 <- optimize(SRAFMSY, log(c(1e-04, 3)), Mc, hc, maxage, LFSc, LFCc, Linfc, Kc, t0c, AMc, ac, bc)
-    FMSY[i] <- exp(fit2$minimum)
-    if ((FMSY[i]/Mc) > 3) FMSY[i] <- 3 * Mc
-    TAC[i] <- Ac[i] * FMSY[i]
-  }
-
-  return(list(TAC=TAC, Bt_K=Bt_K, FMSY=FMSY, Ac=Ac, pred=predout, CAA=CAA))
-
+ maxage <- Data@MaxAge
+ TAC <- Bt_K <- FMSY <- Ac <- rep(NA, reps)
+ predout <- list()
+ for (i in 1:reps) {
+   Mc <- trlnorm(1, Data@Mort[x], Data@CV_Mort)
+   hc <- sample_steepness2(1, Data@steep[x], Data@CV_steep[x])
+   Linfc <- trlnorm(1, Data@vbLinf[x], Data@CV_vbLinf[x])
+   Kc <- trlnorm(1, Data@vbK[x], Data@CV_vbK[x])
+   if (Data@vbt0[x] != 0 & Data@CV_vbt0[x] != tiny) {
+     t0c <- -trlnorm(1, -Data@vbt0[x], Data@CV_vbt0[x])
+   } else {
+     t0c <- Data@vbt0[x]
+   }
+   t0c[!is.finite(t0c)] <- 0
+   LFSc <- trlnorm(1, Data@LFS[x], Data@CV_LFS[x])
+   LFCc <- trlnorm(1, Data@LFC[x], Data@CV_LFC[x])
+   AMc <- trlnorm(1, iVB(Data@vbt0[x], Data@vbK[x], Data@vbLinf[x], Data@L50[x]), Data@CV_L50[x])
+   ac <- trlnorm(1, Data@wla[x], Data@CV_wla[x])
+   bc <- trlnorm(1, Data@wlb[x], Data@CV_wlb[x])
+   Catch <- Data@Cat[x, ]
+   ny <- length(Catch)
+   nyCAA <- dim(Data@CAA)[2]
+   CAA <- Data@CAA[x, max(nyCAA - 2, 1):nyCAA, ]  # takes last three years as the sample (or last year if there is only one)
+   Nac <- exp(-Mc * ((1:maxage) - 1))  # put a rough range on estimate of R0 assuming a mean harvest rate of 10%
+   Lac <- Linfc * (1 - exp(-Kc * ((1:maxage) - t0c)))
+   Wac <- ac * Lac^bc
+   AFC <- log(1 - min(0.99, LFCc/Linfc))/-Kc + t0c
+   AFS <- log(1 - min(0.99, LFSc/Linfc))/-Kc + t0c
+   if (AFC >= 0.7 * maxage) AFC <- 0.7 * maxage
+   if (AFS >= 0.9 * maxage) AFS <- 0.9 * maxage
+   KES <- max(2, ceiling(mean(c(AFC, AFS))))
+   pred <- Nac * Wac
+   pred[1:(KES - 1)] <- 0
+   pred <- pred/sum(pred)
+   pred <- ((mean(Catch, na.rm=TRUE)/0.1) * pred/Wac)/exp(-(1:maxage) * Mc)
+   pred <- pred[pred > 0]
+   R0range <- c(mean(pred)/1000, mean(pred) * 1000)
+   fit <- optimize(SRAfunc, log(R0range), Mc, hc, maxage, LFSc, LFCc, Linfc,
+                   Kc, t0c, AMc, ac, bc, Catch, CAA)
+   getvals <- SRAfunc(fit$minimum, Mc, hc, maxage, LFSc, LFCc, Linfc, Kc, t0c,
+                      AMc, ac, bc, Catch, CAA, opt = 2)
+   Ac[i] <- getvals$B
+   Bt_K[i] <-  getvals$D
+   predout[[i]] <- getvals$pred
+   fit2 <- optimize(SRAFMSY, log(c(1e-04, 3)), Mc, hc, maxage, LFSc, LFCc, Linfc, Kc, t0c, AMc, ac, bc)
+   FMSY[i] <- exp(fit2$minimum)
+   if ((FMSY[i]/Mc) > 3) FMSY[i] <- 3 * Mc
+   TAC[i] <- Ac[i] * FMSY[i]
+ }
+ return(list(TAC=TAC, Bt_K=Bt_K, FMSY=FMSY, Ac=Ac, pred=predout, CAA=CAA))
 }
-
 #' Age-Composition Stock-Reduction Analysis
 #'
 #' A stock reduction analysis (SRA) model is fitted to the age-composition
@@ -510,22 +502,17 @@ CompSRA_ <- function(x, Data, reps=100) {
 #'
 #' @export
 CompSRA <- function(x, Data, reps = 100, plot=FALSE) {
-  # optimize for fixed F to get you to current depletion C/Fcur =
-  # abundance
-  dependencies = "Data@Mort, Data@CV_Mort, Data@vbK, Data@CV_vbK, Data@vbLinf, Data@CV_vbLinf, Data@vbt0, Data@CV_vbt0, Data@MaxAge, Data@wla, Data@CV_wla, Data@wlb, Data@CV_wlb, Data@L50, Data@CV_L50, Data@CAA, Data@steep, Data@CV_steep, Data@LFS, Data@CV_LFS, Data@LFC, Data@CV_LFC, Data@Cat"
-
-  runCompSRA <- CompSRA_(x, Data, reps)
-  TAC <- TACfilter(runCompSRA$TAC)
-
-  if (plot) CompSRA_plot(runCompSRA, TAC)
-
-  Rec <- new("Rec")
-  Rec@TAC <- TAC
-  Rec
+ # optimize for fixed F to get you to current depletion C/Fcur =
+ # abundance
+ dependencies = "Data@Mort, Data@CV_Mort, Data@vbK, Data@CV_vbK, Data@vbLinf, Data@CV_vbLinf, Data@vbt0, Data@CV_vbt0, Data@MaxAge, Data@wla, Data@CV_wla, Data@wlb, Data@CV_wlb, Data@L50, Data@CV_L50, Data@CAA, Data@steep, Data@CV_steep, Data@LFS, Data@CV_LFS, Data@LFC, Data@CV_LFC, Data@Cat"
+ runCompSRA <- CompSRA_(x, Data, reps)
+ TAC <- TACfilter(runCompSRA$TAC)
+ if (plot) CompSRA_plot(runCompSRA, TAC)
+ Rec <- new("Rec")
+ Rec@TAC <- TAC
+ Rec
 }
 class(CompSRA) <- "MP"
-
-
 #' @templateVar mp CompSRA4010
 #' @template MPuses
 #' @describeIn CompSRA With a 40-10 control rule based on estimated depletion
@@ -534,29 +521,21 @@ class(CompSRA) <- "MP"
 #'
 #' @export CompSRA4010
 CompSRA4010 <- function(x, Data, reps = 100, plot=FALSE) {
-  dependencies = "Data@Mort, Data@CV_Mort, Data@vbK, Data@CV_vbK, Data@vbLinf, Data@CV_vbLinf, Data@vbt0, Data@CV_vbt0, Data@MaxAge, Data@wla, Data@CV_wla, Data@wlb, Data@CV_wlb, Data@L50, Data@CV_L50, Data@CAA, Data@steep, Data@CV_steep, Data@LFS, Data@CV_LFS, Data@LFC, Data@CV_LFC, Data@Cat"
-
-  runCompSRA <- CompSRA_(x, Data, reps)
-
-  TAC <- TACfilter(runCompSRA$TAC)
-  Bt_K <- runCompSRA$Bt_K
-
-  # 40-10 rule
-  cond1 <- Bt_K < 0.4 & Bt_K > 0.1
-  cond2 <- Bt_K < 0.1
-  TAC[cond1] <- TAC[cond1] * (Bt_K[cond1] - 0.1)/0.3
-  TAC[cond2] <- TAC[cond2] * tiny  # this has to still be stochastic albeit very small
-
-  if (plot) CompSRA_plot(runCompSRA, TAC)
-
-  Rec <- new("Rec")
-  Rec@TAC <- TAC
-  Rec
-
+ dependencies = "Data@Mort, Data@CV_Mort, Data@vbK, Data@CV_vbK, Data@vbLinf, Data@CV_vbLinf, Data@vbt0, Data@CV_vbt0, Data@MaxAge, Data@wla, Data@CV_wla, Data@wlb, Data@CV_wlb, Data@L50, Data@CV_L50, Data@CAA, Data@steep, Data@CV_steep, Data@LFS, Data@CV_LFS, Data@LFC, Data@CV_LFC, Data@Cat"
+ runCompSRA <- CompSRA_(x, Data, reps)
+ TAC <- TACfilter(runCompSRA$TAC)
+ Bt_K <- runCompSRA$Bt_K
+ # 40-10 rule
+ cond1 <- Bt_K < 0.4 & Bt_K > 0.1
+ cond2 <- Bt_K < 0.1
+ TAC[cond1] <- TAC[cond1] * (Bt_K[cond1] - 0.1)/0.3
+ TAC[cond2] <- TAC[cond2] * tiny  # this has to still be stochastic albeit very small
+ if (plot) CompSRA_plot(runCompSRA, TAC)
+ Rec <- new("Rec")
+ Rec@TAC <- TAC
+ Rec
 }
 class(CompSRA4010) <- "MP"
-
-
 # ---- Depletion Corrected Average Catch MPs -----
 
 #' Depletion Corrected Average Catch
@@ -1234,7 +1213,7 @@ class(DBSRA4010) <- "MP"
 DD_ <- function(x, Data, reps = 100, hcr=NULL) {
 
   Winf <- Data@wla[x] * Data@vbLinf[x]^Data@wlb[x]
-  age <- 1:Data@MaxAge
+  age <- 0:Data@MaxAge
   la <- Data@vbLinf[x] * (1 - exp(-Data@vbK[x] * ((age - Data@vbt0[x]))))
   wa <- Data@wla[x] * la^Data@wlb[x]
   a50V <- iVB(Data@vbt0[x], Data@vbK[x], Data@vbLinf[x],  Data@L50[x]) # assume vulnerability = maturity

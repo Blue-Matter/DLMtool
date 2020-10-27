@@ -19,7 +19,7 @@ CompSRA4010(x, Data, reps = 100, plot = FALSE)
 \item{plot}{Logical. Show the plot?}
 }
 \value{
-
+An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
 }
 \description{
 A stock reduction analysis (SRA) model is fitted to the age-composition

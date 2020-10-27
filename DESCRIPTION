@@ -1,7 +1,7 @@
 Package: DLMtool
 Type: Package
 Title: Data-Limited Methods Toolkit
-Version: 6.0.9999
+Version: 6.0.0
 Date: 2020-10-26
 Authors@R: c(
     person("Tom", "Carruthers",, "tom@bluematterscience.com", role=c("aut", "cre")),
@@ -14,13 +14,19 @@ Authors@R: c(
     person("Q.", "Huynh", , , "ctb"),
     person("C.", "Walters", , , "ctb"))
 Maintainer: Adrian Hordyk <adrian@bluematterscience.com>
-Description: A collection of data-limited management procedures.
+Description: A collection of data-limited management procedures. All operating model simulation and projection functions are now in the new MSEtool package (v3+).
 License: GPL-3
 Depends:
     R (>= 3.5.0),
     MSEtool (>= 3.0.0)
+Suggests:
+    ggplot2,
+    gridExtra,
+    mvtnorm,
+    testthat
 LazyData: yes
 LazyLoad: yes
 Encoding: UTF-8
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
+LinkingTo: Rcpp

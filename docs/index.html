@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Data-Limited Methods Toolkit">
-<meta property="og:description" content="A collection of data-limited management procedures.">
+<meta property="og:description" content="A collection of data-limited management procedures. All operating model simulation and projection functions are now in the new MSEtool package (v3+).">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">DLMtool Documentation</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">6.0.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">6.0.0</span>
       </span>
     </div>
 
@@ -56,12 +56,12 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="dlmtool" class="section level1">
+<div id="dlmtool-v600" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#dlmtool" class="anchor"></a>DLMtool</h1></div>
+<a href="#dlmtool-v600" class="anchor"></a>DLMtool V6.0.0</h1></div>
 
-<p>DLMtool is a R package for management strategy evaluation and implementation of data-limited fishery stock assessment methods.</p>
-<p>Find more information about DLMtool at <a href="http://datalimitedtoolkit.org/">http://datalimitedtoolkit.org/</a>.</p>
+<p>The DLMtool R package has undergone a major restructure. DLMtool is now a collection of data-limited management procedures. All functions for simulating fisheries from operating models and projecting forward under alternative management arrangements have been moved to the new version of MSEtool (v3+).</p>
+<p>This version of DLMtool depends on MSEtool v3+ and is not compatible with previous versions of MSEtool.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -69,15 +69,10 @@
 <pre><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("DLMtool")</a></code></pre>
 <p>This GitHub repository contains the development version of DLMtool. The development version may be unstable, and it is not recommended for analyses.</p>
 </div>
-<div id="user-guide" class="section level2">
-<h2 class="hasAnchor">
-<a href="#user-guide" class="anchor"></a>User Guide</h2>
-<p>A User Guide for the DLMtool package is available: <a href="https://dlmtool.github.io/DLMtool/userguide/introduction.html">https://dlmtool.github.io/DLMtool/userguide/introduction.html</a>.</p>
-</div>
 <div id="bugs-and-issues" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bugs-and-issues" class="anchor"></a>Bugs and Issues</h2>
-<p>Please report any bugs or issues through <a href="https://github.com/DLMtool/DLMtool/issues">GitHub</a> or the <a href="https://www.datalimitedtoolkit.org">DLMtool website</a>.</p>
+<p>Please report any bugs or issues through <a href="https://github.com/Blue-Matter/DLMtool/issues">GitHub</a></p>
 </div>
 </div>
   </div>
