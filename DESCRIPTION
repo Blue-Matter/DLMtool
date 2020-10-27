@@ -1,0 +1,26 @@
+Package: DLMtool
+Type: Package
+Title: Data-Limited Methods Toolkit
+Version: 6.0.9999
+Date: 2020-10-26
+Authors@R: c(
+    person("Tom", "Carruthers",, "tom@bluematterscience.com", role=c("aut", "cre")),
+    person("Quang", "Huynh", email = "quang@bluematterscience.com", role = "aut"),
+    person("Adrian", "Hordyk", , "adrian@bluematterscience.com", "aut"),
+    person("M.", "Bryan", , , "ctb"),
+    person("HF.", "Geremont", , , "ctb"),
+    person("C.", "Grandin", , , "ctb"),
+    person("W.", "Harford", , , "ctb"),
+    person("Q.", "Huynh", , , "ctb"),
+    person("C.", "Walters", , , "ctb"))
+Maintainer: Adrian Hordyk <adrian@bluematterscience.com>
+Description: A collection of data-limited management procedures.
+License: GPL-3
+Depends:
+    R (>= 3.5.0),
+    MSEtool (>= 3.0.0)
+LazyData: yes
+LazyLoad: yes
+Encoding: UTF-8
+RoxygenNote: 7.1.1
+Roxygen: list(markdown = TRUE)

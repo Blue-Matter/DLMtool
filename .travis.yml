@@ -1,0 +1,21 @@
+language: r
+r:
+  - oldrel
+  - release
+  - devel
+  
+repos:
+  CRAN: https://cloud.r-project.org
+cache: packages
+addons:
+  apt:
+    packages:
+    - tcl8.5-dev
+    - tk8.5-dev
+before_install:
+    - export DISPLAY=:99.0
+services:
+  - xvfb
+  
+after_success:
+  - Rscript -e 'devtools::install();testthat::test_dir("tests/manual/test-code")'
