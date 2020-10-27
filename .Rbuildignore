@@ -6,3 +6,4 @@ man-roxygen
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^\.github$
