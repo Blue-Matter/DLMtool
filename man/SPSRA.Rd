@@ -19,7 +19,7 @@ SPSRA_ML(x, Data, reps = 100, plot = FALSE)
 \item{plot}{Logical. Show the plot?}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 A surplus production equivalent of DB-SRA that uses a demographically
@@ -50,7 +50,7 @@ See \linkS4class{Data} for information on the \code{Data} object \cr
 \code{SPSRA}: Cat, Dep, FMSY_M, L50, MaxAge, Mort, steep, vbK, vbLinf, vbt0, wla, wlb
 
 
-\code{SPSRA_ML}: CAL, Cat, Dep, FMSY_M, L50, Lbar, Lc, MaxAge, Mort, steep, vbK, vbLinf, vbt0, wla, wlb
+\code{SPSRA_ML}: Abun, AddInd, AddIndType, AddIndV, AddIunits, AvC, BMSY_B0, Bref, CAA, CAL, CAL_bins, CAL_mids, Cat, Cref, Dep, Dt, Effort, FMSY_M, Ind, Iref, L50, L95, LFC, LFS, LHYear, Lbar, Lc, LenCV, ML, MPeff, MPrec, MaxAge, Mort, Rec, SpAbun, SpInd, VInd, Vmaxlen, Vuln_CAA, Vuln_CAL, Year, sigmaR, steep, t, vbK, vbLinf, vbt0, wla, wlb
 }
 
 \section{Rendered Equations}{

@@ -32,7 +32,7 @@ abundance)}
 \item{bet}{Limits for how much the Data can change among years}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 A management procedure that makes incremental adjustments to TAC

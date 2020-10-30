@@ -22,7 +22,7 @@ DBSRA4010(x, Data, reps = 100, plot = FALSE)
 \item{plot}{Logical. Show the plot?}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 Depletion-Based Stock Reduction Analysis (DB-SRA) is a method designed for
@@ -72,13 +72,13 @@ previously been applied by Dick and MacCall (2011).
 See \linkS4class{Data} for information on the \code{Data} object \cr
 
 
-\code{DBSRA}:
+\code{DBSRA}: BMSY_B0, Cat, Dep, FMSY_M, L50, vbK, vbLinf, vbt0
 
 
-\code{DBSRA_40}:
+\code{DBSRA_40}: BMSY_B0, Cat, FMSY_M, L50, vbK, vbLinf, vbt0
 
 
-\code{DBSRA4010}:
+\code{DBSRA4010}: BMSY_B0, Cat, Dep, FMSY_M, L50, vbK, vbLinf, vbt0
 }
 
 \section{Rendered Equations}{

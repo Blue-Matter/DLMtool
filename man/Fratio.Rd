@@ -30,7 +30,7 @@ Fratio_ML(x, Data, reps = 100, plot = FALSE)
 \item{Fmin}{Minimum current fishing mortality rate for the catch-curve analysis}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 Calculates the OFL based on a fixed ratio of FMSY to M multiplied by a

@@ -63,7 +63,7 @@ and Walters (1992).
 See \linkS4class{Data} for information on the \code{Data} object \cr
 
 
-\code{DDe}: MPeff
+\code{DDe}: Cat, Ind, L50, MPeff, MaxAge, Mort, vbK, vbLinf, vbt0, wla, wlb
 }
 
 \section{Rendered Equations}{

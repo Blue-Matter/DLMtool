@@ -32,7 +32,7 @@ Islope4(x, Data, reps = 100, plot = FALSE, yrsmth = 5, lambda = 0.2, xx = 0.4)
 first year}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 A management procedure that incrementally adjusts the TAC to maintain a

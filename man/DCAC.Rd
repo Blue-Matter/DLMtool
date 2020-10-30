@@ -34,7 +34,7 @@ HDAAC(x, Data, reps = 100, plot = FALSE)
 \item{plot}{Logical. Show the plot?}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 This group of MPs calculates a catch limit (\emph{dcac}; intended as an MSY proxy) based on
@@ -98,25 +98,25 @@ below BMSY, DCAC tends to chronically overfish.
 See \linkS4class{Data} for information on the \code{Data} object \cr
 
 
-\code{DCACs}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
+\code{DCACs}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
 
 
-\code{DCAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
+\code{DCAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
 
 
-\code{DCAC_40}: AvC, BMSY_B0, FMSY_M, LHYear, Mort, t, Year
+\code{DCAC_40}: AvC, BMSY_B0, FMSY_M, LHYear, Mort, Year, t
 
 
-\code{DCAC4010}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
+\code{DCAC4010}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
 
 
-\code{DCAC_ML}: AvC, CAL, Cat, Lbar, Lc, LHYear, Mort, t, vbK, vbLinf, Year
+\code{DCAC_ML}: Abun, AddInd, AddIndType, AddIndV, AddIunits, AvC, Bref, CAA, CAL, CAL_bins, CAL_mids, Cat, Cref, Dep, Dt, Effort, Ind, Iref, L50, L95, LFC, LFS, LHYear, Lbar, Lc, LenCV, ML, MPeff, MPrec, MaxAge, Mort, Rec, SpAbun, SpInd, VInd, Vmaxlen, Vuln_CAA, Vuln_CAL, Year, sigmaR, steep, t, vbK, vbLinf, vbt0, wla, wlb
 
 
-\code{DAAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
+\code{DAAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
 
 
-\code{HDAAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
+\code{HDAAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
 }
 
 \section{Rendered Equations}{

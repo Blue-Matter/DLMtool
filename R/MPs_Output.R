@@ -425,7 +425,7 @@ CompSRA_ <- function(x, Data, reps=100) {
  predout <- list()
  for (i in 1:reps) {
    Mc <- trlnorm(1, Data@Mort[x], Data@CV_Mort)
-   hc <- sample_steepness2(1, Data@steep[x], Data@CV_steep[x])
+   hc <- MSEtool::sample_steepness2(1, Data@steep[x], Data@CV_steep[x])
    Linfc <- trlnorm(1, Data@vbLinf[x], Data@CV_vbLinf[x])
    Kc <- trlnorm(1, Data@vbK[x], Data@CV_vbK[x])
    if (Data@vbt0[x] != 0 & Data@CV_vbt0[x] != tiny) {
@@ -1789,7 +1789,7 @@ Fdem_ <- function(x, Data, reps, Ac=NULL) {
   }
   t0c[!is.finite(t0c)] <- 0
   # hvec <- trlnorm(reps, Data@steep[x], Data@CV_steep[x])
-  hvec <- sample_steepness2(reps, Data@steep[x], Data@CV_steep[x])
+  hvec <- MSEtool::sample_steepness2(reps, Data@steep[x], Data@CV_steep[x])
 
   if (is.null(Ac)) Ac <- trlnorm(reps, Data@Abun[x], Data@CV_Abun[x])
   FMSY <- getr(x, Data, Mvec, Kc, Linfc, t0c, hvec, maxage = Data@MaxAge, r_reps = reps)/2
@@ -3652,7 +3652,7 @@ Rcontrol <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 10, gg = 2, glim 
   t0vec[!is.finite(t0vec)] <- 0
 
   # hvec <- trlnorm(reps, Data@steep[x], Data@CV_steep[x])
-  hvec <- sample_steepness2(reps, Data@steep[x], Data@CV_steep[x])
+  hvec <- MSEtool::sample_steepness2(reps, Data@steep[x], Data@CV_steep[x])
   rsamp <- getr(x, Data, Mvec, Kvec, Linfvec, t0vec, hvec, maxage = Data@MaxAge,
                 r_reps = reps)
 
@@ -3741,7 +3741,7 @@ Rcontrol2 <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 10, gg = 2, glim
   }
   t0vec[!is.finite(t0vec)] <- 0
   # hvec <- trlnorm(reps, Data@steep[x], Data@CV_steep[x])
-  hvec <- sample_steepness2(reps, Data@steep[x], Data@CV_steep[x])
+  hvec <- MSEtool::sample_steepness2(reps, Data@steep[x], Data@CV_steep[x])
   rsamp <- getr(x, Data, Mvec, Kvec, Linfvec, t0vec, hvec, maxage = Data@MaxAge,
                 r_reps = reps)
 
@@ -4324,7 +4324,7 @@ SPSRA_ <- function(x, Data, reps = 100, dep=NULL) {
   if (all(is.nan(t0vec)))
     t0vec <- rep(0, reps)
   # hvec <- trlnorm(reps, Data@steep[x], Data@CV_steep[x])
-  hvec <- sample_steepness2(reps, Data@steep[x], Data@CV_steep[x])
+  hvec <- MSEtool::sample_steepness2(reps, Data@steep[x], Data@CV_steep[x])
   if (all(!is.finite(hvec)))
     return(list(TAC=rep(as.numeric(NA), reps), Ksamp=rep(as.numeric(NA), reps),
                 dep=rep(as.numeric(NA), reps), rsamp=rep(as.numeric(NA), reps),
@@ -4446,7 +4446,7 @@ SPSRA_ML <- function(x, Data, reps = 100, plot=FALSE) {
   }
   t0vec[!is.finite(t0vec)] <- 0
   # hvec <- trlnorm(reps, Data@steep[x], Data@CV_steep[x])
-  hvec <- sample_steepness2(reps, Data@steep[x], Data@CV_steep[x])
+  hvec <- MSEtool::sample_steepness2(reps, Data@steep[x], Data@CV_steep[x])
   rsamp <- getr(x, Data, Mvec, Kvec, Linfvec, t0vec, hvec, maxage = Data@MaxAge,
                 r_reps = reps)
   Z <- MLne(x, Data, Linfc = Linfvec, Kc = Kvec, ML_reps = reps,  MLtype = "dep")

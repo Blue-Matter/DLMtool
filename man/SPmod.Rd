@@ -20,7 +20,7 @@ SPmod(x, Data, reps = 100, plot = FALSE, alp = c(0.8, 1.2), bet = c(0.8, 1.2))
 \item{bet}{Limits for how much the TAC can change among years}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 
 A numeric vector of TAC recommendations
 }

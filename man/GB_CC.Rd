@@ -16,7 +16,7 @@ GB_CC(x, Data, reps = 100, plot = FALSE)
 \item{plot}{Logical. Show the plot?}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 A simple MP that aims for a reference catch (as a proxy for MSY)

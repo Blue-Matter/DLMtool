@@ -25,7 +25,7 @@ YPR_ML(x, Data, reps = 100, plot = FALSE)
 analysis}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 A simple yield per recruit approximation to FMSY (F01) which is the position
@@ -67,7 +67,7 @@ See \linkS4class{Data} for information on the \code{Data} object \cr
 \code{YPR_CC}: CAA, Cat, LFS, MaxAge, vbK, vbLinf, vbt0
 
 
-\code{YPR_ML}: CAL, Cat, Lbar, Lc, LFS, MaxAge, Mort, vbK, vbLinf, vbt0
+\code{YPR_ML}: CAL, Cat, LFS, Lbar, Lc, MaxAge, Mort, vbK, vbLinf, vbt0
 }
 
 \section{Rendered Equations}{

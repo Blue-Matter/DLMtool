@@ -22,7 +22,7 @@ and biomass data}
 surplus production with biomass}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 The Fratio MP with a controller that changes the level of F according to the

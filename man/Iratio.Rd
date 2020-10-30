@@ -18,7 +18,7 @@ Iratio(x, Data, reps = 100, plot = FALSE, yrs = c(2, 5))
 \item{yrs}{Vector of length 2 specifying the reference years}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 The TAC is adjusted by the ratio alpha, where the numerator

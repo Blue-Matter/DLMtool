@@ -36,7 +36,7 @@ CurC(x, Data, reps = 100, plot = FALSE, yrsmth = 1, xx = 0)
 (1-\code{xx})}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 The TAC is the average historical catch over the last \code{yrsmth} (default 5) years,

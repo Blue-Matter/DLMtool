@@ -18,7 +18,7 @@ GB_target(x, Data, reps = 100, plot = FALSE, w = 0.5)
 \item{w}{A gain parameter}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 An MP similar to SBT2 that modifies a time-series of catch recommendations

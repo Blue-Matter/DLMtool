@@ -25,7 +25,7 @@ Fdem_ML(x, Data, reps = 100, plot = FALSE, Fmin = 0.005)
 analysis}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 FMSY is calculated as r/2 where r is calculated from a demographic approach

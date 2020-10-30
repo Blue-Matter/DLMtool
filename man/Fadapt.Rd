@@ -21,7 +21,7 @@ production}
 \item{gg}{A gain parameter controlling the speed in update in TAC.}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 
 A numeric vector of quota recommendations
 }

@@ -23,7 +23,7 @@ IT10(x, Data, reps = 100, plot = FALSE, yrsmth = 5, mc = 0.1)
 \item{mc}{The maximum fractional change in the TAC among years.}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 An index target MP where the TAC is modified according to current index

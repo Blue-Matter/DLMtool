@@ -25,7 +25,7 @@ BK_ML(x, Data, reps = 100, plot = FALSE)
 catch-curve (interval censor).}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAC slot(s) populated
+An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 Family of management procedures that sets the TAC by approximation of Fmax
@@ -78,7 +78,7 @@ See \linkS4class{Data} for information on the \code{Data} object \cr
 \code{BK_CC}: CAA, Cat, LFC, vbK, vbLinf
 
 
-\code{BK_ML}: CAL, Cat, Lbar, Lc, LFC, Mort, vbK, vbLinf
+\code{BK_ML}: CAL, Cat, LFC, Lbar, Lc, Mort, vbK, vbLinf
 }
 
 \section{Rendered Equations}{
