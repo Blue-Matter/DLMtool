@@ -672,20 +672,6 @@ iVB <- function(t0, K, Linf, L) {
 
 
 
-#' TAC Filter
-#'
-#' Filters vector of TAC recommendations by replacing negatives with NA and
-#' and values beyond five standard deviations from the mean as NA
-#'
-#' @param TAC A numeric vector of TAC recommendations
-#' @author T. Carruthers
-#' @export
-TACfilter <- function(TAC) {
-  TAC[TAC < 0] <- NA  # Have to robustify due to R optmization problems.. work in progress.
-  TAC[TAC > (mean(TAC, na.rm = T) + 5 * stats::sd(TAC, na.rm = T))] <- NA  # remove very large TAC samples
-  return(as.numeric(TAC))
-}
-
 ## Catch curve function ####
 #' Age-based Catch Curve
 #'
