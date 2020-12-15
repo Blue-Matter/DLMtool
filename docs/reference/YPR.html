@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Yield Per Recruit analysis to get FMSY proxy F01 — YPR • DLMtool Documentation</title>
+<title>Yield Per Recruit analysis to get FMSY proxy F01 — YPR • DLMtool Functions</title>
 
 
 <!-- jquery -->
@@ -72,7 +72,7 @@ of the ascending YPR curve for which dYPR/dF = 0.1(dYPR/d0)" />
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">DLMtool Documentation</a>
+        <a class="navbar-link" href="../index.html">DLMtool Functions</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">6.0.0</span>
       </span>
     </div>
@@ -80,9 +80,6 @@ of the ascending YPR curve for which dYPR/dF = 0.1(dYPR/d0)" />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../userguide/introduction.html">User Guide</a>
-</li>
-<li>
   <a href="../reference/index.html">Management Procedures</a>
 </li>
       </ul>
@@ -145,7 +142,7 @@ analysis</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>Rec</code> with the TAC slot(s) populated</p>
+    <p>An object of class <code>Rec</code> with the <code>TAC</code> slot populated with a numeric vector of length <code>reps</code></p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The TAC is calculated as:
@@ -178,7 +175,7 @@ abundance.</p></li>
 
 <p><code>YPR_CC</code>: CAA, Cat, LFS, MaxAge, vbK, vbLinf, vbt0</p>
 
-<p><code>YPR_ML</code>: CAL, Cat, Lbar, Lc, LFS, MaxAge, Mort, vbK, vbLinf, vbt0</p>
+<p><code>YPR_ML</code>: CAL, Cat, LFS, Lbar, Lc, MaxAge, Mort, vbK, vbLinf, vbt0</p>
     <h2 class="hasAnchor" id="rendered-equations"><a class="anchor" href="#rendered-equations"></a>Rendered Equations</h2>
 
     
@@ -198,11 +195,11 @@ abundance.</p></li>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>YPR</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/SimulatedData.html'>SimulatedData</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='img'><img src='YPR-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; TAC (median) 
-#&gt;     2782.377 </div><div class='input'><span class='fu'>YPR_CC</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/SimulatedData.html'>SimulatedData</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+#&gt;     2713.437 </div><div class='input'><span class='fu'>YPR_CC</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/SimulatedData.html'>SimulatedData</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='img'><img src='YPR-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; TAC (median) 
-#&gt;     7061.505 </div><div class='input'><span class='fu'>YPR_ML</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/SimulatedData.html'>SimulatedData</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+#&gt;      6343.26 </div><div class='input'><span class='fu'>YPR_ML</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/SimulatedData.html'>SimulatedData</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='img'><img src='YPR-3.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; TAC (median) 
-#&gt;     982.0715 </div></pre>
+#&gt;     1008.824 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

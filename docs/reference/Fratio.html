@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FMSY/M ratio methods — Fratio • DLMtool Documentation</title>
+<title>FMSY/M ratio methods — Fratio • DLMtool Functions</title>
 
 
 <!-- jquery -->
@@ -72,7 +72,7 @@ current estimate of abundance." />
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">DLMtool Documentation</a>
+        <a class="navbar-link" href="../index.html">DLMtool Functions</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">6.0.0</span>
       </span>
     </div>
@@ -80,9 +80,6 @@ current estimate of abundance." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../userguide/introduction.html">User Guide</a>
-</li>
-<li>
   <a href="../reference/index.html">Management Procedures</a>
 </li>
       </ul>
@@ -148,7 +145,7 @@ current estimate of abundance.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>Rec</code> with the TAC slot(s) populated</p>
+    <p>An object of class <code>Rec</code> with the <code>TAC</code> slot populated with a numeric vector of length <code>reps</code></p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>A simple method that tends to outperform many other approaches alarmingly
@@ -218,13 +215,13 @@ and resilience. Fish Fish. doi: 10.1111/j.1467-2979.2012.00485.x.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>Fratio</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Atlantic_mackerel</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='img'><img src='Fratio-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; TAC (median) 
-#&gt;     3.581742 </div><div class='input'><span class='fu'>Fratio4010</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Atlantic_mackerel</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+#&gt;     3.742155 </div><div class='input'><span class='fu'>Fratio4010</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Atlantic_mackerel</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='img'><img src='Fratio-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; TAC (median) 
-#&gt;     2.089202 </div><div class='input'><span class='fu'>Fratio_CC</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/SimulatedData.html'>SimulatedData</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+#&gt;     2.466964 </div><div class='input'><span class='fu'>Fratio_CC</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/SimulatedData.html'>SimulatedData</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='img'><img src='Fratio-3.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; TAC (median) 
-#&gt;     3746.328 </div><div class='input'><span class='fu'>Fratio_ML</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/SimulatedData.html'>SimulatedData</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+#&gt;     3990.799 </div><div class='input'><span class='fu'>Fratio_ML</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/SimulatedData.html'>SimulatedData</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='img'><img src='Fratio-4.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; TAC (median) 
-#&gt;     603.4103 </div><div class='input'>
+#&gt;     568.2603 </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

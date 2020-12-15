@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Surplus Production Stock Reduction Analysis — SPSRA • DLMtool Documentation</title>
+<title>Surplus Production Stock Reduction Analysis — SPSRA • DLMtool Functions</title>
 
 
 <!-- jquery -->
@@ -72,7 +72,7 @@ derived prior for intrinsic rate of increase (McAllister method, below)" />
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">DLMtool Documentation</a>
+        <a class="navbar-link" href="../index.html">DLMtool Functions</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">6.0.0</span>
       </span>
     </div>
@@ -80,9 +80,6 @@ derived prior for intrinsic rate of increase (McAllister method, below)" />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../userguide/introduction.html">User Guide</a>
-</li>
-<li>
   <a href="../reference/index.html">Management Procedures</a>
 </li>
       </ul>
@@ -138,7 +135,7 @@ derived prior for intrinsic rate of increase (McAllister method, below)</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>Rec</code> with the TAC slot(s) populated</p>
+    <p>An object of class <code>Rec</code> with the <code>TAC</code> slot populated with a numeric vector of length <code>reps</code></p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The TAC is calculated as:
@@ -163,7 +160,7 @@ a prior for current stock depletion.</p></li>
 
 <p><code>SPSRA</code>: Cat, Dep, FMSY_M, L50, MaxAge, Mort, steep, vbK, vbLinf, vbt0, wla, wlb</p>
 
-<p><code>SPSRA_ML</code>: CAL, Cat, Dep, FMSY_M, L50, Lbar, Lc, MaxAge, Mort, steep, vbK, vbLinf, vbt0, wla, wlb</p>
+<p><code>SPSRA_ML</code>: Abun, AddInd, AddIndType, AddIndV, AddIunits, AvC, BMSY_B0, Bref, CAA, CAL, CAL_bins, CAL_mids, Cat, Cref, Dep, Dt, Effort, FMSY_M, Ind, Iref, L50, L95, LFC, LFS, LHYear, Lbar, Lc, LenCV, ML, MPeff, MPrec, MaxAge, Mort, Rec, SpAbun, SpInd, VInd, Vmaxlen, Vuln_CAA, Vuln_CAL, Year, sigmaR, steep, t, vbK, vbLinf, vbt0, wla, wlb</p>
     <h2 class="hasAnchor" id="rendered-equations"><a class="anchor" href="#rendered-equations"></a>Rendered Equations</h2>
 
     
@@ -192,7 +189,7 @@ J. Fish. Aquat. Sci. 58: 1871-1890.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>SPSRA</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/SimulatedData.html'>SimulatedData</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='img'><img src='SPSRA-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; TAC (median) 
-#&gt;     472.9164 </div><div class='input'><span class='fu'>SPSRA_ML</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/SimulatedData.html'>SimulatedData</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+#&gt;     525.0077 </div><div class='input'><span class='fu'>SPSRA_ML</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/SimulatedData.html'>SimulatedData</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; named numeric(0)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Depletion Corrected Average Catch — DCACs • DLMtool Documentation</title>
+<title>Depletion Corrected Average Catch — DCACs • DLMtool Functions</title>
 
 
 <!-- jquery -->
@@ -73,7 +73,7 @@ its current depletion level (D)." />
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">DLMtool Documentation</a>
+        <a class="navbar-link" href="../index.html">DLMtool Functions</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">6.0.0</span>
       </span>
     </div>
@@ -81,9 +81,6 @@ its current depletion level (D)." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../userguide/introduction.html">User Guide</a>
-</li>
-<li>
   <a href="../reference/index.html">Management Procedures</a>
 </li>
       </ul>
@@ -150,7 +147,7 @@ its current depletion level (<em>D</em>).</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>Rec</code> with the TAC slot(s) populated</p>
+    <p>An object of class <code>Rec</code> with the <code>TAC</code> slot populated with a numeric vector of length <code>reps</code></p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The method calculates the depletion-corrected average catch (<em>dcac</em>) as:</p>
@@ -201,19 +198,19 @@ below BMSY, DCAC tends to chronically overfish.</p>
 
 <p>See Data for information on the <code>Data</code> object <br /></p>
 
-<p><code>DCACs</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year</p>
+<p><code>DCACs</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t</p>
 
-<p><code>DCAC</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year</p>
+<p><code>DCAC</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t</p>
 
-<p><code>DCAC_40</code>: AvC, BMSY_B0, FMSY_M, LHYear, Mort, t, Year</p>
+<p><code>DCAC_40</code>: AvC, BMSY_B0, FMSY_M, LHYear, Mort, Year, t</p>
 
-<p><code>DCAC4010</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year</p>
+<p><code>DCAC4010</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t</p>
 
-<p><code>DCAC_ML</code>: AvC, CAL, Cat, Lbar, Lc, LHYear, Mort, t, vbK, vbLinf, Year</p>
+<p><code>DCAC_ML</code>: Abun, AddInd, AddIndType, AddIndV, AddIunits, AvC, Bref, CAA, CAL, CAL_bins, CAL_mids, Cat, Cref, Dep, Dt, Effort, Ind, Iref, L50, L95, LFC, LFS, LHYear, Lbar, Lc, LenCV, ML, MPeff, MPrec, MaxAge, Mort, Rec, SpAbun, SpInd, VInd, Vmaxlen, Vuln_CAA, Vuln_CAL, Year, sigmaR, steep, t, vbK, vbLinf, vbt0, wla, wlb</p>
 
-<p><code>DAAC</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year</p>
+<p><code>DAAC</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t</p>
 
-<p><code>HDAAC</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year</p>
+<p><code>HDAAC</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t</p>
     <h2 class="hasAnchor" id="rendered-equations"><a class="anchor" href="#rendered-equations"></a>Rendered Equations</h2>
 
     

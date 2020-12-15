@@ -1,20 +1,18 @@
-title: DLMtool Documentation
+title: DLMtool Functions
 icon: logo.png
-templates:
-   params:
+templates: 
+   params: 
     bootswatch: yeti
-navbar:
+navbar: 
    title: DLMtool Documentation
    type: inverse
-   left:
-   - text: User Guide
-     href: userguide/introduction.html
+   left: 
    - text: Management Procedures
      href: reference/index.html
 reference:
 - title:  Output Controls
   desc:  Management Procedures that return a total allowable catch (TAC)
-  contents:
+  contents: 
   - '`AvC`'
   - '`BK`'
   - '`BK_CC`'
@@ -95,7 +93,7 @@ reference:
   - '`YPR_ML`'
 - title:  Input Controls
   desc:  Management Procedures that return a total allowable effort (TAE), spatial closure, or size regulation
-  contents:
+  contents: 
   - '`curE`'
   - '`curE75`'
   - '`DDe`'
@@ -124,7 +122,6 @@ reference:
   - '`slotlim`'
 - title:  Mixed Controls
   desc:  Management Procedures that return a combination of Output and Input controls
-  contents:
+  contents: 
   - '`AvC_MLL`'
   - '`Itarget1_MPA`'
-

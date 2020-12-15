@@ -7,3 +7,5 @@ man-roxygen
 ^docs$
 ^pkgdown$
 ^\.github$
+
+write_pckdown.yml.r
