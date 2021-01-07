@@ -42,7 +42,7 @@
 Itarget1_MPA <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 5, xx = 0, Imulti = 1.5) {
   runItarget <- Itarget_(x, Data, reps, plot, yrsmth, xx, Imulti)
   Rec <- new("Rec")
-  Rec@TAC <- TACfilter(runItarget$TAC)
+  Rec@TAC <- MSEtool::TACfilter(runItarget$TAC)
   Rec@Spatial <- c(0, rep(1, Data@nareas-1))
   Rec
 }

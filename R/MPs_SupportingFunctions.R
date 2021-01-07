@@ -613,7 +613,7 @@ size_lim_plot <- function(x, Data, Rec) {
     srs <- (Linf - LFR) / ((-log(Rmaxlen,2))^0.5)
     srs[!is.finite(srs)] <- Inf
     sls <- (LFR - LR5) /((-log(0.05,2))^0.5)
-    Ret <- getsel(1,lens=Lens, lfs=LFR, sls, srs)
+    Ret <- MSEtool::getsel(1,lens=Lens, lfs=LFR, sls, srs)
   }
   if (length(HS)>0) Ret[Lens>=HS] <- 0
 
@@ -621,7 +621,7 @@ size_lim_plot <- function(x, Data, Rec) {
     srs <- (Linf - LFS) / ((-log(Vmaxlen,2))^0.5)
     srs[!is.finite(srs)] <- Inf
     sls <- (LFS - L5) /((-log(0.05,2))^0.5)
-    Sel <- getsel(1,lens=Lens, lfs=LFS, sls, srs)
+    Sel <- MSEtool::getsel(1,lens=Lens, lfs=LFS, sls, srs)
   }
 
   df <- data.frame(Lens=rep(Lens,2),Val=c(Ret, Sel),
@@ -729,7 +729,7 @@ bheq <- function(K, Linf, Lc, Lbar) {
   K * (Linf - Lbar)/(Lbar - Lc)
 }
 
-#' @importFrom Rcpp evalCpp
+
 bhnoneq <- function(year, mlen, ss, K, Linf, Lc, nbreaks, styrs, stZ) {
   mlen[mlen <= 0 | is.na(mlen)] <- -99
   ss[ss <= 0 | is.na(ss)] <- 0

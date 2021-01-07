@@ -55,6 +55,7 @@ AvC <- function(x, Data, reps = 100, plot=FALSE) {
 }
 class(AvC) <- "MP"
 
+
 #### Beddington-Kirkwood Fmax estimation ####
 
 #' Beddington and Kirkwood life-history MP
@@ -62,6 +63,12 @@ class(AvC) <- "MP"
 #' Family of management procedures that sets the TAC by approximation of Fmax
 #' based on the length at first capture relative to asymptotic length and the
 #' von Bertalanffy growth parameter *K*.
+#'
+#' @templateVar mp BK
+#' @template MPtemplate
+#' @template MPuses
+#' @export
+#' @author T. Carruthers.
 #'
 #' @details The TAC is calculated as:
 #' \deqn{\textrm{TAC} = A F_{\textrm{max}}}
@@ -76,47 +83,40 @@ class(AvC) <- "MP"
 #' where \eqn{\bar{C}} is the mean catch, and *F* is estimated.
 #' See Functions section below for the estimation of *F*.
 #'
-#'
 #' @note
 #' Note that the Beddington-Kirkwood method is designed to estimate \eqn{F_\textrm{max}},
 #' that is, the fishing mortality that produces the maximum yield *assuming constant
 #' recruitment independent of spawning biomass*.
 #'
-#' Beddington and Kirkwood (2005)
-#' recommend estimating *F* using other methods (e.g a catch curve) and comparing the
-#' estimated *F* to the estimated \eqn{F_\textrm{max}} and adjusting exploitation accordingly.
+#' Beddington and Kirkwood (2005) recommend estimating *F* using other methods
+#' (e.g., a catch curve) and comparing the estimated *F* to the estimated
+#' \eqn{F_\textrm{max}} and adjusting exploitation accordingly.
 #' These MPs have not been implemented that way.
-#'
 #'
 #' @describeIn BK Assumes that abundance is known, i.e. `Data@Abun`
 #' and `Data@CV_abun` contain values
+#'
+
+#' @references Beddington, J.R., Kirkwood, G.P., 2005. The estimation of
+#' potential yield and stock status using life history parameters. Philos.
+#' Trans. R. Soc. Lond. B Biol. Sci. 360, 163-170.
+#'
 #'
 #' @examples
 #' \dontrun{
 #' BK(1, MSEtool::SimulatedData, reps=1000, plot=TRUE)
 #' }
 #'
-#' @author T. Carruthers.
-#' @references Beddington, J.R., Kirkwood, G.P., 2005. The estimation of
-#' potential yield and stock status using life history parameters. Philos.
-#' Trans. R. Soc. Lond. B Biol. Sci. 360, 163-170.
-#' @templateVar mp BK
-#' @template MPtemplate
-#' @template MPuses
-#' @export
-#'
-#'
 BK <- function(x, Data, reps = 100, plot=FALSE) {
-  # Beddington and Kirkwood life-history analysis
   dependencies = "Data@LFC, Data@vbLinf, Data@CV_vbLinf, Data@Abun, Data@CV_Abun, Data@vbK, Data@CV_vbK"
-  Lc <- trlnorm(reps * 10, Data@LFC[x], 0.2)
-  Linfc <- trlnorm(reps * 10, Data@vbLinf[x], Data@CV_vbLinf[x])
-  Ac <- trlnorm(reps * 10, Data@Abun[x], Data@CV_Abun[x])
-  Kc <- trlnorm(reps * 10, Data@vbK[x], Data@CV_vbK[x])
+  Lc <- MSEtool::trlnorm(reps * 10, Data@LFC[x], 0.2)
+  Linfc <- MSEtool::trlnorm(reps * 10, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Ac <- MSEtool::trlnorm(reps * 10, Data@Abun[x], Data@CV_Abun[x])
+  Kc <- MSEtool::trlnorm(reps * 10, Data@vbK[x], Data@CV_vbK[x])
   Fmax <- (0.6 * Kc)/(0.67 - (Lc/Linfc))
   TAC <- Ac * Fmax
   ind <- TAC > 0 & Fmax > 0
-  TAC <- TACfilter(TAC[ind][1:reps])  # Interval censor only those positive catch recommendations
+  TAC <- MSEtool::TACfilter(TAC[ind][1:reps])  # Interval censor only those positive catch recommendations
   Rec <- new("Rec")
   Rec@TAC <- TAC
 
@@ -149,12 +149,12 @@ class(BK) <- "MP"
 #' @export
 BK_CC <- function(x, Data, reps = 100, plot=FALSE, Fmin = 0.005) {
   dependencies = "Data@LFC, Data@vbLinf, Data@CV_vbLinf, Data@vbK, Data@CV_vbK, Data@CAA, Data@Mort"
-  Lc <- trlnorm(reps, Data@LFC[x], 0.2)
-  Linfc <- trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
-  Kc <- trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
-  Mdb <- trlnorm(reps * 10, Data@Mort[x], Data@CV_Mort[x])
+  Lc <- MSEtool::trlnorm(reps, Data@LFC[x], 0.2)
+  Linfc <- MSEtool::trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Kc <- MSEtool::trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
+  Mdb <- MSEtool::trlnorm(reps * 10, Data@Mort[x], Data@CV_Mort[x])
   MuC <- Data@Cat[x, length(Data@Cat[x, ])]
-  Cc <- trlnorm(reps, MuC, Data@CV_Cat[x,1])
+  Cc <- MSEtool::trlnorm(reps, MuC, Data@CV_Cat[x,1])
   Zdb <- CC(x, Data, reps = reps * 10)
   Fdb <- Zdb - Mdb
   Ac <- Cc/(1 - exp(-Fdb))
@@ -165,14 +165,14 @@ BK_CC <- function(x, Data, reps = 100, plot=FALSE, Fmin = 0.005) {
   Mdb <- Mdb[ind]
   SM <- sum(is.na(ind))
   if (SM > 0) {
-    Mdb[is.na(ind)] <- trlnorm(SM, Data@Mort[x], Data@CV_Mort[x])
+    Mdb[is.na(ind)] <- MSEtool::trlnorm(SM, Data@Mort[x], Data@CV_Mort[x])
     Fdb[is.na(ind)] <- Fmin
   }
   Ac <- Cc/(1 - exp(-Fdb))
 
   TAC <- Ac * Fmax
   ind <- TAC > 0 & Fmax > 0
-  TAC <- TACfilter(TAC[ind][1:reps])
+  TAC <- MSEtool::TACfilter(TAC[ind][1:reps])
 
   Rec <- new("Rec")
   Rec@TAC <- TAC
@@ -204,10 +204,10 @@ class(BK_CC) <- "MP"
 #' @export
 BK_ML <- function(x, Data, reps = 100, plot=FALSE) {
   dependencies = "Data@LFC, Data@vbLinf, Data@CV_vbLinf, Data@vbK, Data@CV_vbK, Data@CAL, Data@Mort"
-  Lc <- trlnorm(reps * 10, Data@LFC[x], 0.2)
-  Linfc <- trlnorm(reps * 10, Data@vbLinf[x], Data@CV_vbLinf[x])
-  Kc <- trlnorm(reps * 10, Data@vbK[x], Data@CV_vbK[x])
-  Mdb <- trlnorm(reps * 10, Data@Mort[x], Data@CV_Mort[x])
+  Lc <- MSEtool::trlnorm(reps * 10, Data@LFC[x], 0.2)
+  Linfc <- MSEtool::trlnorm(reps * 10, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Kc <- MSEtool::trlnorm(reps * 10, Data@vbK[x], Data@CV_vbK[x])
+  Mdb <- MSEtool::trlnorm(reps * 10, Data@Mort[x], Data@CV_Mort[x])
   Z <- MLne(x, Data, Linfc = Linfc, Kc = Kc, ML_reps = reps * 10, MLtype = "F")
   if (all(is.na(Z))) {
     Rec <- new("Rec")
@@ -217,13 +217,13 @@ BK_ML <- function(x, Data, reps = 100, plot=FALSE) {
   FM <- Z - Mdb
 
   MuC <- Data@Cat[x, length(Data@Cat[x, ])]
-  Cc <- trlnorm(reps * 10, MuC, Data@CV_Cat[x,1])
+  Cc <- MSEtool::trlnorm(reps * 10, MuC, Data@CV_Cat[x,1])
   Ac <- Cc/(1 - exp(-FM))
   ind <- Ac>0
 
   Fmax <- (0.6 * Kc)/(0.67 - (Lc/Linfc))  # robustifying for use in MSE
   TAC <- Ac[ind] * Fmax[ind]
-  TAC <- TACfilter(TAC[1:reps])
+  TAC <- MSEtool::TACfilter(TAC[1:reps])
 
   Rec <- new("Rec")
   Rec@TAC <- TAC
@@ -241,7 +241,6 @@ BK_ML <- function(x, Data, reps = 100, plot=FALSE) {
   Rec
 }
 class(BK_ML) <- "MP"
-
 
 
 
@@ -293,14 +292,14 @@ CC1 <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 5, xx = 0) {
   yrfirst <- yrlast - yrsmth + 1
   # C_dat <- Data@Cat[x, (length(Data@Year) - (yrsmth - 1)):length(Data@Year)]
   C_dat <- Data@Cat[x, yrfirst:yrlast]
-  TAC <- (1 - xx) * trlnorm(reps, mean(C_dat, na.rm=TRUE), Data@CV_Cat[x,1]/(yrsmth^0.5))  # mean catches over the interval
+  TAC <- (1 - xx) * MSEtool::trlnorm(reps, mean(C_dat, na.rm=TRUE), Data@CV_Cat[x,1]/(yrsmth^0.5))  # mean catches over the interval
   Rec <- new("Rec")
-  Rec@TAC <- TACfilter(TAC)
+  Rec@TAC <- MSEtool::TACfilter(TAC)
   if (plot) {
     op <- par(no.readonly = TRUE)
     on.exit(par(op))
     par(mfrow=c(1,1))
-    ylim <- c(0, max(c(Data@Cat[x,], TACfilter(TAC))))
+    ylim <- c(0, max(c(Data@Cat[x,], MSEtool::TACfilter(TAC))))
     plot(c(Data@Year, max(Data@Year)+1), c(Data@Cat[x,],NA), type="l", lwd=2, las=1, bty="l",
          xlab="Year", ylab=paste0("Catch (", Data@Units, ")"),
          cex.lab=1.5, cex.axis=1.25, ylim=ylim)
@@ -394,10 +393,10 @@ class(CurC) <- "MP"
 GB_CC <- function(x, Data, reps = 100, plot=FALSE) {
   dependencies = "Data@Cref,Data@Cat"
   Catrec <- Data@Cat[x, length(Data@Cat[x, ])]
-  TAC <- trlnorm(reps, Data@Cref[x], Data@CV_Cref)
+  TAC <- MSEtool::trlnorm(reps, Data@Cref[x], Data@CV_Cref)
   TAC[TAC > (1.2 * Catrec)] <- 1.2 * Catrec
   TAC[TAC < (0.8 * Catrec)] <- 0.8 * Catrec
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
 
   if (plot) GB_CC_plot(x, Catrec, TAC, Data)
   Rec <- new("Rec")
@@ -424,21 +423,21 @@ CompSRA_ <- function(x, Data, reps=100) {
  TAC <- Bt_K <- FMSY <- Ac <- rep(NA, reps)
  predout <- list()
  for (i in 1:reps) {
-   Mc <- trlnorm(1, Data@Mort[x], Data@CV_Mort)
+   Mc <- MSEtool::trlnorm(1, Data@Mort[x], Data@CV_Mort)
    hc <- MSEtool::sample_steepness2(1, Data@steep[x], Data@CV_steep[x])
-   Linfc <- trlnorm(1, Data@vbLinf[x], Data@CV_vbLinf[x])
-   Kc <- trlnorm(1, Data@vbK[x], Data@CV_vbK[x])
+   Linfc <- MSEtool::trlnorm(1, Data@vbLinf[x], Data@CV_vbLinf[x])
+   Kc <- MSEtool::trlnorm(1, Data@vbK[x], Data@CV_vbK[x])
    if (Data@vbt0[x] != 0 & Data@CV_vbt0[x] != tiny) {
-     t0c <- -trlnorm(1, -Data@vbt0[x], Data@CV_vbt0[x])
+     t0c <- -MSEtool::trlnorm(1, -Data@vbt0[x], Data@CV_vbt0[x])
    } else {
      t0c <- Data@vbt0[x]
    }
    t0c[!is.finite(t0c)] <- 0
-   LFSc <- trlnorm(1, Data@LFS[x], Data@CV_LFS[x])
-   LFCc <- trlnorm(1, Data@LFC[x], Data@CV_LFC[x])
-   AMc <- trlnorm(1, iVB(Data@vbt0[x], Data@vbK[x], Data@vbLinf[x], Data@L50[x]), Data@CV_L50[x])
-   ac <- trlnorm(1, Data@wla[x], Data@CV_wla[x])
-   bc <- trlnorm(1, Data@wlb[x], Data@CV_wlb[x])
+   LFSc <- MSEtool::trlnorm(1, Data@LFS[x], Data@CV_LFS[x])
+   LFCc <- MSEtool::trlnorm(1, Data@LFC[x], Data@CV_LFC[x])
+   AMc <- MSEtool::trlnorm(1, iVB(Data@vbt0[x], Data@vbK[x], Data@vbLinf[x], Data@L50[x]), Data@CV_L50[x])
+   ac <- MSEtool::trlnorm(1, Data@wla[x], Data@CV_wla[x])
+   bc <- MSEtool::trlnorm(1, Data@wlb[x], Data@CV_wlb[x])
    Catch <- Data@Cat[x, ]
    ny <- length(Catch)
    nyCAA <- dim(Data@CAA)[2]
@@ -506,7 +505,7 @@ CompSRA <- function(x, Data, reps = 100, plot=FALSE) {
  # abundance
  dependencies = "Data@Mort, Data@CV_Mort, Data@vbK, Data@CV_vbK, Data@vbLinf, Data@CV_vbLinf, Data@vbt0, Data@CV_vbt0, Data@MaxAge, Data@wla, Data@CV_wla, Data@wlb, Data@CV_wlb, Data@L50, Data@CV_L50, Data@CAA, Data@steep, Data@CV_steep, Data@LFS, Data@CV_LFS, Data@LFC, Data@CV_LFC, Data@Cat"
  runCompSRA <- CompSRA_(x, Data, reps)
- TAC <- TACfilter(runCompSRA$TAC)
+ TAC <- MSEtool::TACfilter(runCompSRA$TAC)
  if (plot) CompSRA_plot(runCompSRA, TAC)
  Rec <- new("Rec")
  Rec@TAC <- TAC
@@ -523,7 +522,7 @@ class(CompSRA) <- "MP"
 CompSRA4010 <- function(x, Data, reps = 100, plot=FALSE) {
  dependencies = "Data@Mort, Data@CV_Mort, Data@vbK, Data@CV_vbK, Data@vbLinf, Data@CV_vbLinf, Data@vbt0, Data@CV_vbt0, Data@MaxAge, Data@wla, Data@CV_wla, Data@wlb, Data@CV_wlb, Data@L50, Data@CV_L50, Data@CAA, Data@steep, Data@CV_steep, Data@LFS, Data@CV_LFS, Data@LFC, Data@CV_LFC, Data@Cat"
  runCompSRA <- CompSRA_(x, Data, reps)
- TAC <- TACfilter(runCompSRA$TAC)
+ TAC <- MSEtool::TACfilter(runCompSRA$TAC)
  Bt_K <- runCompSRA$Bt_K
  # 40-10 rule
  cond1 <- Bt_K < 0.4 & Bt_K > 0.1
@@ -554,14 +553,14 @@ class(CompSRA4010) <- "MP"
 #'
 DCAC_ <- function(x, Data, reps=100, Bt_K=NULL, updateD=FALSE) {
   if (length(Data@Year)<1) return(list(dcac=NA, Bt_K=NA, BMSY_K=NA))
-  if (NAor0(Data@BMSY_B0[x])) stop('Data@BMSY_B0 is NA')
-  if (NAor0(Data@CV_BMSY_B0[x])) stop("Data@CV_BMSY_B0 is NA")
+  if (MSEtool::NAor0(Data@BMSY_B0[x])) stop('Data@BMSY_B0 is NA')
+  if (MSEtool::NAor0(Data@CV_BMSY_B0[x])) stop("Data@CV_BMSY_B0 is NA")
   yr.lst <- match(Data@LHYear[1], Data@Year)
   yrs <- 1:yr.lst
   C_tot <-  Data@AvC[x] * Data@t[x]
-  Mdb <- trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])  # CV of 0.5 as in MacCall 2009
-  FMSY_M <- trlnorm(reps, Data@FMSY_M[x], Data@CV_FMSY_M[x])  # standard deviation of 0.2 - referred to as 'standard error' in MacCall 2009
-  if (is.null(Bt_K))  Bt_K <- trlnorm(reps, Data@Dt[x], Data@CV_Dt[x])
+  Mdb <- MSEtool::trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])  # CV of 0.5 as in MacCall 2009
+  FMSY_M <- MSEtool::trlnorm(reps, Data@FMSY_M[x], Data@CV_FMSY_M[x])  # standard deviation of 0.2 - referred to as 'standard error' in MacCall 2009
+  if (is.null(Bt_K))  Bt_K <- MSEtool::trlnorm(reps, Data@Dt[x], Data@CV_Dt[x])
   if (!updateD) {
     if (Data@LHYear[1] != max(Data@Year)) {
       dcac <- rep(Data@MPrec[x], reps) # catch limit is static for future
@@ -575,7 +574,7 @@ DCAC_ <- function(x, Data, reps=100, Bt_K=NULL, updateD=FALSE) {
     warning("Data@BMSY_B0 or Data@CV_BMSY_B0 do not contain values")
     return(list(dcac=rep(NA, reps), Bt_K=Bt_K))
   }
-  BMSY_K <- rbeta(reps, alphaconv(Data@BMSY_B0[x], Data@BMSY_B0[x] * Data@CV_BMSY_B0[x]), betaconv(Data@BMSY_B0[x], Data@BMSY_B0[x] * Data@CV_BMSY_B0[x]))
+  BMSY_K <- rbeta(reps, MSEtool::alphaconv(Data@BMSY_B0[x], Data@BMSY_B0[x] * Data@CV_BMSY_B0[x]), MSEtool::betaconv(Data@BMSY_B0[x], Data@BMSY_B0[x] * Data@CV_BMSY_B0[x]))
 
   dcac <- C_tot/(yr.lst + ((1 - Bt_K)/(BMSY_K * FMSY_M * Mdb)))
 
@@ -630,7 +629,7 @@ DCAC_ <- function(x, Data, reps=100, Bt_K=NULL, updateD=FALSE) {
 #' @export
 DCACs <- function(x, Data, reps = 100, plot=FALSE) {
   rundcac <- DCAC_(x, Data, reps)
-  TAC <- TACfilter(rundcac$dcac)
+  TAC <- MSEtool::TACfilter(rundcac$dcac)
   if (plot)  DCAC_plot(x, Data, dcac=rundcac$dcac, TAC, Bt_K=rundcac$Bt_K, yrs=1:length(Data@Year))
 
   Rec <- new("Rec")
@@ -651,7 +650,7 @@ class(DCACs) <- "MP"
 #' @export
 DCAC <- function(x, Data, reps = 100, plot=FALSE) {
   rundcac <- DCAC_(x, Data, reps, updateD=TRUE)
-  TAC <- TACfilter(rundcac$dcac)
+  TAC <- MSEtool::TACfilter(rundcac$dcac)
 
   if (plot)  DCAC_plot(x, Data, dcac=rundcac$dcac, TAC, Bt_K=rundcac$Bt_K, yrs=1:length(Data@Year))
 
@@ -677,7 +676,7 @@ DCAC_40 <- function(x, Data, reps = 100, plot=FALSE) {
   dependencies = "Data@AvC, Data@t, Data@Mort, Data@CV_Mort, Data@FMSY_M, Data@CV_FMSY_M, Data@BMSY_B0, Data@CV_BMSY_B0"
 
   rundcac <- DCAC_(x, Data, reps, Bt_K=0.4)
-  TAC <- TACfilter(rundcac$dcac)
+  TAC <- MSEtool::TACfilter(rundcac$dcac)
   if (plot)  DCAC_plot(x, Data, dcac=rundcac$dcac, TAC, Bt_K=rundcac$Bt_K, yrs=1:length(Data@Year))
 
   Rec <- new("Rec")
@@ -713,7 +712,7 @@ DCAC4010 <- function(x, Data, reps = 100, plot=FALSE) {
   if (length(cond1) > 0) TAC[cond1] <- TAC[cond1] * (Bt_K[cond1] - 0.1)/0.3
   if (length(cond2) > 0)  TAC[cond2] <- TAC[cond2] * tiny  # this has to still be stochastic albeit very small
   if (length(cond1) < 1 & length(cond2) < 1)  return(NA)
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
 
   if (plot)  DCAC_plot(x, Data, dcac=rundcac$dcac, TAC, Bt_K=rundcac$Bt_K, yrs=1:length(Data@Year))
 
@@ -739,10 +738,10 @@ DCAC_ML <- function(x, Data, reps = 100, plot=FALSE) {
   if (is.na(Data@BMSY_B0[x]) | is.na(Data@CV_BMSY_B0[x])) return(NA)
   if (is.na(Data@FMSY_M[x]) | is.na(Data@CV_FMSY_M[x])) return(NA)
 
-  Mdb <- trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
-  FMSY_M <- trlnorm(reps, Data@FMSY_M[x], Data@CV_FMSY_M[x])
-  Linfc <- trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
-  Kc <- trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
+  Mdb <- MSEtool::trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
+  FMSY_M <- MSEtool::trlnorm(reps, Data@FMSY_M[x], Data@CV_FMSY_M[x])
+  Linfc <- MSEtool::trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Kc <- MSEtool::trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
   Z <- MLne(x, Data, Linfc = Linfc, Kc = Kc, ML_reps = reps, MLtype = "dep")
   if (all(is.na(Z))) {
     Rec <- new("Rec")
@@ -767,7 +766,7 @@ DCAC_ML <- function(x, Data, reps = 100, plot=FALSE) {
 
 
   rundcac <- DCAC_(x, Data, reps, Bt_K=Bt_K)
-  TAC <- TACfilter(rundcac$dcac)
+  TAC <- MSEtool::TACfilter(rundcac$dcac)
 
   if (plot)  DCAC_plot(x, Data, dcac=rundcac$dcac, TAC, Bt_K=rundcac$Bt_K, yrs=1:length(Data@Year))
 
@@ -799,7 +798,7 @@ DAAC <- function(x, Data, reps = 100, plot=FALSE) {
   rundcac <- DCAC_(x, Data, reps, updateD = TRUE)
   TAC <- rundcac$dcac * rundcac$Bt_K/rundcac$BMSY_K
 
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
   if (plot)  DCAC_plot(x, Data, dcac=rundcac$dcac, TAC, Bt_K=rundcac$Bt_K, yrs=1:length(Data@Year))
 
   Rec <- new("Rec")
@@ -829,7 +828,7 @@ HDAAC <- function(x, Data, reps = 100, plot=FALSE) {
   ddcac <- rundcac$dcac * rundcac$Bt_K/rundcac$BMSY_K
   TAC[rundcac$Bt_K < rundcac$BMSY_K] <- ddcac[rundcac$Bt_K < rundcac$BMSY_K]
 
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
 
   if (plot)  DCAC_plot(x, Data, dcac=rundcac$dcac, TAC, Bt_K=rundcac$Bt_K, yrs=1:length(Data@Year))
 
@@ -919,7 +918,7 @@ DBSRAopt <- function(lnK, C_hist, nys, Mdb, FMSY_M, BMSY_K, Bt_K, adelay, opt=1)
 DBSRA_ <- function(x, Data, reps = 100, depo=NULL, hcr=NULL) {
   # returns a vector of DBSRA estimates of the TAC for a particular
   # simulation x for(x in 1:nsim){
-  if (NAor0(Data@CV_BMSY_B0[x])) stop("Data@CV_BMSY_B0 is NA")
+  if (MSEtool::NAor0(Data@CV_BMSY_B0[x])) stop("Data@CV_BMSY_B0 is NA")
   C_hist <- Data@Cat[x, ]
   TAC <- rep(NA, reps)
   Btrend <- matrix(NA, nrow=reps, ncol=length(C_hist))
@@ -942,16 +941,16 @@ DBSRA_ <- function(x, Data, reps = 100, depo=NULL, hcr=NULL) {
 
   while (DBSRAcount < (reps + 1)) {
     if (is.null(depo)) depo <- max(0.01, min(0.99, Data@Dep[x]))  # known depletion is between 1% and 99% - needed to generalise the Dick and MacCall method to extreme depletion scenarios
-    Bt_K <- rbeta(100, alphaconv(depo, min(depo * Data@CV_Dep[x], (1 - depo) * Data@CV_Dep[x])),
-                  betaconv(depo, min(depo * Data@CV_Dep[x], (1 - depo) * Data@CV_Dep[x])))  # CV 0.25 is the default for Dick and MacCall mu=0.4, sd =0.1
+    Bt_K <- rbeta(100, MSEtool::alphaconv(depo, min(depo * Data@CV_Dep[x], (1 - depo) * Data@CV_Dep[x])),
+                  MSEtool::betaconv(depo, min(depo * Data@CV_Dep[x], (1 - depo) * Data@CV_Dep[x])))  # CV 0.25 is the default for Dick and MacCall mu=0.4, sd =0.1
     Bt_K <- Bt_K[Bt_K > 0.00999 & Bt_K < 0.99001][1]  # interval censor (0.01,0.99)  as in Dick and MacCall 2011
 
-    Mdb <- trlnorm(100, Data@Mort[x], Data@CV_Mort[x])
+    Mdb <- MSEtool::trlnorm(100, Data@Mort[x], Data@CV_Mort[x])
     Mdb <- Mdb[Mdb < 0.9][1]  # !!!! maximum M is 0.9   interval censor
     if (is.na(Mdb)) Mdb <- 0.9  # !!!! maximum M is 0.9   absolute limit
-    FMSY_M <- trlnorm(1, Data@FMSY_M[x], Data@CV_FMSY_M[x])
-    BMSY_K <- rbeta(100, alphaconv(Data@BMSY_B0[x], Data@CV_BMSY_B0[x] *  Data@BMSY_B0[x]),
-                    betaconv(Data@BMSY_B0[x], Data@CV_BMSY_B0[x] * Data@BMSY_B0[x]))  #0.045 corresponds with mu=0.4 and quantile(BMSY_K,c(0.025,0.975)) =c(0.31,0.49) as in Dick and MacCall 2011
+    FMSY_M <- MSEtool::trlnorm(1, Data@FMSY_M[x], Data@CV_FMSY_M[x])
+    BMSY_K <- rbeta(100, MSEtool::alphaconv(Data@BMSY_B0[x], Data@CV_BMSY_B0[x] *  Data@BMSY_B0[x]),
+                    MSEtool::betaconv(Data@BMSY_B0[x], Data@CV_BMSY_B0[x] * Data@BMSY_B0[x]))  #0.045 corresponds with mu=0.4 and quantile(BMSY_K,c(0.025,0.975)) =c(0.31,0.49) as in Dick and MacCall 2011
     tryBMSY_K <- BMSY_K[BMSY_K > 0.05 & BMSY_K < 0.95][1]  # interval censor (0.05,0.95) as in Dick and MacCall, 2011
     if (is.na(tryBMSY_K)) {
       Min <- min(BMSY_K, na.rm = TRUE)
@@ -1058,7 +1057,7 @@ DBSRA_ <- function(x, Data, reps = 100, depo=NULL, hcr=NULL) {
 #' @export
 DBSRA <- function(x, Data, reps = 100, plot=FALSE) {
   runDBSRA <- DBSRA_(x,Data, reps)
-  TAC <- TACfilter(runDBSRA[[1]])
+  TAC <- MSEtool::TACfilter(runDBSRA[[1]])
   if (plot) DBSRA_plot(runDBSRA, Data, TAC)
 
   Rec <- new("Rec")
@@ -1077,7 +1076,7 @@ class(DBSRA) <- "MP"
 #' @export
 DBSRA_40 <- function(x, Data, reps = 100, plot=FALSE) {
   runDBSRA <- DBSRA_(x,Data, reps, depo=0.4)
-  TAC <- TACfilter(runDBSRA[[1]])
+  TAC <- MSEtool::TACfilter(runDBSRA[[1]])
   if (plot)  DBSRA_plot(runDBSRA, Data, TAC)
 
   Rec <- new("Rec")
@@ -1097,7 +1096,7 @@ class(DBSRA_40) <- "MP"
 #'
 DBSRA4010 <- function(x, Data, reps = 100, plot=FALSE) {
   runDBSRA <- DBSRA_(x,Data, reps, hcr=c(0.4, 0.1))
-  TAC <- TACfilter(runDBSRA[[1]])
+  TAC <- MSEtool::TACfilter(runDBSRA[[1]])
   if (plot) DBSRA_plot(runDBSRA, Data, TAC)
 
   Rec <- new("Rec")
@@ -1133,15 +1132,15 @@ class(DBSRA4010) <- "MP"
 #   nIts <- 0
 #   if (is.na(Data@Dep[x]) | is.na(Data@CV_Dep[x])) return(NA)
 #   while (DBSRAcount < (reps + 1) & nIts < maxIts) {
-#     Linfc <- trlnorm(1, Data@vbLinf[x], Data@CV_vbLinf[x])
-#     Kc <- trlnorm(1, Data@vbK[x], Data@CV_vbK[x])
-#     Mdb <- trlnorm(100, Data@Mort[x], Data@CV_Mort[x])
+#     Linfc <- MSEtool::trlnorm(1, Data@vbLinf[x], Data@CV_vbLinf[x])
+#     Kc <- MSEtool::trlnorm(1, Data@vbK[x], Data@CV_vbK[x])
+#     Mdb <- MSEtool::trlnorm(100, Data@Mort[x], Data@CV_Mort[x])
 #     Mdb <- Mdb[Mdb < 0.9][1]  # !!!! maximum M is 0.9   interval censor
 #     if (is.na(Mdb)) Mdb <- 0.9  # !!!! maximum M is 0.9   absolute limit
 #     Z <- MLne(x, Data, Linfc = Linfc, Kc = Kc, ML_reps = 1, MLtype = "dep")
 #     if (all(is.na(Z))) {
 #       Rec <- new("Rec")
-#       Rec@TAC <- TACfilter(rep(NA, reps))
+#       Rec@TAC <- MSEtool::TACfilter(rep(NA, reps))
 #       return(Rec)
 #     }
 #     FM <- Z - Mdb
@@ -1157,9 +1156,9 @@ class(DBSRA4010) <- "MP"
 #     if (Bt_K > 0.99) Bt_K <- 0.99  # interval censor / temporary hack to avoid doing multiple depletion estimates that would take far too long
 #
 #
-#     FMSY_M <- trlnorm(1, Data@FMSY_M[x], Data@CV_FMSY_M[x])
-#     BMSY_K <- rbeta(100, alphaconv(Data@BMSY_B0[x], Data@CV_BMSY_B0[x] *
-#                                      Data@BMSY_B0[x]), betaconv(Data@BMSY_B0[x], Data@CV_BMSY_B0[x] *
+#     FMSY_M <- MSEtool::trlnorm(1, Data@FMSY_M[x], Data@CV_FMSY_M[x])
+#     BMSY_K <- rbeta(100, MSEtool::alphaconv(Data@BMSY_B0[x], Data@CV_BMSY_B0[x] *
+#                                      Data@BMSY_B0[x]), MSEtool::betaconv(Data@BMSY_B0[x], Data@CV_BMSY_B0[x] *
 #                                                                   Data@BMSY_B0[x]))  #0.045 corresponds with mu=0.4 and quantile(BMSY_K,c(0.025,0.975)) =c(0.31,0.49) as in Dick and MacCall 2011
 #     tryBMSY_K <- BMSY_K[BMSY_K > 0.05 & BMSY_K < 0.95][1]  # interval censor (0.05,0.95) as in Dick and MacCall, 2011
 #
@@ -1190,7 +1189,7 @@ class(DBSRA4010) <- "MP"
 #     }
 #   }  # end of reps
 #   Rec <- new("Rec")
-#   Rec@TAC <- TACfilter(TAC)
+#   Rec@TAC <- MSEtool::TACfilter(TAC)
 #   Rec
 # }
 # class(DBSRA_ML) <- "MP"
@@ -1242,7 +1241,7 @@ DD_ <- function(x, Data, reps = 100, hcr=NULL) {
   So_DD <- exp(-Data@Mort[x])  # get So survival rate
   wa_DD <- wa[k_DD]
   UMSYpriorpar <- c(1 - exp(-Data@Mort[x] * 0.5), 0.3) # Prior for UMSY is that corresponding to F = 0.5 M with CV = 0.3
-  UMSYprior <- c(alphaconv(UMSYpriorpar[1], prod(UMSYpriorpar)), betaconv(UMSYpriorpar[1], prod(UMSYpriorpar))) # Convert to beta parameters
+  UMSYprior <- c(MSEtool::alphaconv(UMSYpriorpar[1], prod(UMSYpriorpar)), MSEtool::betaconv(UMSYpriorpar[1], prod(UMSYpriorpar))) # Convert to beta parameters
   params <- log(c(UMSYpriorpar[1]/(1 - UMSYpriorpar[1]), 3*mean(C_hist, na.rm = T), Data@Mort[x]))
   opt <- optim(params, DD_R, opty = 1, So_DD = So_DD, Alpha_DD = Alpha_DD,
                Rho_DD = Rho_DD, ny_DD = ny_DD, k_DD = k_DD, wa_DD = wa_DD, E_hist = E_hist,
@@ -1419,7 +1418,7 @@ DD_R <- function(params, opty, So_DD, Alpha_DD, Rho_DD, ny_DD, k_DD, wa_DD, E_hi
 #' @export
 DD <- function(x, Data, reps = 100, plot=FALSE) {
   runDD <- DD_(x, Data, reps)
-  TAC <- TACfilter(runDD$TAC)
+  TAC <- MSEtool::TACfilter(runDD$TAC)
 
   if (plot) DD_plot(x, runDD, Data, TAC)
 
@@ -1440,7 +1439,7 @@ class(DD) <- "MP"
 DD4010 <- function(x, Data, reps = 100, plot=FALSE) {
 
   runDD <- DD_(x, Data, reps, hcr=c(.4, .1))
-  TAC <- TACfilter(runDD$TAC)
+  TAC <- MSEtool::TACfilter(runDD$TAC)
 
   if (plot) DD_plot(x, runDD, Data, TAC)
 
@@ -1526,8 +1525,8 @@ DynF <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 10, gg = 2) {
   ind1 <- 1:(yrsmth - 1)
   SP_hist <- B_hist[ind] - B_hist[ind1] + C_hist[ind1]
 
-  Frat <- trlnorm(reps, Data@Mort[x], Data@CV_Mort[x]) *
-    trlnorm(reps, Data@FMSY_M[x], Data@CV_FMSY_M[x])
+  Frat <- MSEtool::trlnorm(reps, Data@Mort[x], Data@CV_Mort[x]) *
+    MSEtool::trlnorm(reps, Data@FMSY_M[x], Data@CV_FMSY_M[x])
   Flim <- matrix(NA, nrow = 2, ncol = reps)
   Flim[1, ] <- Frat * 0.5
   Flim[2, ] <- Frat * 2
@@ -1545,7 +1544,7 @@ DynF <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 10, gg = 2) {
   newF[newF < Flim[1]] <- Flim[1]
   newF[newF > Flim[2]] <- Flim[2]
 
-  TAC <- TACfilter(newF * B_hist[yrsmth])
+  TAC <- MSEtool::TACfilter(newF * B_hist[yrsmth])
 
   if (plot) DynF_plot(C_dat, C_hist, TAC, yrsmth, B_dat, B_hist, Data, SP_hist,
                       ind, ind1, G_new, Frat,newF, years)
@@ -1657,7 +1656,7 @@ Fadapt <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 7, gg = 1) {
   }
   Fmod2 <- Fmod1 + gg * -G_new
   newF <- Flim[1] + (exp(Fmod2)/(1 + exp(Fmod2))) * Flimr
-  TAC <- TACfilter(newF * B_hist[yrsmth])
+  TAC <- MSEtool::TACfilter(newF * B_hist[yrsmth])
 
   if (plot) Fadapt_plot(C_dat, C_hist, TAC, yrsmth, B_dat, B_hist, Data, SP_hist,
                       ind, ind1, G_new, Frat,newF, years)
@@ -1763,35 +1762,35 @@ demofn <- function(log.r, M, amat, sigma, K, Linf, to, hR, maxage, a, b) {
 #' @keywords internal
 Fdem_ <- function(x, Data, reps, Ac=NULL) {
   # Demographic FMSY estimate (FMSY=r/2)
-  if (NAor0(Data@Mort[x])) stop("Data@Mort is NA")
-  if (NAor0(Data@FMSY_M[x])) stop("Data@FMSY_M is NA")
-  if (NAor0(Data@L50[x])) stop("Data@L50 is NA")
-  if (NAor0(Data@vbK[x])) stop("Data@vbK is NA")
-  if (NAor0(Data@CV_vbK[x])) stop("Data@CV_vbK is NA")
-  if (NAor0(Data@vbLinf[x])) stop("Data@vbLinf is NA")
-  if (NAor0(Data@CV_vbLinf[x])) stop("Data@CV_vbLinf is NA")
-  if (NAor0(Data@vbt0[x])) stop("Data@vbt0 is NA")
-  if (NAor0(Data@CV_Mort[x])) stop("Data@CV_Mort is NA")
-  if (NAor0(Data@wla[x])) stop("Data@wla is NA")
-  if (NAor0(Data@wlb[x])) stop("Data@wlb is NA")
+  if (MSEtool::NAor0(Data@Mort[x])) stop("Data@Mort is NA")
+  if (MSEtool::NAor0(Data@FMSY_M[x])) stop("Data@FMSY_M is NA")
+  if (MSEtool::NAor0(Data@L50[x])) stop("Data@L50 is NA")
+  if (MSEtool::NAor0(Data@vbK[x])) stop("Data@vbK is NA")
+  if (MSEtool::NAor0(Data@CV_vbK[x])) stop("Data@CV_vbK is NA")
+  if (MSEtool::NAor0(Data@vbLinf[x])) stop("Data@vbLinf is NA")
+  if (MSEtool::NAor0(Data@CV_vbLinf[x])) stop("Data@CV_vbLinf is NA")
+  if (MSEtool::NAor0(Data@vbt0[x])) stop("Data@vbt0 is NA")
+  if (MSEtool::NAor0(Data@CV_Mort[x])) stop("Data@CV_Mort is NA")
+  if (MSEtool::NAor0(Data@wla[x])) stop("Data@wla is NA")
+  if (MSEtool::NAor0(Data@wlb[x])) stop("Data@wlb is NA")
 
-  Mvec <- trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
-  Kc <- trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
-  Linfc = trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Mvec <- MSEtool::trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
+  Kc <- MSEtool::trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
+  Linfc = MSEtool::trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
   if (Data@vbt0[x] != 0 & Data@CV_vbt0[x] != tiny) {
     if (Data@vbt0[x]<0) {
-      t0c <- -trlnorm(reps, -Data@vbt0[x], Data@CV_vbt0[x])
+      t0c <- -MSEtool::trlnorm(reps, -Data@vbt0[x], Data@CV_vbt0[x])
     } else {
-      t0c <- trlnorm(reps, Data@vbt0[x], Data@CV_vbt0[x])
+      t0c <- MSEtool::trlnorm(reps, Data@vbt0[x], Data@CV_vbt0[x])
     }
   } else {
     t0c <- rep(Data@vbt0[x], reps)
   }
   t0c[!is.finite(t0c)] <- 0
-  # hvec <- trlnorm(reps, Data@steep[x], Data@CV_steep[x])
+  # hvec <- MSEtool::trlnorm(reps, Data@steep[x], Data@CV_steep[x])
   hvec <- MSEtool::sample_steepness2(reps, Data@steep[x], Data@CV_steep[x])
 
-  if (is.null(Ac)) Ac <- trlnorm(reps, Data@Abun[x], Data@CV_Abun[x])
+  if (is.null(Ac)) Ac <- MSEtool::trlnorm(reps, Data@Abun[x], Data@CV_Abun[x])
   FMSY <- getr(x, Data, Mvec, Kc, Linfc, t0c, hvec, maxage = Data@MaxAge, r_reps = reps)/2
   TAC <- FMSY * Ac
   return(list(TAC=TAC, Ac=Ac, FMSY=FMSY))
@@ -1825,7 +1824,7 @@ Fdem_ <- function(x, Data, reps, Ac=NULL) {
 #' @export
 Fdem <- function(x, Data, reps = 100, plot=FALSE) {
   runFdem <- Fdem_(x, Data, reps)
-  TAC <- TACfilter(runFdem$TAC)
+  TAC <- MSEtool::TACfilter(runFdem$TAC)
 
   if (plot) Fdem_plot(runFdem, Data)
 
@@ -1850,9 +1849,9 @@ class(Fdem) <- "MP"
 #' @export
 Fdem_CC <- function(x, Data, reps = 100, plot=FALSE, Fmin = 0.005) {
 
-  Mvec <- trlnorm(reps * 10, Data@Mort[x], Data@CV_Mort[x])
+  Mvec <- MSEtool::trlnorm(reps * 10, Data@Mort[x], Data@CV_Mort[x])
   MuC <- Data@Cat[x, length(Data@Cat[x, ])]
-  Cc <- trlnorm(reps, MuC, Data@CV_Cat[x,1])
+  Cc <- MSEtool::trlnorm(reps, MuC, Data@CV_Cat[x,1])
   Zdb <- CC(x, Data, reps = reps * 10)
   Fdb <- Zdb - Mvec
   ind <- (1:(reps * 10))[Fdb > Fmin][1:reps]
@@ -1866,7 +1865,7 @@ Fdem_CC <- function(x, Data, reps = 100, plot=FALSE, Fmin = 0.005) {
   Ac <- Cc/(1 - exp(-Fdb))
 
   runFdem <- Fdem_(x, Data, reps, Ac=Ac)
-  TAC <- TACfilter(runFdem$TAC)
+  TAC <- MSEtool::TACfilter(runFdem$TAC)
 
   if (plot) Fdem_plot(runFdem, Data)
 
@@ -1883,11 +1882,11 @@ class(Fdem_CC) <- "MP"
 #' Fdem_ML(1, MSEtool::SimulatedData, plot=TRUE)
 #' @export
 Fdem_ML <- function(x, Data, reps = 100, plot=FALSE, Fmin = 0.005) {
-  Mvec <- trlnorm(reps * 10, Data@Mort[x], Data@CV_Mort[x])
-  Kc <- trlnorm(reps * 10, Data@vbK[x], Data@CV_vbK[x])
-  Linfc = trlnorm(reps * 10, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Mvec <- MSEtool::trlnorm(reps * 10, Data@Mort[x], Data@CV_Mort[x])
+  Kc <- MSEtool::trlnorm(reps * 10, Data@vbK[x], Data@CV_vbK[x])
+  Linfc = MSEtool::trlnorm(reps * 10, Data@vbLinf[x], Data@CV_vbLinf[x])
   MuC <- Data@Cat[x, length(Data@Cat[x, ])]
-  Cc <- trlnorm(reps * 10, MuC, Data@CV_Cat[x,1])
+  Cc <- MSEtool::trlnorm(reps * 10, MuC, Data@CV_Cat[x,1])
   Z <- MLne(x, Data, Linfc = Linfc, Kc = Kc, ML_reps = reps * 10, MLtype = "F")
 
   if (all(is.na(Z))) {
@@ -1908,7 +1907,7 @@ Fdem_ML <- function(x, Data, reps = 100, plot=FALSE, Fmin = 0.005) {
   Ac <- Cc[ind]/(1 - exp(-FM))
 
   runFdem <- Fdem_(x, Data, reps, Ac=Ac)
-  TAC <- TACfilter(runFdem$TAC)
+  TAC <- MSEtool::TACfilter(runFdem$TAC)
 
   if (plot) Fdem_plot(runFdem, Data)
 
@@ -1932,8 +1931,8 @@ class(Fdem_ML) <- "MP"
 #'
 #' @keywords internal
 Fratio_ <- function(x, Data, reps=100, Abun=NULL) {
-  Frat <- trlnorm(reps, Data@Mort[x], Data@CV_Mort[x]) * trlnorm(reps, Data@FMSY_M[x], Data@CV_FMSY_M[x]) # estimate of Fmsy
-  if (is.null(Abun)) Abun <- trlnorm(reps, Data@Abun[x], Data@CV_Abun[x])
+  Frat <- MSEtool::trlnorm(reps, Data@Mort[x], Data@CV_Mort[x]) * MSEtool::trlnorm(reps, Data@FMSY_M[x], Data@CV_FMSY_M[x]) # estimate of Fmsy
+  if (is.null(Abun)) Abun <- MSEtool::trlnorm(reps, Data@Abun[x], Data@CV_Abun[x])
 
   TAC <- Frat * Abun
 
@@ -1979,7 +1978,7 @@ Fratio <- function(x, Data, reps = 100, plot=FALSE) {
   # FMSY / M ratio method e.g. Gulland
 
   runFrat <- Fratio_(x, Data, reps)
-  TAC <- TACfilter(runFrat$TAC)
+  TAC <- MSEtool::TACfilter(runFrat$TAC)
 
   if (plot) Fratio_plot(x, Data, TAC, runFrat)
 
@@ -1997,19 +1996,19 @@ class(Fratio) <- "MP"
 #' @export
 Fratio4010 <- function(x, Data, reps = 100, plot=FALSE) {
   runFrat <- Fratio_(x, Data, reps)
-  TAC <- TACfilter(runFrat$TAC)
+  TAC <- MSEtool::TACfilter(runFrat$TAC)
 
   # 40-10 rule
-  # Bt_K <- trlnorm(reps, Data@Dt[x], Data@CV_Dt[x])
+  # Bt_K <- MSEtool::trlnorm(reps, Data@Dt[x], Data@CV_Dt[x])
   if (is.na(Data@Dep[x]) | is.na(Data@CV_Dep[x])) {
     out <- new("Rec")
     out@TAC <- rep(as.numeric(NA), reps)
     return(out)
   }
   depo <- max(0.01, min(0.99, Data@Dep[x]))
-  Bt_K <- rbeta(reps * 100, alphaconv(depo, min(depo * Data@CV_Dep[x],
+  Bt_K <- rbeta(reps * 100, MSEtool::alphaconv(depo, min(depo * Data@CV_Dep[x],
                                                 (1 - depo) * Data@CV_Dep[x])),
-                betaconv(depo, min(depo * Data@CV_Dep[x], (1 - depo) * Data@CV_Dep[x])))
+                MSEtool::betaconv(depo, min(depo * Data@CV_Dep[x], (1 - depo) * Data@CV_Dep[x])))
   Bt_K <- Bt_K[Bt_K >= 0.01 & Bt_K <= 0.99][1:reps]  # interval censor (0.01,0.99)  as in Dick and MacCall 2011
 
   cond1 <- Bt_K < 0.4 & Bt_K > 0.1
@@ -2036,7 +2035,7 @@ class(Fratio4010) <- "MP"
 DepF <- function(x, Data, reps = 100, plot=FALSE) {
 
   runFrat <- Fratio_(x, Data, reps)
-  TAC <- TACfilter(runFrat$TAC)
+  TAC <- MSEtool::TACfilter(runFrat$TAC)
 
   if (is.na(Data@Dep[x]) | is.na(Data@CV_Dep[x])) {
     out <- new("Rec")
@@ -2045,9 +2044,9 @@ DepF <- function(x, Data, reps = 100, plot=FALSE) {
   }
 
   depo <- max(0.01, min(0.99, Data@Dep[x]))
-  Bt_K <- rbeta(reps * 100, alphaconv(depo, min(depo * Data@CV_Dep[x],
+  Bt_K <- rbeta(reps * 100, MSEtool::alphaconv(depo, min(depo * Data@CV_Dep[x],
                                                 (1 - depo) * Data@CV_Dep[x])),
-                betaconv(depo, min(depo * Data@CV_Dep[x], (1 - depo) * Data@CV_Dep[x])))
+                MSEtool::betaconv(depo, min(depo * Data@CV_Dep[x], (1 - depo) * Data@CV_Dep[x])))
   Bt_K <- Bt_K[Bt_K >= 0.01 & Bt_K <= 0.99][1:reps]  # interval censor (0.01,0.99)  as in Dick and MacCall 2011
 
 
@@ -2077,8 +2076,8 @@ Fratio_CC <- function(x, Data, reps = 100, plot=FALSE, Fmin = 0.005) {
   # estimate abundance from average catch and F
   # MuC <- Data@Cat[x, length(Data@Cat[x, ])]
   MuC <- mean(Data@Cat[x, ], na.rm=TRUE)
-  Cc <- trlnorm(reps, MuC, Data@CV_Cat[x,1])
-  Mdb <- trlnorm(reps * 10, Data@Mort[x], Data@CV_Mort[x])  # CV of 0.5 as in MacCall 2009
+  Cc <- MSEtool::trlnorm(reps, MuC, Data@CV_Cat[x,1])
+  Mdb <- MSEtool::trlnorm(reps * 10, Data@Mort[x], Data@CV_Mort[x])  # CV of 0.5 as in MacCall 2009
   Zdb <- CC(x, Data, reps = reps * 10)
   Fdb <- Zdb - Mdb
   ind <- (1:(reps * 10))[Fdb > 0.005][1:reps]
@@ -2087,14 +2086,14 @@ Fratio_CC <- function(x, Data, reps = 100, plot=FALSE, Fmin = 0.005) {
   Mdb <- Mdb[ind]
   SM <- sum(is.na(ind))
   if (SM > 0) {
-    Mdb[is.na(ind)] <- trlnorm(SM, Data@Mort[x], Data@CV_Mort[x])
+    Mdb[is.na(ind)] <- MSEtool::trlnorm(SM, Data@Mort[x], Data@CV_Mort[x])
     Fdb[is.na(ind)] <- Fmin
   }
 
   Ac <- Cc/(1 - exp(-Fdb))
   runFrat <- Fratio_(x, Data, reps, Abun=Ac)
 
-  TAC <- TACfilter(runFrat$TAC)
+  TAC <- MSEtool::TACfilter(runFrat$TAC)
 
   if (plot) Fratio_plot(x, Data, TAC, runFrat)
 
@@ -2114,10 +2113,10 @@ class(Fratio_CC) <- "MP"
 Fratio_ML <- function(x, Data, reps = 100, plot=FALSE) {
   # estimate abundance from average catch and F
   MuC <- Data@Cat[x, length(Data@Cat[x, ])]
-  Cc <- trlnorm(reps * 10, MuC, Data@CV_Cat[x,1])
-  Mdb <- trlnorm(reps * 10, Data@Mort[x], Data@CV_Mort[x])  # CV of 0.5 as in MacCall 2009
-  Linfc <- trlnorm(reps * 10, Data@vbLinf[x], Data@CV_vbLinf[x])
-  Kc <- trlnorm(reps * 10, Data@vbK[x], Data@CV_vbK[x])
+  Cc <- MSEtool::trlnorm(reps * 10, MuC, Data@CV_Cat[x,1])
+  Mdb <- MSEtool::trlnorm(reps * 10, Data@Mort[x], Data@CV_Mort[x])  # CV of 0.5 as in MacCall 2009
+  Linfc <- MSEtool::trlnorm(reps * 10, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Kc <- MSEtool::trlnorm(reps * 10, Data@vbK[x], Data@CV_vbK[x])
   Z <- MLne(x, Data, Linfc = Linfc, Kc = Kc, ML_reps = reps * 10, MLtype = "F")
   if (all(is.na(Z))) {
     out <- new("Rec")
@@ -2131,7 +2130,7 @@ Fratio_ML <- function(x, Data, reps = 100, plot=FALSE) {
   Ac <- Cc[ind]/(1 - exp(-FM))
 
   runFrat <- Fratio_(x, Data, reps, Abun=Ac)
-  TAC <- TACfilter(runFrat$TAC)
+  TAC <- MSEtool::TACfilter(runFrat$TAC)
 
   if (plot) Fratio_plot(x, Data, TAC, runFrat)
 
@@ -2195,13 +2194,13 @@ GB_slope <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 5, lambda = 1) {
   }
 
   MuC <- Data@Cat[x, length(Data@Cat[x, ])]
-  Cc <-  trlnorm(reps, MuC, Data@CV_Cat[x,1])
+  Cc <-  MSEtool::trlnorm(reps, MuC, Data@CV_Cat[x,1])
 
   TAC <- Cc * (1 + lambda * Islp)
   TAC[TAC > (1.2 * Catrec)] <- 1.2 * Catrec
   TAC[TAC < (0.8 * Catrec)] <- 0.8 * Catrec
 
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
   if (plot) GB_slope_plot(Data, ind, I_hist, MuC, TAC, Islp)
 
   Rec <- new("Rec")
@@ -2256,8 +2255,8 @@ class(GB_slope) <- "MP"
 GB_target <- function(x, Data, reps = 100, plot=FALSE, w = 0.5) {
   dependencies = "Data@Cat, Data@Cref, Data@Iref, Data@Ind"
   Catrec <- Data@Cat[x, length(Data@Cat[x, ])]
-  TACtarg <- trlnorm(reps, Data@Cref[x], Data@CV_Cref)
-  Itarg <- trlnorm(reps, Data@Iref[x], Data@CV_Iref)
+  TACtarg <- MSEtool::trlnorm(reps, Data@Cref[x], Data@CV_Cref)
+  Itarg <- MSEtool::trlnorm(reps, Data@Iref[x], Data@CV_Iref)
   Iav <- mean(Data@Ind[x, (length(Data@Ind[x, ]) - 4):length(Data@Ind[x, ])], na.rm = T)
   Irec <- mean(Data@Ind[x, (length(Data@Ind[x, ]) - 3):length(Data@Ind[x, ])], na.rm = T)
   I0 <- 0.2 * Iav
@@ -2266,7 +2265,7 @@ GB_target <- function(x, Data, reps = 100, plot=FALSE, w = 0.5) {
   if (Irec < I0) TAC <- TACtarg * w * (Irec/I0)^2
   TAC[TAC > (1.2 * Catrec)] <- 1.2 * Catrec
   TAC[TAC < (0.8 * Catrec)] <- 0.8 * Catrec
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
 
   if (plot) GB_target_plot(Itarg, Irec, I0, Data, Catrec, TAC)
 
@@ -2342,7 +2341,7 @@ Gcontrol <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 10, gg = 2, glim 
   TAC <- SP_new * (1 - gg * G_new)
   TAC[TAC < glim[1] * C_hist[yrsmth]] <- glim[1] * C_hist[yrsmth]
   TAC[TAC > glim[2] * C_hist[yrsmth]] <- glim[2] * C_hist[yrsmth]
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
 
   if (plot) Gcontrol_plot(years, ind1, yrsmth, SP_new, SP_hist, B_dat, B_hist, C_dat, C_hist, TAC, Data)
   # Carr<-cbind(array(rep(Data@Cat[x,],each=reps),c(reps,length(Data@Cat[x,]))),TAC)
@@ -2410,7 +2409,7 @@ ICI <- function(x, Data, reps=100, plot=FALSE) {
   if (reps ==1) {
     Ind.samp <-Index
   }else {
-    Ind.samp <- trlnorm(reps * nI, Index, Data@CV_Ind[x,1])
+    Ind.samp <- MSEtool::trlnorm(reps * nI, Index, Data@CV_Ind[x,1])
   }
   Ind.samp <- matrix(Ind.samp, ncol = reps)
 
@@ -2430,9 +2429,9 @@ ICI <- function(x, Data, reps=100, plot=FALSE) {
   alpha[Ind >= ci.low & Ind <= ci.high] <- 1
 
   Cat <- Data@Cat[x, length(Data@Cat[x, ])]
-  Cc <- trlnorm(reps, Cat, Data@CV_Cat[x,1])
+  Cc <- MSEtool::trlnorm(reps, Cat, Data@CV_Cat[x,1])
 
-  TAC <- TACfilter(alpha * Cc)
+  TAC <- MSEtool::TACfilter(alpha * Cc)
   if (plot) ICI_plot(Years, Index, ci.low, ci.high, TAC, Cat, Data)
 
   Rec <- new("Rec")
@@ -2458,7 +2457,7 @@ ICI2 <- function(x, Data, reps=100, plot=FALSE) {
   Years <- Data@Year[!is.na(Index)]
   Index <- Index[!is.na(Index)]
   nI <- length(Index)
-  Ind.samp <- trlnorm(reps * nI, Index, Data@CV_Ind[x,1])
+  Ind.samp <- MSEtool::trlnorm(reps * nI, Index, Data@CV_Ind[x,1])
   Ind.samp <- matrix(Ind.samp, ncol = reps)
 
   muI <- apply(Ind.samp, 2, mean, na.rm = TRUE)
@@ -2477,10 +2476,10 @@ ICI2 <- function(x, Data, reps=100, plot=FALSE) {
   alpha[Ind >= ci.low & Ind <= ci.high] <- 1
 
   Cat <- Data@Cat[x, length(Data@Cat[x, ])]
-  Cc <- trlnorm(reps, Cat, Data@CV_Cat[x,1])
+  Cc <- MSEtool::trlnorm(reps, Cat, Data@CV_Cat[x,1])
 
   TAC <- alpha * Cc
-  TAC <- TACfilter(alpha * Cc)
+  TAC <- MSEtool::TACfilter(alpha * Cc)
   if (plot) ICI_plot(Years, Index, ci.low, ci.high, TAC, Cat, Data)
 
   Rec <- new("Rec")
@@ -2531,8 +2530,8 @@ Iratio <- function(x, Data, reps=100, plot=FALSE, yrs = c(2, 5)) {
     I.num <- Data@Ind[x, ind.num]
     I.den <-  Data@Ind[x, ind.den]
   } else {
-    I.num <- trlnorm(reps * length(ind.num), Data@Ind[x, ind.num], Data@CV_Ind[x,1])
-    I.den <- trlnorm(reps * length(ind.den), Data@Ind[x, ind.den], Data@CV_Ind[x,1])
+    I.num <- MSEtool::trlnorm(reps * length(ind.num), Data@Ind[x, ind.num], Data@CV_Ind[x,1])
+    I.den <- MSEtool::trlnorm(reps * length(ind.den), Data@Ind[x, ind.den], Data@CV_Ind[x,1])
   }
 
   I.num <- matrix(I.num, ncol = reps)
@@ -2540,9 +2539,9 @@ Iratio <- function(x, Data, reps=100, plot=FALSE, yrs = c(2, 5)) {
 
   alpha <- apply(I.num, 2, mean, na.rm = TRUE)/apply(I.den, 2, mean, na.rm = TRUE)
   Cat <- Data@Cat[x, length(Data@Cat[x, ])]
-  Cc <- trlnorm(reps, Cat, Data@CV_Cat[x,1])
+  Cc <- MSEtool::trlnorm(reps, Cat, Data@CV_Cat[x,1])
   TAC <- alpha * Cc
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
 
   if(plot) Iratio_plot(Data, I.num, ind.num, I.den, ind.den, alpha, TAC, Cat)
 
@@ -2578,7 +2577,7 @@ Islope_ <- function(x, Data, reps = 100, yrsmth = 5, lambda = 0.4,xx = 0.2) {
   ylast <- (Data@LHYear[1] - Data@Year[1]) + 1  #last historical year
   C_dat <- Data@Cat[x, ind]
   if (is.na(Data@MPrec[x]) || length(Data@Year) == ylast + 1) {
-    TACstar <- (1 - xx) * trlnorm(reps, mean(C_dat, na.rm=TRUE), Data@CV_Cat/(yrsmth^0.5))
+    TACstar <- (1 - xx) * MSEtool::trlnorm(reps, mean(C_dat, na.rm=TRUE), Data@CV_Cat/(yrsmth^0.5))
   } else {
     TACstar <- rep(Data@MPrec[x], reps)
   }
@@ -2635,7 +2634,7 @@ Islope_ <- function(x, Data, reps = 100, yrsmth = 5, lambda = 0.4,xx = 0.2) {
 Islope1 <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 5, lambda = 0.4,xx = 0.2) {
 
   runIslope <- Islope_(x, Data, reps, yrsmth, lambda, xx)
-  TAC <- TACfilter(runIslope$TAC)
+  TAC <- MSEtool::TACfilter(runIslope$TAC)
   runIslope$TAC <- TAC
 
   if(plot) Islope_plot(runIslope, Data)
@@ -2706,8 +2705,8 @@ IT_ <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 5, mc = 0.05) {
   deltaI <- mean(Data@Ind[x, ind], na.rm=TRUE)/Data@Iref[x]
   if (deltaI < (1 - mc)) deltaI <- 1 - mc
   if (deltaI > (1 + mc)) deltaI <- 1 + mc
-  TAC <- Data@MPrec[x] * deltaI * trlnorm(reps, 1, Data@CV_Ind[x,1])
-  TAC <- TACfilter(TAC)
+  TAC <- Data@MPrec[x] * deltaI * MSEtool::trlnorm(reps, 1, Data@CV_Ind[x,1])
+  TAC <- MSEtool::TACfilter(TAC)
   if (plot) {
     op <- par(no.readonly = TRUE)
     on.exit(op)
@@ -2802,7 +2801,7 @@ Itarget_ <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 5, xx = 0, Imulti
   ind2 <- ((ylast - (yrsmth - 1)):ylast)  # historical 5 pre-projection years
   ind3 <- ((ylast - (yrsmth * 2 - 1)):ylast)  # historical 10 pre-projection years
   C_dat <- Data@Cat[x, ind2]
-  TACstar <- (1 - xx) * trlnorm(reps, mean(C_dat, na.rm=TRUE), Data@CV_Cat[x,1]/(yrsmth^0.5))
+  TACstar <- (1 - xx) * MSEtool::trlnorm(reps, mean(C_dat, na.rm=TRUE), Data@CV_Cat[x,1]/(yrsmth^0.5))
   Irecent <- mean(Data@Ind[x, ind], na.rm=TRUE)
   Iave <- mean(Data@Ind[x, ind3], na.rm=TRUE)
   Itarget <- Iave * Imulti
@@ -2812,7 +2811,7 @@ Itarget_ <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 5, xx = 0, Imulti
   } else {
     TAC <- 0.5 * TACstar * (Irecent/I0)^2
   }
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
 
   if (plot) {
     op <- par(no.readonly = TRUE)
@@ -2976,8 +2975,8 @@ ITM <- function(x, Data, reps = 100, plot=FALSE) {
   if (deltaI < (1 - mc)) deltaI <- 1 - mc
   if (deltaI > (1 + mc)) deltaI <- 1 + mc
 
-  TAC <- Data@MPrec[x] * deltaI * trlnorm(reps, 1, Data@CV_Ind[x,1])
-  TAC <- TACfilter(TAC)
+  TAC <- Data@MPrec[x] * deltaI * MSEtool::trlnorm(reps, 1, Data@CV_Ind[x,1])
+  TAC <- MSEtool::TACfilter(TAC)
 
   if (plot) {
     op <- par(no.readonly = TRUE)
@@ -3011,7 +3010,7 @@ Ltarget_ <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 5, xx = 0, xL = 1
   ind2 <- ((ylast - (yrsmth - 1)):ylast)  # historical 5 pre-projection years
   ind3 <- ((ylast - (yrsmth * 2 - 1)):ylast)  # historical 10 pre-projection years
   C_dat <- Data@Cat[x, ind2]
-  TACstar <- (1 - xx) * trlnorm(reps, mean(C_dat, na.rm=TRUE), Data@CV_Cat/(yrsmth^0.5))
+  TACstar <- (1 - xx) * MSEtool::trlnorm(reps, mean(C_dat, na.rm=TRUE), Data@CV_Cat/(yrsmth^0.5))
   Lrecent <- mean(Data@ML[x,ind], na.rm=TRUE)
   Lave <- mean(Data@ML[x,ind3], na.rm=TRUE)
   if (is.null(L0)) L0 <- 0.9 * Lave
@@ -3022,7 +3021,7 @@ Ltarget_ <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 5, xx = 0, xL = 1
     TAC <- 0.5 * TACstar * (Lrecent/L0)^2
   }
 
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
 
   if (plot) {
     op <- par(no.readonly = TRUE)
@@ -3202,12 +3201,12 @@ class(L95target) <- "MP"
 Lratio_BHI <- function(x, Data, reps=100, plot=FALSE, yrsmth = 3) {
   dependencies = "Data@vb_Linf, Data@CV_vbLinf, Data@Cat, Data@CV_Cat, Data@CAL, Data@CAL_bins,
   Data@LFS, Data@CV_LFS"
-  Linfc <- trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
-  Lc <- trlnorm(reps, Data@LFS[x], Data@CV_LFS[x])
+  Linfc <- MSEtool::trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Lc <- MSEtool::trlnorm(reps, Data@LFS[x], Data@CV_LFS[x])
   Lref <- 0.75 * Lc + 0.25 * Linfc
 
   Cat <- Data@Cat[x, length(Data@Cat[x, ])]
-  Cc <- trlnorm(reps, Cat, Data@CV_Cat[x,1])
+  Cc <- MSEtool::trlnorm(reps, Cat, Data@CV_Cat[x,1])
 
   LYear <- dim(Data@CAL)[2]
   nlbin <- ncol(Data@CAL[x,,])
@@ -3223,7 +3222,7 @@ Lratio_BHI <- function(x, Data, reps=100, plot=FALSE, yrsmth = 3) {
     LSQ[i] <- mean(lensamp, na.rm=TRUE)
   }
 
-  TAC <- TACfilter((LSQ/Lref) * Cc)
+  TAC <- MSEtool::TACfilter((LSQ/Lref) * Cc)
 
   if (plot) Lratio_BHI_plot(mlbin, CAL, LSQ, Lref, Data, x, TAC, Cc, yrsmth)
   Rec <- new("Rec")
@@ -3248,18 +3247,18 @@ Lratio_BHI2 <- function(x, Data, reps=100, plot=FALSE, yrsmth = 3) {
   dependencies = "Data@vb_Linf, Data@CV_vbLinf, Data@Cat, Data@CV_Cat, Data@Mort, Data@CV_Mort,
   Data@vb_K, Data@CV_vbK, Data@FMSY_M, Data@CV_FMSY_M, Data@CAL, Data@CAL_bins,
   Data@LFS, Data@CV_LFS"
-  Linfc <- trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
-  Lc <- trlnorm(reps, Data@LFS[x], Data@CV_LFS[x])
+  Linfc <- MSEtool::trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Lc <- MSEtool::trlnorm(reps, Data@LFS[x], Data@CV_LFS[x])
 
-  Mvec <- trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
-  Kvec <- trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
-  gamma <- trlnorm(reps, Data@FMSY_M[x], Data@CV_FMSY_M[x])
+  Mvec <- MSEtool::trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
+  Kvec <- MSEtool::trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
+  gamma <- MSEtool::trlnorm(reps, Data@FMSY_M[x], Data@CV_FMSY_M[x])
   theta <- Kvec/Mvec
 
   Lref <- (theta * Linfc + Lc * (gamma + 1)) / (gamma + theta + 1)
 
   Cat <- Data@Cat[x, length(Data@Cat[x, ])]
-  Cc <- trlnorm(reps, Cat, Data@CV_Cat[x,1])
+  Cc <- MSEtool::trlnorm(reps, Cat, Data@CV_Cat[x,1])
 
   LYear <- dim(Data@CAL)[2]
   nlbin <- ncol(Data@CAL[x,,])
@@ -3274,7 +3273,7 @@ Lratio_BHI2 <- function(x, Data, reps=100, plot=FALSE, yrsmth = 3) {
     LSQ[i] <- mean(lensamp, na.rm=TRUE)
   }
 
-  TAC <- TACfilter((LSQ/Lref) * Cc)
+  TAC <- MSEtool::TACfilter((LSQ/Lref) * Cc)
 
   if (plot) Lratio_BHI_plot(mlbin, CAL, LSQ, Lref, Data, x, TAC, Cc, yrsmth)
 
@@ -3299,18 +3298,18 @@ Lratio_BHI3 <- function(x, Data, reps=100, plot=FALSE, yrsmth = 3) {
   dependencies = "Data@vb_Linf, Data@CV_vbLinf, Data@Cat, Data@CV_Cat, Data@Mort, Data@CV_Mort,
   Data@vb_K, Data@CV_vbK, Data@FMSY_M, Data@CV_FMSY_M, Data@CAL, Data@CAL_bins,
   Data@LFS, Data@CV_LFS"
-  Linfc <- trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
-  Lc <- trlnorm(reps, Data@LFS[x], Data@CV_LFS[x])
+  Linfc <- MSEtool::trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Lc <- MSEtool::trlnorm(reps, Data@LFS[x], Data@CV_LFS[x])
 
-  Mvec <- trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
-  Kvec <- trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
-  gamma <- trlnorm(reps, Data@FMSY_M[x], Data@CV_FMSY_M[x])
+  Mvec <- MSEtool::trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
+  Kvec <- MSEtool::trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
+  gamma <- MSEtool::trlnorm(reps, Data@FMSY_M[x], Data@CV_FMSY_M[x])
   theta <- Kvec/Mvec
 
   Lref <- (theta * Linfc + Lc * (gamma + 1)) / (gamma + theta + 1)
 
   Cat <- Data@Cat[x, length(Data@Cat[x, ])]
-  Cc <- trlnorm(reps, Cat, Data@CV_Cat[x,1])
+  Cc <- MSEtool::trlnorm(reps, Cat, Data@CV_Cat[x,1])
 
   LYear <- dim(Data@CAL)[2]
   nlbin <- ncol(Data@CAL[x,,])
@@ -3328,7 +3327,7 @@ Lratio_BHI3 <- function(x, Data, reps=100, plot=FALSE, yrsmth = 3) {
     LSQ[i] <- mean(lensamp, na.rm=TRUE)
   }
 
-  TAC <- TACfilter((LSQ/Lref) * Cc)
+  TAC <- MSEtool::TACfilter((LSQ/Lref) * Cc)
 
   if (plot) Lratio_BHI_plot(mlbin, CAL, LSQ, Lref, Data, x, TAC, Cc, yrsmth)
 
@@ -3351,7 +3350,7 @@ LstepCC_ <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 5, xx = 0, stepsz
   ind3 <- ((ylast - (yrsmth * 2 - 1)):ylast)  # historical 10 pre-projection years
   C_dat <- Data@Cat[x, ind2]
   if (is.na(Data@MPrec[x]) || length(Data@Year) == ylast) {
-    TACstar <- (1 - xx) * trlnorm(reps, mean(C_dat), Data@CV_Cat/(yrsmth^0.5))
+    TACstar <- (1 - xx) * MSEtool::trlnorm(reps, mean(C_dat), Data@CV_Cat/(yrsmth^0.5))
   } else {
     TACstar <- rep(Data@MPrec[x], reps)
   }
@@ -3369,7 +3368,7 @@ LstepCC_ <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 5, xx = 0, stepsz
     TAC <- TACstar
   }
 
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
 
   if (plot) {
     op <- par(no.readonly = TRUE)
@@ -3513,12 +3512,12 @@ MCD <- function(x, Data, reps = 100, plot=FALSE) {
   # current depletion
   dependencies = "Data@Dep, Data@CV_Dep, Data@Cat"
   if (all(is.na(Data@Cat[x, ]))) stop("No catch data")
-  if (NAor0(Data@CV_Cat[x,1])) stop("Data@CV_Cat is NA")
-  if (NAor0(Data@Dep[x])) stop("Data@Dep is NA")
-  if (NAor0(Data@CV_Dep[x])) stop("Data@CV_Dep is NA")
+  if (MSEtool::NAor0(Data@CV_Cat[x,1])) stop("Data@CV_Cat is NA")
+  if (MSEtool::NAor0(Data@Dep[x])) stop("Data@Dep is NA")
+  if (MSEtool::NAor0(Data@CV_Dep[x])) stop("Data@CV_Dep is NA")
   depo <- max(0.01, min(0.99, Data@Dep[x]))  # known depletion is between 1% and 99% - needed to generalise the Dick and MacCall method to extreme depletion scenarios
-  Bt_K <- rbeta(reps * 100, alphaconv(depo, min(depo * Data@CV_Dep[x],
-                                                (1 - depo) * Data@CV_Dep[x])), betaconv(depo, min(depo * Data@CV_Dep[x],
+  Bt_K <- rbeta(reps * 100, MSEtool::alphaconv(depo, min(depo * Data@CV_Dep[x],
+                                                (1 - depo) * Data@CV_Dep[x])), MSEtool::betaconv(depo, min(depo * Data@CV_Dep[x],
                                                                                                   (1 - depo) * Data@CV_Dep[x])))  # CV 0.25 is the default for Dick and MacCall mu=0.4, sd =0.1
   Bt_K <- Bt_K[Bt_K > 0.00999 & Bt_K < 0.99001][1:reps]  # interval censor (0.01,0.99)  as in Dick and MacCall 2011
 
@@ -3527,7 +3526,7 @@ MCD <- function(x, Data, reps = 100, plot=FALSE) {
   } else {
     AvC <- mean(Data@Cat[x, ], na.rm = T)
   }
-  TAC <- TACfilter(AvC * 2 * Bt_K)
+  TAC <- MSEtool::TACfilter(AvC * 2 * Bt_K)
 
   if (plot) MCD_plot(Data, AvC, Bt_K, TAC)
 
@@ -3550,16 +3549,16 @@ MCD4010 <- function(x, Data, reps = 100, plot=FALSE) {
   # current depletion
   dependencies = "Data@Dep, Data@CV_Dep, Data@Cat"
   if (all(is.na(Data@Cat[x, ]))) stop("No catch data")
-  if (NAor0(Data@CV_Cat[x,1])) stop("Data@CV_Cat is NA")
-  if (NAor0(Data@CV_Dep[x])) stop("Data@CV_Dep is NA")
+  if (MSEtool::NAor0(Data@CV_Cat[x,1])) stop("Data@CV_Cat is NA")
+  if (MSEtool::NAor0(Data@CV_Dep[x])) stop("Data@CV_Dep is NA")
   if (is.na(Data@Dep[x])) {
     Rec <- new("Rec")
     Rec@TAC <- rep(NA, reps)
     return(Rec)
   }
   depo <- max(0.01, min(0.99, Data@Dep[x]))  # known depletion is between 1% and 99% - needed to generalise the Dick and MacCall method to extreme depletion scenarios
-  Bt_K <- rbeta(reps * 100, alphaconv(depo, min(depo * Data@CV_Dep[x],
-                                                (1 - depo) * Data@CV_Dep[x])), betaconv(depo, min(depo * Data@CV_Dep[x],
+  Bt_K <- rbeta(reps * 100, MSEtool::alphaconv(depo, min(depo * Data@CV_Dep[x],
+                                                (1 - depo) * Data@CV_Dep[x])), MSEtool::betaconv(depo, min(depo * Data@CV_Dep[x],
                                                                                                   (1 - depo) * Data@CV_Dep[x])))  # CV 0.25 is the default for Dick and MacCall mu=0.4, sd =0.1
   Bt_K <- Bt_K[Bt_K > 0.00999 & Bt_K < 0.99001][1:reps]  # interval censor (0.01,0.99)  as in Dick and MacCall 2011
   if (reps > 1) {
@@ -3574,7 +3573,7 @@ MCD4010 <- function(x, Data, reps = 100, plot=FALSE) {
   cond2 <- Bt_K < 0.1
   TAC[cond1] <- TAC[cond1] * (Bt_K[cond1] - 0.1)/0.3
   TAC[cond2] <- TAC[cond2] * tiny  # this has to still be stochastic albeit very small
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
 
   if (plot) MCD_plot(Data, AvC, Bt_K, TAC)
 
@@ -3629,29 +3628,29 @@ class(MCD4010) <- "MP"
 #' Rcontrol(1, Data=MSEtool::Atlantic_mackerel, plot=TRUE)
 Rcontrol <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 10, gg = 2, glim = c(0.5, 2)) {
   dependencies = "Data@Mort, Data@CV_Mort, Data@vbK, Data@CV_vbK, Data@vbLinf, Data@CV_vbLinf, Data@vbt0, Data@CV_vbt0 Data@steep, Data@CV_steep, Data@MaxAge, Data@Dep, Data@CV_Dep, Data@Cat, Data@Ind"
-  if (NAor0(Data@Mort[x])) stop("Data@Mort is NA")
-  if (NAor0(Data@FMSY_M[x])) stop("Data@FMSY_M is NA")
-  if (NAor0(Data@L50[x])) stop("Data@L50 is NA")
-  if (NAor0(Data@vbK[x])) stop("Data@vbK is NA")
-  if (NAor0(Data@CV_vbK[x])) stop("Data@CV_vbK is NA")
-  if (NAor0(Data@vbLinf[x])) stop("Data@vbLinf is NA")
-  if (NAor0(Data@CV_vbLinf[x])) stop("Data@CV_vbLinf is NA")
-  if (NAor0(Data@vbt0[x])) stop("Data@vbt0 is NA")
-  if (NAor0(Data@wla[x])) stop("Data@wla is NA")
-  if (NAor0(Data@wlb[x])) stop("Data@wlb is NA")
-  if (NAor0(Data@CV_Mort[x])) stop("Data@CV_Mort is NA")
+  if (MSEtool::NAor0(Data@Mort[x])) stop("Data@Mort is NA")
+  if (MSEtool::NAor0(Data@FMSY_M[x])) stop("Data@FMSY_M is NA")
+  if (MSEtool::NAor0(Data@L50[x])) stop("Data@L50 is NA")
+  if (MSEtool::NAor0(Data@vbK[x])) stop("Data@vbK is NA")
+  if (MSEtool::NAor0(Data@CV_vbK[x])) stop("Data@CV_vbK is NA")
+  if (MSEtool::NAor0(Data@vbLinf[x])) stop("Data@vbLinf is NA")
+  if (MSEtool::NAor0(Data@CV_vbLinf[x])) stop("Data@CV_vbLinf is NA")
+  if (MSEtool::NAor0(Data@vbt0[x])) stop("Data@vbt0 is NA")
+  if (MSEtool::NAor0(Data@wla[x])) stop("Data@wla is NA")
+  if (MSEtool::NAor0(Data@wlb[x])) stop("Data@wlb is NA")
+  if (MSEtool::NAor0(Data@CV_Mort[x])) stop("Data@CV_Mort is NA")
 
-  Mvec <- trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
-  Kvec <- trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
-  Linfvec <- trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Mvec <- MSEtool::trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
+  Kvec <- MSEtool::trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
+  Linfvec <- MSEtool::trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
   if (Data@vbt0[x] != 0 & Data@CV_vbt0[x] != tiny) {
-    t0vec <- -trlnorm(reps, -Data@vbt0[x], Data@CV_vbt0[x])
+    t0vec <- -MSEtool::trlnorm(reps, -Data@vbt0[x], Data@CV_vbt0[x])
   } else {
     t0vec <- rep(Data@vbt0[x], reps)
   }
   t0vec[!is.finite(t0vec)] <- 0
 
-  # hvec <- trlnorm(reps, Data@steep[x], Data@CV_steep[x])
+  # hvec <- MSEtool::trlnorm(reps, Data@steep[x], Data@CV_steep[x])
   hvec <- MSEtool::sample_steepness2(reps, Data@steep[x], Data@CV_steep[x])
   rsamp <- getr(x, Data, Mvec, Kvec, Linfvec, t0vec, hvec, maxage = Data@MaxAge,
                 r_reps = reps)
@@ -3664,9 +3663,9 @@ Rcontrol <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 10, gg = 2, glim 
   }
 
   if (reps > 1) {
-    Bt_K <- rbeta(100, alphaconv(depo, min(depo * Data@CV_Dep[x],
+    Bt_K <- rbeta(100, MSEtool::alphaconv(depo, min(depo * Data@CV_Dep[x],
                                            (1 - depo) * Data@CV_Dep[x])),
-                  betaconv(depo, min(depo * Data@CV_Dep[x], (1 - depo) * Data@CV_Dep[x])))  # CV 0.25 is the default for Dick and MacCall mu=0.4, sd =0.1
+                  MSEtool::betaconv(depo, min(depo * Data@CV_Dep[x], (1 - depo) * Data@CV_Dep[x])))  # CV 0.25 is the default for Dick and MacCall mu=0.4, sd =0.1
   } else {
     Bt_K <- depo
   }
@@ -3697,7 +3696,7 @@ Rcontrol <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 10, gg = 2, glim 
   TAC[TAC < glim[1] * C_hist[yrsmth]] <- glim[1] * C_hist[yrsmth]
   TAC[TAC > glim[2] * C_hist[yrsmth]] <- glim[2] * C_hist[yrsmth]
 
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
   if (plot) Rcontrol_plot(rsamp, ind, G_new, B_hist, SP_hist, SP_mu, B_dat, Data, yind, C_hist, TAC, TACa)
 
     # Carr<-cbind(array(rep(Data@Cat[x,],each=reps),c(reps,length(Data@Cat[x,]))),TAC)
@@ -3719,28 +3718,28 @@ class(Rcontrol) <- "MP"
 #' Rcontrol2(1, Data=MSEtool::Atlantic_mackerel, plot=TRUE)
 Rcontrol2 <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 10, gg = 2, glim = c(0.5, 2)) {
   dependencies = "Data@Mort, Data@CV_Mort, Data@vbK, Data@CV_vbK, Data@vbLinf, Data@CV_vbLinf, Data@vbt0, Data@CV_vbt0, Data@steep, Data@CV_steep, Data@MaxAge, Data@Dep, Data@CV_Dep, Data@Cat, Data@Ind"
-  if (NAor0(Data@Mort[x])) stop("Data@Mort is NA")
-  if (NAor0(Data@FMSY_M[x])) stop("Data@FMSY_M is NA")
-  if (NAor0(Data@L50[x])) stop("Data@L50 is NA")
-  if (NAor0(Data@vbK[x])) stop("Data@vbK is NA")
-  if (NAor0(Data@CV_vbK[x])) stop("Data@CV_vbK is NA")
-  if (NAor0(Data@vbLinf[x])) stop("Data@vbLinf is NA")
-  if (NAor0(Data@CV_vbLinf[x])) stop("Data@CV_vbLinf is NA")
-  if (NAor0(Data@vbt0[x])) stop("Data@vbt0 is NA")
-  if (NAor0(Data@CV_Mort[x])) stop("Data@CV_Mort is NA")
-  if (NAor0(Data@wla[x])) stop("Data@wla is NA")
-  if (NAor0(Data@wlb[x])) stop("Data@wlb is NA")
+  if (MSEtool::NAor0(Data@Mort[x])) stop("Data@Mort is NA")
+  if (MSEtool::NAor0(Data@FMSY_M[x])) stop("Data@FMSY_M is NA")
+  if (MSEtool::NAor0(Data@L50[x])) stop("Data@L50 is NA")
+  if (MSEtool::NAor0(Data@vbK[x])) stop("Data@vbK is NA")
+  if (MSEtool::NAor0(Data@CV_vbK[x])) stop("Data@CV_vbK is NA")
+  if (MSEtool::NAor0(Data@vbLinf[x])) stop("Data@vbLinf is NA")
+  if (MSEtool::NAor0(Data@CV_vbLinf[x])) stop("Data@CV_vbLinf is NA")
+  if (MSEtool::NAor0(Data@vbt0[x])) stop("Data@vbt0 is NA")
+  if (MSEtool::NAor0(Data@CV_Mort[x])) stop("Data@CV_Mort is NA")
+  if (MSEtool::NAor0(Data@wla[x])) stop("Data@wla is NA")
+  if (MSEtool::NAor0(Data@wlb[x])) stop("Data@wlb is NA")
 
-  Mvec <- trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
-  Kvec <- trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
-  Linfvec <- trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Mvec <- MSEtool::trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
+  Kvec <- MSEtool::trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
+  Linfvec <- MSEtool::trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
   if (Data@vbt0[x] != 0 & Data@CV_vbt0[x] != tiny) {
-    t0vec <- -trlnorm(reps, -Data@vbt0[x], Data@CV_vbt0[x])
+    t0vec <- -MSEtool::trlnorm(reps, -Data@vbt0[x], Data@CV_vbt0[x])
   } else {
     t0vec <- rep(Data@vbt0[x], reps)
   }
   t0vec[!is.finite(t0vec)] <- 0
-  # hvec <- trlnorm(reps, Data@steep[x], Data@CV_steep[x])
+  # hvec <- MSEtool::trlnorm(reps, Data@steep[x], Data@CV_steep[x])
   hvec <- MSEtool::sample_steepness2(reps, Data@steep[x], Data@CV_steep[x])
   rsamp <- getr(x, Data, Mvec, Kvec, Linfvec, t0vec, hvec, maxage = Data@MaxAge,
                 r_reps = reps)
@@ -3779,7 +3778,7 @@ Rcontrol2 <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 10, gg = 2, glim
   # Warr<-(Data@Mort[x]*exp(-Data@Mort[x]*(1:ncol(Carr))))[ncol(Carr):1]
   # Warr<-Warr/sum(Warr)
   # TAC<-apply(t(matrix(Warr,nrow=ncol(Carr),ncol=reps))*Carr,1,sum)
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
   if (plot) Rcontrol_plot(rsamp, ind, G_new, B_hist, SP_hist, SP_mu, B_dat, Data, yind, C_hist, TAC, TACa)
 
   Rec <- new("Rec")
@@ -3850,7 +3849,7 @@ class(Rcontrol2) <- "MP"
 SBT1 <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 10, k1 = 1.5, k2 = 3, gamma = 1) {
   dependencies = "Data@Cat, Data@Year, Data@Ind"
   Cr <- length(Data@Cat[x, ])
-  cct <- trlnorm(reps, Data@Cat[x, Cr], Data@CV_Cat[x,1])
+  cct <- MSEtool::trlnorm(reps, Data@Cat[x, Cr], Data@CV_Cat[x,1])
   ind <- (length(Data@Year) - (yrsmth - 1)):length(Data@Year)
   I_hist <- Data@Ind[x, ind]
   test <- summary(lm(I_hist ~ ind))$coefficients[2, 1:2]
@@ -3865,7 +3864,7 @@ SBT1 <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 10, k1 = 1.5, k2 = 3,
   cond <- lambda < 0
   # TAC[cond] <- cct[cond] * 1 - k1 * -lambda[cond]^gamma
   TAC[cond] <- cct[cond] * (1 - k1 * -lambda[cond]^gamma)
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
 
   if (plot) {
     op <- par(no.readonly = TRUE)
@@ -3909,7 +3908,7 @@ SBT2 <- function(x, Data, reps = 100, plot=FALSE, epsR = 0.75, tauR = 5,
                  gamma = 1) {
   dependencies = "Data@Cref, Data@Rec, Data@Cat"
 
-  Ctarg <- trlnorm(reps, Data@Cref[x], Data@CV_Cref)
+  Ctarg <- MSEtool::trlnorm(reps, Data@Cref[x], Data@CV_Cref)
   muR <- mean(Data@Rec[x, (length(Data@Rec[x, ]) - tauR + 1):length(Data@Rec[x, ])], na.rm=TRUE)
   phi <- mean(Data@Rec[x, (length(Data@Rec[x, ]) - 9):length(Data@Rec[x,])], na.rm=TRUE)
   Rrat <- muR/phi
@@ -3918,7 +3917,7 @@ SBT2 <- function(x, Data, reps = 100, plot=FALSE, epsR = 0.75, tauR = 5,
   deltaR[Rrat < 1] <- Rrat[Rrat < 1]^(1 + epsR)
   TAC <- 0.5 * (Data@Cat[x, length(Data@Cat[x, ])] + Ctarg *  deltaR)
 
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
 
   if (plot) {
     op <- par(no.readonly = TRUE)
@@ -3996,9 +3995,9 @@ SPmod <- function(x, Data, reps = 100, plot=FALSE, alp = c(0.8, 1.2), bet = c(0.
   dependencies = "Data@Cat, Data@Ind, Data@Abun, Data@CV_Ind, Data@CV_Cat,  Data@CV_Abun"
   Ir <- length(Data@Ind[x, ])
   Cr <- length(Data@Cat[x, ])
-  rat <- trlnorm(reps, Data@Ind[x, Ir], Data@CV_Ind[x,1])/trlnorm(reps, Data@Ind[x, Ir - 1], Data@CV_Ind[x,1])
-  cct <- trlnorm(reps, Data@Cat[x, Cr], Data@CV_Cat[x,1])
-  Abun <- trlnorm(reps, Data@Abun[x], Data@CV_Abun[x])
+  rat <- MSEtool::trlnorm(reps, Data@Ind[x, Ir], Data@CV_Ind[x,1])/MSEtool::trlnorm(reps, Data@Ind[x, Ir - 1], Data@CV_Ind[x,1])
+  cct <- MSEtool::trlnorm(reps, Data@Cat[x, Cr], Data@CV_Cat[x,1])
+  Abun <- MSEtool::trlnorm(reps, Data@Abun[x], Data@CV_Abun[x])
   TAC <- rep(NA, reps)
   TAC[rat < alp[1]] <- cct[rat < alp[1]] * bet[1]
   TAC[rat > alp[1] & rat < alp[2]] <- cct[rat > alp[1] & rat < alp[2]]
@@ -4006,14 +4005,14 @@ SPmod <- function(x, Data, reps = 100, plot=FALSE, alp = c(0.8, 1.2), bet = c(0.
   cond <- rat > alp[2]
   reps2 <- sum(cond)
   if (reps2 > 0) {
-    qq1 <- trlnorm(reps2, Data@Ind[x, Ir]/Abun[cond], Data@CV_Ind[x,1])
+    qq1 <- MSEtool::trlnorm(reps2, Data@Ind[x, Ir]/Abun[cond], Data@CV_Ind[x,1])
     bio1 <- Data@Ind[x, Ir - 1]/qq1
     bio2 <- Data@Ind[x, Ir]/qq1
-    cct1 <- trlnorm(reps2, Data@Cat[x, Cr - 1], Data@CV_Cat[x,1])
+    cct1 <- MSEtool::trlnorm(reps2, Data@Cat[x, Cr - 1], Data@CV_Cat[x,1])
     PP <- bio2 - bio1 + cct1
     TAC[cond] <- bet[2] * PP
   }
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
 
   if (plot) {
     op <- par(no.readonly = TRUE)
@@ -4088,11 +4087,11 @@ SPslope <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 4, alp = c(0.9, 1.
   C_dat <- Data@Cat[x, ind]
   B_dat <- Data@Ind[x, ind]/Data@Ind[x, ind[yrsmth]] * Data@Abun[x]
   Pt_mu <- max(B_dat[yrsmth] - B_dat[yrsmth - 1] + C_dat[yrsmth - 1], tiny)
-  Pt_1 <- trlnorm(reps, Pt_mu, Data@CV_Cat[x,1])
+  Pt_1 <- MSEtool::trlnorm(reps, Pt_mu, Data@CV_Cat[x,1])
   It <- exp(predict(lm(log(B_dat) ~ yind), newdat = list(yind = yrsmth + 1)))
   Ilast <- B_dat[yrsmth]
   MC <- max(mean(C_dat, na.rm=TRUE), tiny)
-  Ct_1 <- trlnorm(reps, MC, Data@CV_Cat[x,1]/(yrsmth^0.5))  # mean catches over the interval
+  Ct_1 <- MSEtool::trlnorm(reps, MC, Data@CV_Cat[x,1]/(yrsmth^0.5))  # mean catches over the interval
 
   rat <- It/Ilast
 
@@ -4100,7 +4099,7 @@ SPslope <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 4, alp = c(0.9, 1.
   if (rat < alp[1]) TAC <- mult * Ct_1
   if (rat > alp[1] & rat < alp[2]) TAC <- Ct_1
   if (rat > alp[2]) TAC <- bet[2] * Pt_1
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
 
   if (plot) {
     op <- par(no.readonly = TRUE)
@@ -4256,7 +4255,7 @@ SPMSY <- function(x, Data, reps = 100, plot=FALSE) {
 
   }
   # }
-  TAC <- TACfilter(TAC)
+  TAC <- MSEtool::TACfilter(TAC)
 
   if (plot) {
     op <- par(no.readonly = TRUE)
@@ -4298,32 +4297,32 @@ class(SPMSY) <- "MP"
 #' @keywords internal
 #' @describeIn SPSRA_ internal function
 SPSRA_ <- function(x, Data, reps = 100, dep=NULL) {
-  if (NAor0(Data@Mort[x])) stop("Data@Mort is NA")
-  if (NAor0(Data@FMSY_M[x])) stop("Data@FMSY_M is NA")
-  if (NAor0(Data@L50[x])) stop("Data@L50 is NA")
-  if (NAor0(Data@Dep[x])) stop("Data@Dep is NA")
-  if (NAor0(Data@vbK[x])) stop("Data@vbK is NA")
-  if (NAor0(Data@CV_vbK[x])) stop("Data@CV_vbK is NA")
-  if (NAor0(Data@vbLinf[x])) stop("Data@vbLinf is NA")
-  if (NAor0(Data@CV_vbLinf[x])) stop("Data@CV_vbLinf is NA")
-  if (NAor0(Data@vbt0[x])) stop("Data@vbt0 is NA")
-  if (NAor0(Data@CV_Mort[x])) stop("Data@CV_Mort is NA")
-  if (NAor0(Data@wla[x])) stop("Data@wla is NA")
-  if (NAor0(Data@wlb[x])) stop("Data@wlb is NA")
-  if (NAor0(Data@CV_Dep[x])) stop("Data@CV_Dep is NA")
+  if (MSEtool::NAor0(Data@Mort[x])) stop("Data@Mort is NA")
+  if (MSEtool::NAor0(Data@FMSY_M[x])) stop("Data@FMSY_M is NA")
+  if (MSEtool::NAor0(Data@L50[x])) stop("Data@L50 is NA")
+  if (MSEtool::NAor0(Data@Dep[x])) stop("Data@Dep is NA")
+  if (MSEtool::NAor0(Data@vbK[x])) stop("Data@vbK is NA")
+  if (MSEtool::NAor0(Data@CV_vbK[x])) stop("Data@CV_vbK is NA")
+  if (MSEtool::NAor0(Data@vbLinf[x])) stop("Data@vbLinf is NA")
+  if (MSEtool::NAor0(Data@CV_vbLinf[x])) stop("Data@CV_vbLinf is NA")
+  if (MSEtool::NAor0(Data@vbt0[x])) stop("Data@vbt0 is NA")
+  if (MSEtool::NAor0(Data@CV_Mort[x])) stop("Data@CV_Mort is NA")
+  if (MSEtool::NAor0(Data@wla[x])) stop("Data@wla is NA")
+  if (MSEtool::NAor0(Data@wlb[x])) stop("Data@wlb is NA")
+  if (MSEtool::NAor0(Data@CV_Dep[x])) stop("Data@CV_Dep is NA")
 
-  Mvec <- trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
-  Kvec <- trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
-  Linfvec <- trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Mvec <- MSEtool::trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
+  Kvec <- MSEtool::trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
+  Linfvec <- MSEtool::trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
   if (Data@vbt0[x] != 0 & Data@CV_vbt0[x] != tiny) {
-    t0vec <- -trlnorm(reps, -Data@vbt0[x], Data@CV_vbt0[x])
+    t0vec <- -MSEtool::trlnorm(reps, -Data@vbt0[x], Data@CV_vbt0[x])
   } else {
     t0vec <- rep(Data@vbt0[x], reps)
   }
   t0vec[!is.finite(t0vec)] <- 0
   if (all(is.nan(t0vec)))
     t0vec <- rep(0, reps)
-  # hvec <- trlnorm(reps, Data@steep[x], Data@CV_steep[x])
+  # hvec <- MSEtool::trlnorm(reps, Data@steep[x], Data@CV_steep[x])
   hvec <- MSEtool::sample_steepness2(reps, Data@steep[x], Data@CV_steep[x])
   if (all(!is.finite(hvec)))
     return(list(TAC=rep(as.numeric(NA), reps), Ksamp=rep(as.numeric(NA), reps),
@@ -4332,18 +4331,18 @@ SPSRA_ <- function(x, Data, reps = 100, dep=NULL) {
 
   rsamp <- getr(x, Data, Mvec, Kvec, Linfvec, t0vec, hvec, maxage = Data@MaxAge,
                 r_reps = reps)
-  if (is.null(dep)) dep <- trlnorm(reps, Data@Dep[x], Data@CV_Dep[x])
+  if (is.null(dep)) dep <- MSEtool::trlnorm(reps, Data@Dep[x], Data@CV_Dep[x])
   Ct <- Data@Cat[x, ]
-  Csamp <- array(rep(Ct, each = reps) * trlnorm(length(Ct) * reps, 1,
+  Csamp <- array(rep(Ct, each = reps) * MSEtool::trlnorm(length(Ct) * reps, 1,
                                                 Data@CV_Cat[x,1]), dim = c(reps, length(Ct)))
-  Psamp <- array(trlnorm(length(Ct) * reps, 1, 0.1), dim = c(reps, length(Ct)))
+  Psamp <- array(MSEtool::trlnorm(length(Ct) * reps, 1, 0.1), dim = c(reps, length(Ct)))
   Ksamp <- rep(NA, reps)
   for (i in 1:reps) Ksamp[i] <- exp(optimize(SPSRAopt, log(c(mean(Csamp[i, ], na.rm=TRUE),
                                                              1000 * mean(Csamp[i, ], na.rm=TRUE))),
                                              dep = dep[i], r = rsamp[i], Ct = Csamp[i,],
                                              PE = Psamp[i, ])$minimum)
   MSY <- Ksamp * rsamp/4
-  TAC <- TACfilter(Ksamp * dep * rsamp/2)
+  TAC <- MSEtool::TACfilter(Ksamp * dep * rsamp/2)
   return(list(TAC=TAC, Ksamp=Ksamp, dep=dep, rsamp=rsamp, MSY=MSY))
 }
 
@@ -4424,35 +4423,35 @@ class(SPSRA) <- "MP"
 #' SPSRA_ML(1, MSEtool::SimulatedData, plot=TRUE)
 SPSRA_ML <- function(x, Data, reps = 100, plot=FALSE) {
   dependencies = "Data@Mort, Data@CV_Mort, Data@vbK, Data@CV_vbK, Data@vbLinf, Data@CV_vbLinf, Data@vbt0, Data@CV_vbt0, Data@CAL, Data@Cat, Data@steep"
-  if (NAor0(Data@Mort[x])) stop("Data@Mort is NA")
-  if (NAor0(Data@FMSY_M[x])) stop("Data@FMSY_M is NA")
-  if (NAor0(Data@L50[x])) stop("Data@L50 is NA")
-  if (NAor0(Data@vbK[x])) stop("Data@vbK is NA")
-  if (NAor0(Data@CV_vbK[x])) stop("Data@CV_vbK is NA")
-  if (NAor0(Data@vbLinf[x])) stop("Data@vbLinf is NA")
-  if (NAor0(Data@CV_vbLinf[x])) stop("Data@CV_vbLinf is NA")
-  if (NAor0(Data@vbt0[x])) stop("Data@vbt0 is NA")
-  if (NAor0(Data@CV_Mort[x])) stop("Data@CV_Mort is NA")
-  if (NAor0(Data@wla[x])) stop("Data@wla is NA")
-  if (NAor0(Data@wlb[x])) stop("Data@wlb is NA")
+  if (MSEtool::NAor0(Data@Mort[x])) stop("Data@Mort is NA")
+  if (MSEtool::NAor0(Data@FMSY_M[x])) stop("Data@FMSY_M is NA")
+  if (MSEtool::NAor0(Data@L50[x])) stop("Data@L50 is NA")
+  if (MSEtool::NAor0(Data@vbK[x])) stop("Data@vbK is NA")
+  if (MSEtool::NAor0(Data@CV_vbK[x])) stop("Data@CV_vbK is NA")
+  if (MSEtool::NAor0(Data@vbLinf[x])) stop("Data@vbLinf is NA")
+  if (MSEtool::NAor0(Data@CV_vbLinf[x])) stop("Data@CV_vbLinf is NA")
+  if (MSEtool::NAor0(Data@vbt0[x])) stop("Data@vbt0 is NA")
+  if (MSEtool::NAor0(Data@CV_Mort[x])) stop("Data@CV_Mort is NA")
+  if (MSEtool::NAor0(Data@wla[x])) stop("Data@wla is NA")
+  if (MSEtool::NAor0(Data@wlb[x])) stop("Data@wlb is NA")
 
-  Mvec <- trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
-  Kvec <- trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
-  Linfvec = trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Mvec <- MSEtool::trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
+  Kvec <- MSEtool::trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
+  Linfvec = MSEtool::trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
   if (Data@vbt0[x] != 0 & Data@CV_vbt0[x] != tiny) {
-    t0vec <- -trlnorm(reps, -Data@vbt0[x], Data@CV_vbt0[x])
+    t0vec <- -MSEtool::trlnorm(reps, -Data@vbt0[x], Data@CV_vbt0[x])
   } else {
     t0vec <- rep(Data@vbt0[x], reps)
   }
   t0vec[!is.finite(t0vec)] <- 0
-  # hvec <- trlnorm(reps, Data@steep[x], Data@CV_steep[x])
+  # hvec <- MSEtool::trlnorm(reps, Data@steep[x], Data@CV_steep[x])
   hvec <- MSEtool::sample_steepness2(reps, Data@steep[x], Data@CV_steep[x])
   rsamp <- getr(x, Data, Mvec, Kvec, Linfvec, t0vec, hvec, maxage = Data@MaxAge,
                 r_reps = reps)
   Z <- MLne(x, Data, Linfc = Linfvec, Kc = Kvec, ML_reps = reps,  MLtype = "dep")
   if (all(is.na(Z))) {
     Rec <- new("Rec")
-    Rec@TAC <- TACfilter(rep(NA, reps))
+    Rec@TAC <- MSEtool::TACfilter(rep(NA, reps))
     return(Rec)
   }
   FM <- Z - Mvec
@@ -4504,18 +4503,18 @@ class(SPSRA_ML) <- "MP"
 #
 #   for (i in 1:reps) {
 #
-#     Mc <- trlnorm(1, Data@Mort[x], Data@CV_Mort[x])
-#     # hc <- trlnorm(1, Data@steep[x], Data@CV_steep[x])
+#     Mc <- MSEtool::trlnorm(1, Data@Mort[x], Data@CV_Mort[x])
+#     # hc <- MSEtool::trlnorm(1, Data@steep[x], Data@CV_steep[x])
 #     hc <- sample_steepness2(1, Data@steep[x], Data@CV_steep[x])
-#     Linfc <- trlnorm(1, Data@vbLinf[x], Data@CV_vbLinf[x])
-#     Kc <- trlnorm(1, Data@vbK[x], Data@CV_vbK[x])
-#     t0c <- -trlnorm(1, -Data@vbt0[x], Data@CV_vbt0[x])
-#     LFSc <- trlnorm(1, Data@LFS[x], Data@CV_LFS[x])
-#     LFCc <- trlnorm(1, Data@LFC[x], Data@CV_LFC[x])
-#     AMc <- trlnorm(1, iVB(Data@vbt0[x], Data@vbK[x], Data@vbLinf[x],
+#     Linfc <- MSEtool::trlnorm(1, Data@vbLinf[x], Data@CV_vbLinf[x])
+#     Kc <- MSEtool::trlnorm(1, Data@vbK[x], Data@CV_vbK[x])
+#     t0c <- -MSEtool::trlnorm(1, -Data@vbt0[x], Data@CV_vbt0[x])
+#     LFSc <- MSEtool::trlnorm(1, Data@LFS[x], Data@CV_LFS[x])
+#     LFCc <- MSEtool::trlnorm(1, Data@LFC[x], Data@CV_LFC[x])
+#     AMc <- MSEtool::trlnorm(1, iVB(Data@vbt0[x], Data@vbK[x], Data@vbLinf[x],
 #                           Data@L50[x]), Data@CV_L50[x])
-#     ac <- trlnorm(1, Data@wla[x], Data@CV_wla[x])
-#     bc <- trlnorm(1, Data@wlb[x], Data@CV_wlb[x])
+#     ac <- MSEtool::trlnorm(1, Data@wla[x], Data@CV_wla[x])
+#     bc <- MSEtool::trlnorm(1, Data@wlb[x], Data@CV_wlb[x])
 #
 #     pmat <- rep(1, maxage)
 #     pmat[1:ceiling(AMc)] <- 0
@@ -4546,7 +4545,7 @@ class(SPSRA_ML) <- "MP"
 #   }
 #
 #   Rec <- new("Rec")
-#   Rec@TAC <- TACfilter(TAC)
+#   Rec@TAC <- MSEtool::TACfilter(TAC)
 #   Rec
 #
 # }
@@ -4567,20 +4566,20 @@ class(SPSRA_ML) <- "MP"
 #'
 #' @keywords internal
 YPR_ <- function(x, Data, reps = 100, Abun=NULL) {
-  Linfc <- trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
-  Kc <- trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
+  Linfc <- MSEtool::trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Kc <- MSEtool::trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
   if (Data@vbt0[x] != 0 & Data@CV_vbt0[x] != tiny) {
-    t0c <- -trlnorm(reps, -Data@vbt0[x], Data@CV_vbt0[x])
+    t0c <- -MSEtool::trlnorm(reps, -Data@vbt0[x], Data@CV_vbt0[x])
   } else {
     t0c <- rep(Data@vbt0[x], reps)
   }
   t0c[!is.finite(t0c)] <- 0
-  Mdb <- trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
-  LFS <- trlnorm(reps, Data@LFS[x], Data@CV_LFS[x])
+  Mdb <- MSEtool::trlnorm(reps, Data@Mort[x], Data@CV_Mort[x])
+  LFS <- MSEtool::trlnorm(reps, Data@LFS[x], Data@CV_LFS[x])
   a <- Data@wla[x]
   b <- Data@wlb[x]
   runYPR <- YPRopt(Linfc, Kc, t0c, Mdb, a, b, LFS, maxage=Data@MaxAge, reps)
-  if (is.null(Abun)) Abun <- trlnorm(reps, Data@Abun[x], Data@CV_Abun[x])
+  if (is.null(Abun)) Abun <- MSEtool::trlnorm(reps, Data@Abun[x], Data@CV_Abun[x])
   TAC <- Abun * runYPR$F0.1
   runYPR$TAC <- TAC
   runYPR$Ac <- Abun
@@ -4700,7 +4699,7 @@ YPRopt <- function(Linfc, Kc, t0c, Mdb, a, b, LFS, maxage, reps = 100) {
 #' @export
 YPR <- function(x, Data, reps = 100, plot=FALSE) {
   runYPR <- YPR_(x, Data, reps = reps, Abun=NULL)
-  TAC <- TACfilter(runYPR$TAC)
+  TAC <- MSEtool::TACfilter(runYPR$TAC)
 
   if (plot) YPR_plot(runYPR, Data, reps)
   Rec <- new("Rec")
@@ -4724,9 +4723,9 @@ YPR_CC <- function(x, Data, reps = 100, plot=FALSE, Fmin = 0.005) {
 
   # MuC <- Data@Cat[x, length(Data@Cat[x, ])]
   MuC <- mean(Data@Cat[x, ], na.rm=TRUE)
-  Cc <- trlnorm(reps, MuC, Data@CV_Cat[x,1])
+  Cc <- MSEtool::trlnorm(reps, MuC, Data@CV_Cat[x,1])
 
-  Mdb <- trlnorm(reps * 10, Data@Mort[x], Data@CV_Mort[x])
+  Mdb <- MSEtool::trlnorm(reps * 10, Data@Mort[x], Data@CV_Mort[x])
   Zdb <- CC(x, Data, reps = reps * 10)
   Fdb <- Zdb - Mdb
   ind <- (1:(reps * 10))[Fdb > Fmin][1:reps]
@@ -4735,14 +4734,14 @@ YPR_CC <- function(x, Data, reps = 100, plot=FALSE, Fmin = 0.005) {
   Mdb <- Mdb[ind]
   SM <- sum(is.na(ind))
   if (SM > 0) {
-    Mdb[is.na(ind)] <- trlnorm(SM, Data@Mort[x], Data@CV_Mort[x])
+    Mdb[is.na(ind)] <- MSEtool::trlnorm(SM, Data@Mort[x], Data@CV_Mort[x])
     Fdb[is.na(ind)] <- Fmin
   }
 
   Ac <- Cc/(1 - exp(-Fdb))
 
   runYPR <- YPR_(x, Data, reps = reps, Abun=Ac)
-  TAC <- TACfilter(runYPR$TAC)
+  TAC <- MSEtool::TACfilter(runYPR$TAC)
 
   if (plot) YPR_plot(runYPR, Data, reps)
   Rec <- new("Rec")
@@ -4762,10 +4761,10 @@ class(YPR_CC) <- "MP"
 YPR_ML <- function(x, Data, reps = 100, plot=FALSE) {
 
   MuC <- Data@Cat[x, length(Data@Cat[x, ])]
-  Cc <- trlnorm(reps*10, MuC, Data@CV_Cat[x,1])
-  Linfc <- trlnorm(reps*10, Data@vbLinf[x], Data@CV_vbLinf[x])
-  Kc <- trlnorm(reps*10, Data@vbK[x], Data@CV_vbK[x])
-  Mdb <- trlnorm(reps*10, Data@Mort[x], Data@CV_Mort[x])
+  Cc <- MSEtool::trlnorm(reps*10, MuC, Data@CV_Cat[x,1])
+  Linfc <- MSEtool::trlnorm(reps*10, Data@vbLinf[x], Data@CV_vbLinf[x])
+  Kc <- MSEtool::trlnorm(reps*10, Data@vbK[x], Data@CV_vbK[x])
+  Mdb <- MSEtool::trlnorm(reps*10, Data@Mort[x], Data@CV_Mort[x])
   Z <- MLne(x, Data, Linfc = Linfc, Kc = Kc, ML_reps = reps * 10, MLtype = "F")
 
   if (all(is.na(Z))) {
@@ -4779,7 +4778,7 @@ YPR_ML <- function(x, Data, reps = 100, plot=FALSE) {
   Ac <- Cc[ind]/(1 - exp(-FM[ind]))
 
   runYPR <- YPR_(x, Data, reps = reps, Abun=Ac)
-  TAC <- TACfilter(runYPR$TAC)
+  TAC <- MSEtool::TACfilter(runYPR$TAC)
 
   if (plot) YPR_plot(runYPR, Data, reps)
   Rec <- new("Rec")

@@ -441,7 +441,7 @@ ITe5 <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 5, mc = 0.05) {
   if (deltaI < (1 - mc)) deltaI <- 1 - mc
   if (deltaI > (1 + mc)) deltaI <- 1 + mc
 
-  Effort <- Data@MPeff[x] * deltaI * trlnorm(reps, 1, Data@CV_Ind[x,1])
+  Effort <- Data@MPeff[x] * deltaI * MSEtool::trlnorm(reps, 1, Data@CV_Ind[x,1])
   if (reps == 1)  Effort <- Data@MPeff[x] * deltaI
   Effort[Effort < 0.01] <- 0.01  # for simulations in case Effort goes negative
   rec <- new("Rec")
@@ -473,7 +473,7 @@ ITe10 <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 5, mc = 0.1) {
   if (deltaI < (1 - mc)) deltaI <- 1 - mc
   if (deltaI > (1 + mc)) deltaI <- 1 + mc
 
-  Effort <- Data@MPeff[x] * deltaI * trlnorm(reps, 1, Data@CV_Ind[x,1])
+  Effort <- Data@MPeff[x] * deltaI * MSEtool::trlnorm(reps, 1, Data@CV_Ind[x,1])
   if (reps == 1)
     Effort <- Data@MPeff[x] * deltaI
   Allocate <- 1
@@ -850,9 +850,9 @@ class(LtargetE4) <- "MP"
 #' @export
 #' @keywords internal
 LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
-  if (NAor0(Data@L50[x])) stop("Data@L50 is NA")
-  if (NAor0(Data@L95[x])) stop("Data@L95 is NA")
-  if (NAor0(Data@wlb[x])) stop("Data@wlb is NA")
+  if (MSEtool::NAor0(Data@L50[x])) stop("Data@L50 is NA")
+  if (MSEtool::NAor0(Data@L95[x])) stop("Data@L95 is NA")
+  if (MSEtool::NAor0(Data@wlb[x])) stop("Data@wlb is NA")
 
   LenBins <- Data@CAL_bins
   By <- LenBins[2] - LenBins[1]
