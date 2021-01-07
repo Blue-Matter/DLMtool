@@ -1,9 +1,15 @@
 The current version of the DLMtool package is available for download from [CRAN](https://CRAN.R-project.org/package=DLMtool).
 
 ## DLMtool 6.0.0
-V6.0.0 is a major update to the `DLMtool` package. This package is only a collection of data-limited management procedures. All operating model simulation and projection functions have now been moved to the new version of `MSEtool` (v3+). This version of `DLMtool` is not compatible with previous versions of `MSEtool`. 
+V6.0.0 is a major update to the `DLMtool` package. It is not backwards compatible with previous versions of `DLMtool` or `MSEtool`.
 
-## DLMtool 5.4.6
+### Major Changes
+- The code in the `DLMtool` package is now limited to the collection of the data-limited management procedures. 
+- All operating model simulation and projection functions have now been moved to the new version of `MSEtool` (v3+). 
+- `MSEtool` v3+ is a dependency for `DLMtool` v6+, and all operating model simulation and projection functions are available after installing and loading `DLMtool`.
+
+
+## Changes to previous versions
 
 ### Fixes
 - fix to plus-group calculations
