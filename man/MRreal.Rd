@@ -19,7 +19,7 @@ MRnoreal(x, Data, reps, plot = FALSE)
 \item{plot}{Logical. Show the plot?}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the Spatial slot(s) populated
+An object of class \code{\link[MSEtool]{Rec-class}} with the Spatial slot(s) populated
 }
 \description{
 Management procedures that close Area 1 to fishing and reallocate
@@ -36,7 +36,7 @@ and does not reallocate this fishing effort to area 2.
 
 \section{Required Data}{
 
-See \linkS4class{Data} for information on the \code{Data} object \cr
+See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
 
 
 \code{MRreal}:

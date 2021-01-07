@@ -19,7 +19,7 @@ curE75(x, Data, reps, plot = FALSE)
 \item{plot}{Logical. Show the plot?}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAE slot(s) populated
+An object of class \code{\link[MSEtool]{Rec-class}} with the TAE slot(s) populated
 }
 \description{
 Constant fishing effort set at final year of historical simulations subject
@@ -36,7 +36,7 @@ in catchability determined by \code{OM@qcv}. This MP is intended to represent a
 
 \section{Required Data}{
 
-See \linkS4class{Data} for information on the \code{Data} object \cr
+See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
 
 
 \code{curE}:

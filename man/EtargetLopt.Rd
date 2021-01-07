@@ -20,7 +20,7 @@ EtargetLopt(x, Data, reps = 100, plot = FALSE, yrsmth = 3, buffer = 0.1)
 \item{buffer}{Parameter controlling the fraction of calculated effor - acts as a precautionary buffer}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAE slot(s) populated
+An object of class \code{\link[MSEtool]{Rec-class}} with the TAE slot(s) populated
 }
 \description{
 This MP adjusts effort limit based on the ratio of recent mean length (over
@@ -41,7 +41,7 @@ exponent of the length-weight relationship, \eqn{M} is natural mortality, and
 }
 \section{Required Data}{
 
-See \linkS4class{Data} for information on the \code{Data} object \cr
+See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
 
 
 \code{EtargetLopt}: ML, MPeff, Mort, vbK, vbLinf, wlb

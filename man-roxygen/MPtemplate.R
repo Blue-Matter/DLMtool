@@ -4,7 +4,7 @@
 #' @param plot Logical. Show the plot?
 #'
 #' @section Required Data:
-#' See \linkS4class{Data} for information on the \code{Data} object \cr
+#' See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
 #'
 #' @return
 #'  <%= if(MSEtool::MPtype(mp)[2] == 'Output') paste0("An object of class \\code{\\link[MSEtool]{Rec-class}} with the \\code{TAC} slot populated with a numeric vector of length \\code{reps}") %>

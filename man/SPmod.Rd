@@ -20,7 +20,7 @@ SPmod(x, Data, reps = 100, plot = FALSE, alp = c(0.8, 1.2), bet = c(0.8, 1.2))
 \item{bet}{Limits for how much the TAC can change among years}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
+An object of class \code{\link[MSEtool]{Rec-class}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 
 A numeric vector of TAC recommendations
 }
@@ -50,7 +50,7 @@ and \eqn{\alpha_1}, \eqn{\alpha_2}, and \eqn{\alpha_3} are specified in argument
 }
 \section{Required Data}{
 
-See \linkS4class{Data} for information on the \code{Data} object \cr
+See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
 
 
 \code{SPmod}: Cat, Ind

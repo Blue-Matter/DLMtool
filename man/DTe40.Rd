@@ -25,7 +25,7 @@ DTe50(x, Data, reps = 100, plot = FALSE, alpha = 0.5, LB = 0.9, UB = 1.1)
 \item{UB}{The highest permitted factor of previous fishing effort}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the TAE slot(s) populated
+An object of class \code{\link[MSEtool]{Rec-class}} with the TAE slot(s) populated
 }
 \description{
 Effort is adjusted using a simple rule that aims for a specified level of depletion.
@@ -47,7 +47,7 @@ The maximum fractional change in TAE is specified with arguments \code{LB} and \
 
 \section{Required Data}{
 
-See \linkS4class{Data} for information on the \code{Data} object \cr
+See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
 
 
 \code{DTe40}: Dep, MPeff

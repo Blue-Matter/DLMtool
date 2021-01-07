@@ -33,7 +33,7 @@ first year}
 compared with recent levels.}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
+An object of class \code{\link[MSEtool]{Rec-class}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 A management procedure that incrementally adjusts the TAC (starting from
@@ -71,7 +71,7 @@ where \eqn{x} is argument \code{xx} and C is the average catch over the last 5 y
 
 \section{Required Data}{
 
-See \linkS4class{Data} for information on the \code{Data} object \cr
+See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
 
 
 \code{Itarget1}: Cat, Ind, LHYear, Year

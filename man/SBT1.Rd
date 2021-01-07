@@ -41,7 +41,7 @@ indices}
 \item{tauR}{Control parameter}
 }
 \value{
-An object of class \code{\link[=Rec-class]{Rec}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
+An object of class \code{\link[MSEtool]{Rec-class}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
 }
 \description{
 An MP that makes incremental adjustments to TAC recommendations based on the
@@ -90,7 +90,7 @@ this approach.
 
 \section{Required Data}{
 
-See \linkS4class{Data} for information on the \code{Data} object \cr
+See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
 
 
 \code{SBT1}: Cat, Ind, Year
