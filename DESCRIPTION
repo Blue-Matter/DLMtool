@@ -22,12 +22,12 @@ Depends:
     R (>= 3.5.0)
 Imports:
     dplyr,
+    ggplot2,
     graphics,
     methods,
     Rcpp,
     stats
 Suggests:
-    ggplot2,
     gridExtra,
     mvtnorm,
     testthat
