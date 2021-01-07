@@ -1020,9 +1020,9 @@ LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
 #' @param plot Logical. Show the plot?
 #'
 #' @section Required Data:
-#' See \linkS4class{Data} for information on the \code{Data} object \cr
+#' See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
 #'
-#' @return An object of class \code{\link[=Rec-class]{Rec}} with the TAE slot populated
+#' @return An object of class \code{\link[MSEtool]{Rec-class}} with the TAE slot populated
 #'
 #' @template MPuses
 #'
