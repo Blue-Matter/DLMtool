@@ -31,3 +31,7 @@ LBSPRopt <- function(pars, CAL, nage, nlen, CVLinf, LenBins, LenMids, MK, Linf, 
     .Call('_DLMtool_LBSPRopt', PACKAGE = 'DLMtool', pars, CAL, nage, nlen, CVLinf, LenBins, LenMids, MK, Linf, rLens, Prob, Ml, L50, L95, Beta)
 }
 
+bhnoneq_LL <- function(stpar, year, Lbar, ss, Linf, K, Lc, nbreaks) {
+    .Call('_DLMtool_bhnoneq_LL', PACKAGE = 'DLMtool', stpar, year, Lbar, ss, Linf, K, Lc, nbreaks)
+}
+
