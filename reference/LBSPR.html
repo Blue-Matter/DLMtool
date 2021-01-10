@@ -184,7 +184,7 @@ and compared to a target of 0.4.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>Rec-class</code> with the TAE slot populated</p>
+    <p>An object of class <code><a href='https://rdrr.io/pkg/MSEtool/man/Rec-class.html'>Rec-class</a></code> with the TAE slot populated</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Effort is modified according to the harvest control rules described in
@@ -200,9 +200,9 @@ higher than the maturity curve if SPR &lt; 0.4</p></li>
 
     
 
-<p>See <code>Data-class</code> for information on the <code>Data</code> object <br /></p>
+<p>See <code><a href='https://rdrr.io/pkg/MSEtool/man/Data-class.html'>Data-class</a></code> for information on the <code>Data</code> object <br /></p>
 
-<p><code>LBSPR</code>: CAL, CAL_bins, L50, L95, LHYear, Mort, Year, vbK, vbLinf, wlb</p>
+<p><code>LBSPR</code>: CAL, CAL_bins, L50, L95, LHYear, Mort, vbK, vbLinf, wlb, Year</p>
     <h2 class="hasAnchor" id="rendered-equations"><a class="anchor" href="#rendered-equations"></a>Rendered Equations</h2>
 
     
@@ -220,9 +220,11 @@ spawning potential ratio assessment methodology. Fisheries Research,
 171, 20-32. https://doi.org/10.1016/j.fishres.2014.12.018</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>LBSPR</span><span class='op'>(</span><span class='fl'>1</span>, Data<span class='op'>=</span><span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>SimulatedData</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called ‘MSEtool’</span></div><div class='input'><span class='fu'>LBSPR_MLL</span><span class='op'>(</span><span class='fl'>1</span>, Data<span class='op'>=</span><span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>SimulatedData</span>, plot<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in getClass(Class, where = topenv(parent.frame())): “Rec” is not a defined class</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>LBSPR</span><span class='op'>(</span><span class='fl'>1</span>, Data<span class='op'>=</span><span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/SimulatedData.html'>SimulatedData</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='img'><img src='LBSPR-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt;    Effort 
+#&gt; 0.9538698 </div><div class='input'><span class='fu'>LBSPR_MLL</span><span class='op'>(</span><span class='fl'>1</span>, Data<span class='op'>=</span><span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/SimulatedData.html'>SimulatedData</a></span>, plot<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;      LR5      LFR 
+#&gt; 77.33374 81.40393 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

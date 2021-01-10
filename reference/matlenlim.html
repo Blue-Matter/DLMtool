@@ -142,7 +142,7 @@ length of fish caught: minlen=Lopt*(0.7+buffer).</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>Rec-class</code> with the Retention slot(s) populated</p>
+    <p>An object of class <code><a href='https://rdrr.io/pkg/MSEtool/man/Rec-class.html'>Rec-class</a></code> with the Retention slot(s) populated</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The the <code>LF5</code> and <code>LFR</code> slots in the <code>Rec</code> object are modified to change the
@@ -178,7 +178,7 @@ to demonstrate an upper harvest slot limit.</p></li>
 
     
 
-<p>See <code>Data-class</code> for information on the <code>Data</code> object <br /></p>
+<p>See <code><a href='https://rdrr.io/pkg/MSEtool/man/Data-class.html'>Data-class</a></code> for information on the <code>Data</code> object <br /></p>
 
 <p><code>matlenlim</code>: L50</p>
 
@@ -210,11 +210,15 @@ ICES Journal of Marine Science, doi:10.1093/icesjms/fst235.</p>
 <p>HF Geromont</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>matlenlim</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>Atlantic_mackerel</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in getClass(Class, where = topenv(parent.frame())): “Rec” is not a defined class</span></div><div class='input'><span class='fu'>matlenlim2</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>Atlantic_mackerel</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in getClass(Class, where = topenv(parent.frame())): “Rec” is not a defined class</span></div><div class='input'><span class='fu'>minlenLopt1</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>Atlantic_mackerel</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called ‘MSEtool’</span></div><div class='input'><span class='fu'>slotlim</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>Atlantic_mackerel</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in getClass(Class, where = topenv(parent.frame())): “Rec” is not a defined class</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>matlenlim</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Atlantic_mackerel</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='img'><img src='matlenlim-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt;   LR5   LFR 
+#&gt; 90.25 95.00 </div><div class='input'><span class='fu'>matlenlim2</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Atlantic_mackerel</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='img'><img src='matlenlim-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt;     LR5     LFR 
+#&gt;  99.275 104.500 </div><div class='input'><span class='fu'>minlenLopt1</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Atlantic_mackerel</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='img'><img src='matlenlim-3.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt;      LR5      LFR 
+#&gt; 89.74689 99.71877 </div><div class='input'><span class='fu'>slotlim</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Atlantic_mackerel</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='img'><img src='matlenlim-4.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt;      LR5      LFR       HS 
+#&gt;  99.2750 104.5000 142.5475 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

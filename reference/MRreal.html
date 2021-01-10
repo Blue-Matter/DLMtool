@@ -135,7 +135,7 @@ fishing effort spatially.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>Rec-class</code> with the Spatial slot(s) populated</p>
+    <p>An object of class <code><a href='https://rdrr.io/pkg/MSEtool/man/Rec-class.html'>Rec-class</a></code> with the Spatial slot(s) populated</p>
     <h2 class="hasAnchor" id="functions"><a class="anchor" href="#functions"></a>Functions</h2>
 
     
@@ -149,7 +149,7 @@ and does not reallocate this fishing effort to area 2.</p></li>
 
     
 
-<p>See <code>Data-class</code> for information on the <code>Data</code> object <br /></p>
+<p>See <code><a href='https://rdrr.io/pkg/MSEtool/man/Data-class.html'>Data-class</a></code> for information on the <code>Data</code> object <br /></p>
 
 <p><code>MRreal</code>:</p>
 
@@ -166,9 +166,11 @@ and does not reallocate this fishing effort to area 2.</p></li>
     <p>T. Carruthers</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>MRreal</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>Atlantic_mackerel</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in getClass(Class, where = topenv(parent.frame())): “Rec” is not a defined class</span></div><div class='input'><span class='fu'>MRnoreal</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>Atlantic_mackerel</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in getClass(Class, where = topenv(parent.frame())): “Rec” is not a defined class</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>MRreal</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Atlantic_mackerel</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Area 1 Area 2 
+#&gt;      0      1 </div><div class='input'><span class='fu'>MRnoreal</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Atlantic_mackerel</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='img'><img src='MRreal-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; Area 1 Area 2 
+#&gt;      0      1 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

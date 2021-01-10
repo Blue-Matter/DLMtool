@@ -131,7 +131,7 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>Rec-class</code> with the <code>TAC</code> slot populated with a numeric vector of length <code>reps</code></p>
+    <p>An object of class <code><a href='https://rdrr.io/pkg/MSEtool/man/Rec-class.html'>Rec-class</a></code> with the <code>TAC</code> slot populated with a numeric vector of length <code>reps</code></p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The average catch method is very simple. The mean historical catch is calculated and used to set
@@ -145,7 +145,7 @@ distribution with mean <code>TAC</code> and standard deviation (in log-space) of
 
     
 
-<p>See <code>Data-class</code> for information on the <code>Data</code> object <br /></p>
+<p>See <code><a href='https://rdrr.io/pkg/MSEtool/man/Data-class.html'>Data-class</a></code> for information on the <code>Data</code> object <br /></p>
 
 <p><code>AvC</code>: Cat, LHYear, Year</p>
     <h2 class="hasAnchor" id="rendered-equations"><a class="anchor" href="#rendered-equations"></a>Rendered Equations</h2>
@@ -163,8 +163,8 @@ distribution with mean <code>TAC</code> and standard deviation (in log-space) of
     <p>T. Carruthers</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>Rec</span> <span class='op'>&lt;-</span> <span class='fu'>AvC</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>Cobia</span>, reps<span class='op'>=</span><span class='fl'>1000</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span> <span class='co'># 1,000 log-normal samples with CV = 0.2</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called ‘MSEtool’</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='va'>Rec</span> <span class='op'>&lt;-</span> <span class='fu'>AvC</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Cobia</a></span>, reps<span class='op'>=</span><span class='fl'>1000</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span> <span class='co'># 1,000 log-normal samples with CV = 0.2</span>
+</div><div class='img'><img src='AvC-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -147,7 +147,7 @@ its current depletion level (<em>D</em>).</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>Rec-class</code> with the <code>TAC</code> slot populated with a numeric vector of length <code>reps</code></p>
+    <p>An object of class <code><a href='https://rdrr.io/pkg/MSEtool/man/Rec-class.html'>Rec-class</a></code> with the <code>TAC</code> slot populated with a numeric vector of length <code>reps</code></p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The method calculates the depletion-corrected average catch (<em>dcac</em>) as:</p>
@@ -196,21 +196,21 @@ below BMSY, DCAC tends to chronically overfish.</p>
 
     
 
-<p>See <code>Data-class</code> for information on the <code>Data</code> object <br /></p>
+<p>See <code><a href='https://rdrr.io/pkg/MSEtool/man/Data-class.html'>Data-class</a></code> for information on the <code>Data</code> object <br /></p>
 
-<p><code>DCACs</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t</p>
+<p><code>DCACs</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year</p>
 
-<p><code>DCAC</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t</p>
+<p><code>DCAC</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year</p>
 
-<p><code>DCAC_40</code>: AvC, BMSY_B0, FMSY_M, LHYear, Mort, Year, t</p>
+<p><code>DCAC_40</code>: AvC, BMSY_B0, FMSY_M, LHYear, Mort, t, Year</p>
 
-<p><code>DCAC4010</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t</p>
+<p><code>DCAC4010</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year</p>
 
-<p><code>DCAC_ML</code>: Abun, AddInd, AddIndType, AddIndV, AddIunits, AvC, Bref, CAA, CAL, CAL_bins, CAL_mids, Cat, Cref, Dep, Dt, Effort, Ind, Iref, L50, L95, LFC, LFS, LHYear, Lbar, Lc, LenCV, ML, MPeff, MPrec, MaxAge, Mort, Rec, SpAbun, SpInd, VInd, Vmaxlen, Vuln_CAA, Vuln_CAL, Year, sigmaR, steep, t, vbK, vbLinf, vbt0, wla, wlb</p>
+<p><code>DCAC_ML</code>: Abun, AddInd, AddIndType, AddIndV, AddIunits, AvC, Bref, CAA, CAL, CAL_bins, CAL_mids, Cat, Cref, Dep, Dt, Effort, Ind, Iref, L50, L95, Lbar, Lc, LenCV, LFC, LFS, LHYear, MaxAge, ML, Mort, MPeff, MPrec, Rec, sigmaR, SpAbun, SpInd, steep, t, vbK, vbLinf, vbt0, VInd, Vmaxlen, Vuln_CAA, Vuln_CAL, wla, wlb, Year</p>
 
-<p><code>DAAC</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t</p>
+<p><code>DAAC</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year</p>
 
-<p><code>HDAAC</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t</p>
+<p><code>HDAAC</code>: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year</p>
     <h2 class="hasAnchor" id="rendered-equations"><a class="anchor" href="#rendered-equations"></a>Rendered Equations</h2>
 
     
@@ -245,26 +245,33 @@ static and adaptive management procedures. Fish. Res. 190, 84-94.</p>
     <p>T. Carruthers</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>DCACs</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>Atlantic_mackerel</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called ‘MSEtool’</span></div><div class='input'>
-<span class='fu'>DCAC</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>Atlantic_mackerel</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called ‘MSEtool’</span></div><div class='input'>
-<span class='fu'>DCAC_40</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>Atlantic_mackerel</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called ‘MSEtool’</span></div><div class='input'>
-<span class='va'>Data</span> <span class='op'>&lt;-</span> <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>Atlantic_mackerel</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called ‘MSEtool’</span></div><div class='input'><span class='va'>Data</span><span class='op'>@</span><span class='va'>LHYear</span> <span class='op'>&lt;-</span> <span class='fl'>2005</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in Data@LHYear &lt;- 2005: object 'Data' not found</span></div><div class='input'><span class='fu'>DCAC4010</span><span class='op'>(</span><span class='fl'>1</span>, <span class='va'>Data</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in DCAC_(x, Data, reps, updateD = TRUE): object 'Data' not found</span></div><div class='input'>
-<span class='fu'>DCAC_ML</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>SimulatedData</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called ‘MSEtool’</span></div><div class='input'>
-<span class='va'>Data</span> <span class='op'>&lt;-</span> <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>Atlantic_mackerel</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called ‘MSEtool’</span></div><div class='input'><span class='va'>Data</span><span class='op'>@</span><span class='va'>LHYear</span> <span class='op'>&lt;-</span> <span class='fl'>2005</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in Data@LHYear &lt;- 2005: object 'Data' not found</span></div><div class='input'><span class='fu'>DAAC</span><span class='op'>(</span><span class='fl'>1</span>, <span class='va'>Data</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in DCAC_(x, Data, reps, updateD = TRUE): object 'Data' not found</span></div><div class='input'>
-<span class='va'>Data</span> <span class='op'>&lt;-</span> <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'>Atlantic_mackerel</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called ‘MSEtool’</span></div><div class='input'><span class='va'>Data</span><span class='op'>@</span><span class='va'>LHYear</span> <span class='op'>&lt;-</span> <span class='fl'>2005</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in Data@LHYear &lt;- 2005: object 'Data' not found</span></div><div class='input'><span class='fu'>HDAAC</span><span class='op'>(</span><span class='fl'>1</span>, <span class='va'>Data</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in DCAC_(x, Data, reps, updateD = TRUE): object 'Data' not found</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>DCACs</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Atlantic_mackerel</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='img'><img src='DCAC-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; TAC (median) 
+#&gt;     5.573582 </div><div class='input'>
+<span class='fu'>DCAC</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Atlantic_mackerel</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='img'><img src='DCAC-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; TAC (median) 
+#&gt;     5.832422 </div><div class='input'>
+<span class='fu'>DCAC_40</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Atlantic_mackerel</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='img'><img src='DCAC-3.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; TAC (median) 
+#&gt;     6.752719 </div><div class='input'>
+<span class='va'>Data</span> <span class='op'>&lt;-</span> <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Atlantic_mackerel</a></span>
+<span class='va'>Data</span><span class='op'>@</span><span class='va'>LHYear</span> <span class='op'>&lt;-</span> <span class='fl'>2005</span>
+<span class='fu'>DCAC4010</span><span class='op'>(</span><span class='fl'>1</span>, <span class='va'>Data</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='img'><img src='DCAC-4.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; TAC (median) 
+#&gt;     1.601936 </div><div class='input'>
+<span class='fu'>DCAC_ML</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/SimulatedData.html'>SimulatedData</a></span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='img'><img src='DCAC-5.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; TAC (median) 
+#&gt;     1873.255 </div><div class='input'>
+<span class='va'>Data</span> <span class='op'>&lt;-</span> <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Atlantic_mackerel</a></span>
+<span class='va'>Data</span><span class='op'>@</span><span class='va'>LHYear</span> <span class='op'>&lt;-</span> <span class='fl'>2005</span>
+<span class='fu'>DAAC</span><span class='op'>(</span><span class='fl'>1</span>, <span class='va'>Data</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='img'><img src='DCAC-6.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; TAC (median) 
+#&gt;     3.050483 </div><div class='input'>
+<span class='va'>Data</span> <span class='op'>&lt;-</span> <span class='fu'>MSEtool</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html'>Atlantic_mackerel</a></span>
+<span class='va'>Data</span><span class='op'>@</span><span class='va'>LHYear</span> <span class='op'>&lt;-</span> <span class='fl'>2005</span>
+<span class='fu'>HDAAC</span><span class='op'>(</span><span class='fl'>1</span>, <span class='va'>Data</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='img'><img src='DCAC-7.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; TAC (median) 
+#&gt;     2.991074 </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
