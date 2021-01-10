@@ -384,7 +384,7 @@ This was done so that an OM object is completely self-contained and includes all
 ### DLMtool V3.2.3
 
 #### Major Changes
-- all objects previously in `DLMdat` have now been added as separate data objects. This means that it is no longer neccessary to unpack data objects at the beginning of an R session.
+- all objects previously in `DLMdat` have now been added as separate data objects. This means that it is no longer necessary to unpack data objects at the beginning of an R session.
 - parallel processing can be initialized with a new function `setup()`
 - `runMSE` and `runMSErobust` functions have a new logical argument `Hist`. When `Hist=TRUE` the model returns the historical simulations only. 
 - `CheckConverg` has been deprecated - use `Converge` now to check MSE for convergence
@@ -400,7 +400,7 @@ This was done so that an OM object is completely self-contained and includes all
 - changed variable name `BMSY_B0` to `SSBMSY_SSB0` to avoid confusion
 - added projected spawning stock biomass `SSB` and vulnerable biomass `VB` to MSE object
 - added `SpAbun` slot to data object for abundance of spawning stock. The `Abun` slot relates to vulnerable biomass
-- added `ntrials` and `fracD` control arguments to `runMSE`. Allows user to modify the maximum number of re-samples in the optimization to achieve the sampled depletion. The model will stop if a proprtion greater than `fracD` of the simulated depletion values are not the same as the sampled values after more than `ntrials` re-samples
+- added `ntrials` and `fracD` control arguments to `runMSE`. Allows user to modify the maximum number of re-samples in the optimization to achieve the sampled depletion. The model will stop if a proportion greater than `fracD` of the simulated depletion values are not the same as the sampled values after more than `ntrials` re-samples
 
 
 #### Bug Fixes 
