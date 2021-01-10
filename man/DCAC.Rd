@@ -98,25 +98,25 @@ below BMSY, DCAC tends to chronically overfish.
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
 
 
-\code{DCACs}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
+\code{DCACs}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
 
 
-\code{DCAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
+\code{DCAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
 
 
-\code{DCAC_40}: AvC, BMSY_B0, FMSY_M, LHYear, Mort, Year, t
+\code{DCAC_40}: AvC, BMSY_B0, FMSY_M, LHYear, Mort, t, Year
 
 
-\code{DCAC4010}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
+\code{DCAC4010}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
 
 
-\code{DCAC_ML}: Abun, AddInd, AddIndType, AddIndV, AddIunits, AvC, Bref, CAA, CAL, CAL_bins, CAL_mids, Cat, Cref, Dep, Dt, Effort, Ind, Iref, L50, L95, LFC, LFS, LHYear, Lbar, Lc, LenCV, ML, MPeff, MPrec, MaxAge, Mort, Rec, SpAbun, SpInd, VInd, Vmaxlen, Vuln_CAA, Vuln_CAL, Year, sigmaR, steep, t, vbK, vbLinf, vbt0, wla, wlb
+\code{DCAC_ML}: Abun, AddInd, AddIndType, AddIndV, AddIunits, AvC, Bref, CAA, CAL, CAL_bins, CAL_mids, Cat, Cref, Dep, Dt, Effort, Ind, Iref, L50, L95, Lbar, Lc, LenCV, LFC, LFS, LHYear, MaxAge, ML, Mort, MPeff, MPrec, Rec, sigmaR, SpAbun, SpInd, steep, t, vbK, vbLinf, vbt0, VInd, Vmaxlen, Vuln_CAA, Vuln_CAL, wla, wlb, Year
 
 
-\code{DAAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
+\code{DAAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
 
 
-\code{HDAAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
+\code{HDAAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
 }
 
 \section{Rendered Equations}{
