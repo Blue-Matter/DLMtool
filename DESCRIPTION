@@ -3,7 +3,7 @@ Type: Package
 Title: Data-Limited Methods Toolkit
 Version: 6.0.0
 Authors@R: c(
-    person("Tom", "Carruthers",, "tom@bluematterscience.com", role=c("aut", "cre")),
+    person("Tom", "Carruthers",, "tom@bluematterscience.com", role="aut),
     person("Quang", "Huynh", email = "quang@bluematterscience.com", role = "aut"),
     person("Adrian", "Hordyk", , "adrian@bluematterscience.com", "aut"),
     person("M.", "Bryan", , , "ctb"),
