@@ -8,4 +8,5 @@ man-roxygen
 ^pkgdown$
 ^\.github$
 
-^write_pckdown.yml.r$
+^build_tools$
+^cran-comments.md$
