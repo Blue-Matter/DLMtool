@@ -2,7 +2,6 @@ Package: DLMtool
 Type: Package
 Title: Data-Limited Methods Toolkit
 Version: 6.0.0
-Date: 2020-10-26
 Authors@R: c(
     person("Tom", "Carruthers",, "tom@bluematterscience.com", role=c("aut", "cre")),
     person("Quang", "Huynh", email = "quang@bluematterscience.com", role = "aut"),
@@ -19,7 +18,8 @@ Description: A collection of data-limited management procedures that can be eval
     fishery data to provide management recommendations.
 License: GPL-3
 Depends:
-    R (>= 3.5.0)
+    R (>= 3.5.0),
+    MSEtool
 Imports:
     dplyr,
     ggplot2,
