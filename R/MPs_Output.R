@@ -470,6 +470,7 @@ CompSRA_ <- function(x, Data, reps=100) {
  }
  return(list(TAC=TAC, Bt_K=Bt_K, FMSY=FMSY, Ac=Ac, pred=predout, CAA=CAA))
 }
+
 #' Age-Composition Stock-Reduction Analysis
 #'
 #' A stock reduction analysis (SRA) model is fitted to the age-composition
