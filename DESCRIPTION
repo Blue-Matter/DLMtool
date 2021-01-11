@@ -5,7 +5,7 @@ Version: 6.0.0
 Authors@R: c(
     person("Tom", "Carruthers",, "tom@bluematterscience.com", role="aut"),
     person("Quang", "Huynh", email = "quang@bluematterscience.com", role = "aut"),
-    person("Adrian", "Hordyk", , "adrian@bluematterscience.com", "aut"),
+    person("Adrian", "Hordyk", , "adrian@bluematterscience.com", c("aut", "cre")),
     person("M.", "Bryan", , , "ctb"),
     person("HF.", "Geremont", , , "ctb"),
     person("C.", "Grandin", , , "ctb"),
