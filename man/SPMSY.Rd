@@ -23,7 +23,7 @@ An MP that uses Martell and Froese (2012) method for estimating MSY to
 determine the OFL. Since their approach estimates stock trajectories based
 on catches and a rule for intrinsic rate of increase it also returns
 depletion. Given their surplus production model predicts K, r and depletion
-it is straighforward to calculate the OFL based on the Schaefer productivity
+it is straight forward to calculate the OFL based on the Schaefer productivity
 curve.
 }
 \details{

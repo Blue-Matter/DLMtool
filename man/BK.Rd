@@ -78,7 +78,7 @@ See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object 
 \code{BK_CC}: CAA, Cat, LFC, vbK, vbLinf
 
 
-\code{BK_ML}: CAL, Cat, Lbar, Lc, LFC, Mort, vbK, vbLinf
+\code{BK_ML}: CAL, Cat, LFC, Lbar, Lc, Mort, vbK, vbLinf
 }
 
 \section{Rendered Equations}{
