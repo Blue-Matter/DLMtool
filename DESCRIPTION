@@ -14,7 +14,7 @@ Authors@R: c(
     person("C.", "Walters", , , "ctb"))
 Maintainer: Adrian Hordyk <adrian@bluematterscience.com>
 Description: A collection of data-limited management procedures that can be evaluated 
-    with management strategy evaluation with the `MSEtool` package, or applied to 
+    with management strategy evaluation with the 'MSEtool' package, or applied to 
     fishery data to provide management recommendations.
 License: GPL-3
 Depends:
