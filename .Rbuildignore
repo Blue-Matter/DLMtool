@@ -11,3 +11,4 @@ man-roxygen
 ^build_tools$
 ^cran-comments.md$
 ^CRAN-RELEASE$
+^README\.Rmd$

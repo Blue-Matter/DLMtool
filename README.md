@@ -1,24 +1,38 @@
-# DLMtool V6.0.0
 
-[![R build status](https://github.com/Blue-Matter/DLMtool/workflows/R-CMD-check/badge.svg)](https://github.com/Blue-Matter/DLMtool/actions)
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-The DLMtool R package has undergone a major restructure. 
+# DLMtool
 
-The `DLMtool` package is now primarily a collection of data-limited management procedures. All functions for simulating fisheries from operating models and projecting forward under alternative management arrangements have been moved to the new version of MSEtool (v3+). 
+<!-- badges: start -->
 
-This version of `DLMtool` depends on `MSEtool` v3+ and is not compatible with previous versions of `MSEtool`.
+[![CRAN
+status](https://www.r-pkg.org/badges/version/DLMtool)](https://CRAN.R-project.org/package=DLMtool)
+[![R build
+status](https://github.com/Blue-Matter/DLMtool/workflows/R-CMD-check/badge.svg)](https://github.com/Blue-Matter/DLMtool/actions)
+[![](https://img.shields.io/badge/devel%20version-6.0.9000-blue.svg)](https://github.com/blue-matter/DLMtool)
+<!-- badges: end -->
+
+The Data-Limited Methods toolkit (DLMtool) is a collection of
+data-limited management procedures that can be evaluated with management
+strategy evaluation (MSE).
+
+DLMtool is part of the `openMSE` collection of packages.
+
+You can learn more about the `openMSE` packages at the [openMSE
+documentation site](https://openMSE.com).
 
 ## Installation
 
-The released version of `DLMtool` can be downloaded from CRAN:
+You can install the released version of DLMtool from
+[CRAN](https://CRAN.R-project.org) with:
 
-```
+``` r
 install.packages("DLMtool")
 ```
 
-This GitHub repository contains the development version of `DLMtool`. The development version may be unstable, and it is not recommended  for analyses. 
+And the development version from [GitHub](https://github.com/) with:
 
-## Bugs and Issues
-Please report any bugs or issues through [GitHub](https://github.com/Blue-Matter/DLMtool/issues)
-  
-
+``` r
+# install.packages("devtools")
+devtools::install_github("Blue-Matter/DLMtool")
+```
