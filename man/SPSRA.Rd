@@ -50,12 +50,12 @@ See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object 
 \code{SPSRA}: Cat, Dep, FMSY_M, L50, MaxAge, Mort, steep, vbK, vbLinf, vbt0, wla, wlb
 
 
-\code{SPSRA_ML}: Abun, AddInd, AddIndType, AddIndV, AddIunits, AvC, BMSY_B0, Bref, CAA, CAL, CAL_bins, CAL_mids, Cat, Cref, Dep, Dt, Effort, FMSY_M, Ind, Iref, L50, L95, LFC, LFS, LHYear, Lbar, Lc, LenCV, ML, MPeff, MPrec, MaxAge, Mort, Rec, SpAbun, SpInd, VInd, Vmaxlen, Vuln_CAA, Vuln_CAL, Year, sigmaR, steep, t, vbK, vbLinf, vbt0, wla, wlb
+\code{SPSRA_ML}: CAL, Cat, Dep, FMSY_M, L50, Lbar, Lc, MaxAge, Mort, steep, vbK, vbLinf, vbt0, wla, wlb
 }
 
 \section{Rendered Equations}{
 
-See \href{https://blue-matter.github.io/DLMtool/reference/SPSRA.html}{Online Documentation} for correctly rendered equations
+See \href{https://dlmtool.openmse.com/reference/SPSRA.html}{Online Documentation} for correctly rendered equations
 
 
 }

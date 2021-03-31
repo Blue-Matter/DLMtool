@@ -63,7 +63,7 @@ See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object 
 
 \section{Rendered Equations}{
 
-See \href{https://blue-matter.github.io/DLMtool/reference/IT5.html}{Online Documentation} for correctly rendered equations
+See \href{https://dlmtool.openmse.com/reference/IT5.html}{Online Documentation} for correctly rendered equations
 
 
 }

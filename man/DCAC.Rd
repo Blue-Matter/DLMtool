@@ -110,7 +110,7 @@ See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object 
 \code{DCAC4010}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
 
 
-\code{DCAC_ML}: Abun, AddInd, AddIndType, AddIndV, AddIunits, AvC, Bref, CAA, CAL, CAL_bins, CAL_mids, Cat, Cref, Dep, Dt, Effort, Ind, Iref, L50, L95, LFC, LFS, LHYear, Lbar, Lc, LenCV, ML, MPeff, MPrec, MaxAge, Mort, Rec, SpAbun, SpInd, VInd, Vmaxlen, Vuln_CAA, Vuln_CAL, Year, sigmaR, steep, t, vbK, vbLinf, vbt0, wla, wlb
+\code{DCAC_ML}: AvC, CAL, Cat, LHYear, Lbar, Lc, Mort, Year, t, vbK, vbLinf
 
 
 \code{DAAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
@@ -123,7 +123,7 @@ See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object 
 
 
 
-See \href{https://blue-matter.github.io/DLMtool/reference/DCAC.html}{Online Documentation} for correctly rendered equations
+See \href{https://dlmtool.openmse.com/reference/DCAC.html}{Online Documentation} for correctly rendered equations
 
 
 

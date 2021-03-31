@@ -1,5 +1,3 @@
-## Note to CRAN Maintainers
-* The Maintainer email address has changed. 
 
 ## Test environments
 * local - Windows 4.0.3
@@ -13,8 +11,6 @@
 
 ## R CMD check results
 There were no ERRORs or WARNINGs.
-
-There was 1 NOTE regarding new maintainer email address.
 
 ## Downstream dependencies
 There are currently no downstream dependencies for this package

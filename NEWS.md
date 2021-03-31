@@ -1,9 +1,10 @@
 The current version of the DLMtool package is available for download from [CRAN](https://CRAN.R-project.org/package=DLMtool).
 
-## DLMtool 6.0.9999 Development Version
+## DLMtool 6.0.1 
 
 ### Fixes
 - `LBSPR` MP updated to handle missing CAL data
+- effort recommendation in `LBSPR` is now recursive
 
 ## DLMtool 6.0.0
 V6.0.0 is a major update to the `DLMtool` package. It is not backwards compatible with previous versions of `DLMtool` or `MSEtool`.
