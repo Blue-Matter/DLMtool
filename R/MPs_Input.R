@@ -1003,6 +1003,7 @@ LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
     names(Ests) <- c("SL50", "SL95", "FM", "SPR", "NLL")
     Ests$Year <- (length(Data@Year)-length(yrs)+1):length(Data@Year)
 
+    Ests_smooth <- as.data.frame(Ests_smooth)
     names(Ests_smooth) <- c("SL50", "SL95", "FM", "SPR")
     Ests_smooth$Year <- (length(Data@Year)-length(yrs)+1):length(Data@Year)
 
