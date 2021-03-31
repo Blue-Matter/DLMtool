@@ -1121,7 +1121,7 @@ LBSPR <- function(x, Data, reps=1, plot=FALSE, SPRtarg=0.4, theta1=0.3,
 
   }
   Rec <- new("Rec")
-  Rec@Effort <- Eff
+  Rec@Effort <- Data@MPeff[x] * Eff
   Rec@Misc$Ests <- runLBSPR$Ests
   Rec@Misc$Ests_smooth <- runLBSPR$Ests_smooth
   Rec
