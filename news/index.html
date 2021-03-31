@@ -108,6 +108,18 @@
       
     </div>
 
+    <div id="dlmtool-609999-development-version" class="section level2">
+<h2 class="hasAnchor">
+<a href="#dlmtool-609999-development-version" class="anchor"></a>DLMtool 6.0.9999 Development Version</h2>
+<div id="fixes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#fixes" class="anchor"></a>Fixes</h3>
+<ul>
+<li>
+<code>LBSPR</code> MP updated to handle missing CAL data</li>
+</ul>
+</div>
+</div>
     <div id="dlmtool-600" class="section level2">
 <h2 class="hasAnchor">
 <a href="#dlmtool-600" class="anchor"></a>DLMtool 6.0.0</h2>
@@ -133,9 +145,9 @@
 <li>time-varying discard rate can now be added with <code>cpars$DR_y</code> - matrix nsim rows and nyears+proyears columns</li>
 </ul>
 </div>
-<div id="fixes-1" class="section level3">
+<div id="fixes-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#fixes-1" class="anchor"></a>Fixes</h3>
+<a href="#fixes-2" class="anchor"></a>Fixes</h3>
 <ul>
 <li>fix issue with total removals calculation when MPs change discard ratio</li>
 <li>fix issue with discard rate (DR) in cpars.</li>
@@ -155,9 +167,9 @@
 <li>Additional indices can now use total, spawning, or vulnerable biomass using <code>Data@AddIndType</code> (numeric vector length n.ind 1=total stock (default), 2=spawning stock, 3=vulnerable stock).</li>
 </ul>
 </div>
-<div id="fixes-2" class="section level3">
+<div id="fixes-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#fixes-2" class="anchor"></a>Fixes</h3>
+<a href="#fixes-3" class="anchor"></a>Fixes</h3>
 <ul>
 <li>fix issue where <code>Misc$Removals</code> wasn’t being returned in parallel mode.</li>
 <li>fix issue with <code>XL2OM</code> for latest version of R (behavior of <code><a href="https://rdrr.io/r/base/data.matrix.html">base::data.matrix</a></code> changed)</li>
@@ -193,9 +205,9 @@
 </li>
 </ul>
 </div>
-<div id="fixes-3" class="section level3">
+<div id="fixes-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#fixes-3" class="anchor"></a>Fixes</h3>
+<a href="#fixes-4" class="anchor"></a>Fixes</h3>
 <ul>
 <li>fix bug when optimizing for vulnerable depletion in parallel mode</li>
 <li>fix issue where latest version of <code>DT</code> package broke <code>PMObj</code> and <code>PMLimit</code> tables</li>
@@ -228,9 +240,9 @@
 <li>Additional information on the Data object can be found <a href="https://dlmtool.github.io/DLMtool/Data/Data.html">here</a>.</li>
 </ul>
 </div>
-<div id="fixes-6" class="section level3">
+<div id="fixes-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#fixes-6" class="anchor"></a>Fixes</h3>
+<a href="#fixes-7" class="anchor"></a>Fixes</h3>
 <ul>
 <li>fix bug where TAE implementation error was affecting TAC controls (thanks to Robyn Forrest and Sean Anderson for finding this)</li>
 <li>fix bug in <code>Cplot</code> (thanks Sarah Valencia for picking this up)</li>
@@ -266,9 +278,9 @@
 </li>
 </ul>
 </div>
-<div id="fixes-7" class="section level3">
+<div id="fixes-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#fixes-7" class="anchor"></a>Fixes</h3>
+<a href="#fixes-8" class="anchor"></a>Fixes</h3>
 <ul>
 <li>fix indexing issue for recruitment deviations</li>
 <li>fix issue with <code>cpars$mov</code> when nareas&gt;2</li>
@@ -313,9 +325,9 @@
 <li>The <code>runMSErobust</code> function has been now removed from package (it was broken in the previous version).</li>
 </ul>
 </div>
-<div id="fixes-8" class="section level3">
+<div id="fixes-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#fixes-8" class="anchor"></a>Fixes</h3>
+<a href="#fixes-9" class="anchor"></a>Fixes</h3>
 <ul>
 <li>fix issue with importing <code>Data</code> objects with larger number of length bins</li>
 <li>fix issue where length-at-age was negative with high t0</li>
@@ -351,9 +363,9 @@
 <li>update <code>plotMPA</code> to include relative size of areas</li>
 </ul>
 </div>
-<div id="fixes-9" class="section level3">
+<div id="fixes-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#fixes-9" class="anchor"></a>Fixes</h3>
+<a href="#fixes-10" class="anchor"></a>Fixes</h3>
 <ul>
 <li>export built in MPs from MSEtool package to parallel cluster</li>
 <li>fix issue with CAA at very low stocks sizes</li>
@@ -364,9 +376,9 @@
     <div id="dlmtool-522" class="section level2">
 <h2 class="hasAnchor">
 <a href="#dlmtool-522" class="anchor"></a>DLMtool 5.2.2</h2>
-<div id="fixes-10" class="section level3">
+<div id="fixes-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#fixes-10" class="anchor"></a>Fixes</h3>
+<a href="#fixes-11" class="anchor"></a>Fixes</h3>
 <ul>
 <li>fix issue with hyperstability/depletion for future projections</li>
 <li>
