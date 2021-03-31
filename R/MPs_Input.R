@@ -936,6 +936,7 @@ LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
     # Ests[1:16,]
 
     if (nrow(Ests)>1) Ests_smooth <- apply(Ests, 2, FilterSmooth)
+    Ests_smooth <- as.data.frame(Ests_smooth)
     # if (smoother && nrow(Ests) > 1) Ests <- apply(Ests, 2, FilterSmooth)
 
     Ests <- as.data.frame(Ests)
