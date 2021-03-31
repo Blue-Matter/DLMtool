@@ -890,32 +890,40 @@ LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
     yind <- match(Data@LHYear[1], Data@Year)
     CALdata <- Data@CAL[x, (yind-n+1):length(Data@Year),]
     if (inherits(CALdata,'numeric'))  CALdata <- matrix(CALdata, ncol=length(LenMids))
-    Ests <- Ests_smooth <- matrix(NA, nrow=nrow(CALdata), ncol=5)
+    Ests <- matrix(NA, nrow=nrow(CALdata), ncol=5)
+    Ests_smooth <- matrix(NA, nrow=nrow(CALdata), ncol=4)
+    Ests_smooth <- as.data.frame(Ests_smooth)
     Fit <- list()
 
     for (y in 1:nrow(CALdata)) {
       CAL <- CALdata[y,]
-      modalL <- LenMids[which.max(CAL)]
-      minL <- LenMids[min(which(CAL>0))]
-      sl50start <-  mean(c(modalL, minL))
-      starts <- log(c(sl50start/Linf, sl50start/Linf*0.1, 1))
+      if (any(is.na(CAL))) {
+        Ests[y,] <- NA
+        Fit[[y]] <- NA
+      } else {
+        modalL <- LenMids[which.max(CAL)]
+        minL <- LenMids[min(which(CAL>0))]
+        sl50start <-  mean(c(modalL, minL))
+        starts <- log(c(sl50start/Linf, sl50start/Linf*0.1, 1))
 
-      runOpt <- optim(starts, LBSPRopt, CAL=CAL, nage=nage, nlen=length(LenMids), CVLinf=CVLinf,
-                      LenBins=LenBins, LenMids=LenMids,
-                      MK=MK, Linf=Linf, rLens=rLens, Prob=Prob, Ml=Ml,
-                      L50=L50, L95=L95, Beta=Beta)
+        runOpt <- optim(starts, LBSPRopt, CAL=CAL, nage=nage, nlen=length(LenMids), CVLinf=CVLinf,
+                        LenBins=LenBins, LenMids=LenMids,
+                        MK=MK, Linf=Linf, rLens=rLens, Prob=Prob, Ml=Ml,
+                        L50=L50, L95=L95, Beta=Beta)
 
-      SL50 <- exp(runOpt$par[1]) * Linf
-      dSL50 <- exp(runOpt$par[2])
-      SL95 <- SL50 + dSL50 * SL50
-      FM <- exp(runOpt$par[3])
+        SL50 <- exp(runOpt$par[1]) * Linf
+        dSL50 <- exp(runOpt$par[2])
+        SL95 <- SL50 + dSL50 * SL50
+        FM <- exp(runOpt$par[3])
 
-      runMod <- LBSPRgen(SL50, SL95, FM, nage=nage, nlen=length(LenMids), CVLinf,
-                         LenBins, LenMids,
-                         MK, Linf, rLens, Prob, Ml,L50, L95, Beta)
+        runMod <- LBSPRgen(SL50, SL95, FM, nage=nage, nlen=length(LenMids), CVLinf,
+                           LenBins, LenMids,
+                           MK, Linf, rLens, Prob, Ml,L50, L95, Beta)
 
-      Ests[y,] <- c(SL50, SL95, FM, runMod[[2]], runOpt$value)
-      Fit[[y]] <- runMod[[1]] * sum(CALdata[y,])
+        Ests[y,] <- c(SL50, SL95, FM, runMod[[2]], runOpt$value)
+        Fit[[y]] <- runMod[[1]] * sum(CALdata[y,])
+      }
+
     }
 
     # # ## Plot ###
@@ -934,7 +942,6 @@ LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
     names(Ests) <- c("SL50", "SL95", "FM", "SPR", "NLL")
     Ests$Year <- (yind-n+1):length(Data@Year)
 
-    Ests_smooth <- as.data.frame(Ests_smooth[,1:4])
     names(Ests_smooth) <- c("SL50", "SL95", "FM", "SPR")
     Ests_smooth$Year <- (yind-n+1):length(Data@Year)
 
@@ -945,34 +952,41 @@ LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
 
     CALdata <- Data@CAL[x, (length(Data@Year)-length(yrs)+1):length(Data@Year),]
     if (inherits(CALdata,'numeric'))  CALdata <- matrix(CALdata, ncol=length(LenMids))
-    Ests <- Ests_smooth <- matrix(NA, nrow=nrow(CALdata), ncol=5)
+    Ests_smooth <- matrix(NA, nrow=nrow(CALdata), ncol=4)
+    Ests_smooth <- as.data.frame(Ests_smooth)
+    Ests <- matrix(NA, nrow=nrow(CALdata), ncol=5)
     Fit <- list()
     for (y in 1:nrow(CALdata)) {
       CAL <- CALdata[y,]
-      modalL <- LenMids[which.max(CAL)]
-      minL <- LenMids[min(which(CAL>0))]
-      sl50start <-  mean(c(modalL, minL))
-      starts <- log(c(sl50start/Linf, sl50start/Linf*0.1, 1))
-      if (MK > 5) MK <- 5
-      if (MK < 0.4) MK <- 0.4
-      runOpt <- try(optim(starts, LBSPRopt, CAL=CAL, nage=101, nlen=length(LenMids), CVLinf=CVLinf,
-                      LenBins=LenBins, LenMids=LenMids,
-                      MK=MK, Linf=Linf, rLens=rLens, Prob=Prob, Ml=Ml, L50=L50,
-                      L95=L95, Beta=Beta), silent=TRUE)
-      if (inherits(runOpt,'try-error')) {
-        warning("Error in LBSPR ignoring estimate and using previous year. Sim = ", x)
+      if (any(is.na(CAL))) {
+        Ests[y,] <- NA
+        Fit[[y]] <- NA
       } else {
-      SL50 <- exp(runOpt$par[1]) * Linf
-      dSL50 <- exp(runOpt$par[2])
-      SL95 <- SL50 + dSL50 * SL50
-      FM <- exp(runOpt$par[3])
+        modalL <- LenMids[which.max(CAL)]
+        minL <- LenMids[min(which(CAL>0))]
+        sl50start <-  mean(c(modalL, minL))
+        starts <- log(c(sl50start/Linf, sl50start/Linf*0.1, 1))
+        if (MK > 5) MK <- 5
+        if (MK < 0.4) MK <- 0.4
+        runOpt <- try(optim(starts, LBSPRopt, CAL=CAL, nage=101, nlen=length(LenMids), CVLinf=CVLinf,
+                            LenBins=LenBins, LenMids=LenMids,
+                            MK=MK, Linf=Linf, rLens=rLens, Prob=Prob, Ml=Ml, L50=L50,
+                            L95=L95, Beta=Beta), silent=TRUE)
+        if (inherits(runOpt,'try-error')) {
+          warning("Error in LBSPR ignoring estimate and using previous year. Sim = ", x)
+        } else {
+          SL50 <- exp(runOpt$par[1]) * Linf
+          dSL50 <- exp(runOpt$par[2])
+          SL95 <- SL50 + dSL50 * SL50
+          FM <- exp(runOpt$par[3])
 
-      runMod <- LBSPRgen(SL50, SL95, FM, nage=101, nlen=length(LenMids), CVLinf,
-                         LenBins, LenMids,
-                         MK, Linf, rLens=rLens, Prob=Prob, Ml=Ml, L50, L95, Beta)
+          runMod <- LBSPRgen(SL50, SL95, FM, nage=101, nlen=length(LenMids), CVLinf,
+                             LenBins, LenMids,
+                             MK, Linf, rLens=rLens, Prob=Prob, Ml=Ml, L50, L95, Beta)
 
-      Ests[y,] <- c(SL50, SL95, FM, runMod[[2]], runOpt$value)
-      Fit[[y]] <- runMod[[1]] * sum(CALdata[y,])
+          Ests[y,] <- c(SL50, SL95, FM, runMod[[2]], runOpt$value)
+          Fit[[y]] <- runMod[[1]] * sum(CALdata[y,])
+        }
       }
     }
 
@@ -988,7 +1002,6 @@ LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
     names(Ests) <- c("SL50", "SL95", "FM", "SPR", "NLL")
     Ests$Year <- (length(Data@Year)-length(yrs)+1):length(Data@Year)
 
-    Ests_smooth <- as.data.frame(Ests[,1:4])
     names(Ests_smooth) <- c("SL50", "SL95", "FM", "SPR")
     Ests_smooth$Year <- (length(Data@Year)-length(yrs)+1):length(Data@Year)
 
@@ -1245,13 +1258,14 @@ class(LBSPR_MLL) <- 'MP'
 #' @keywords internal
 FilterSmooth <- function(RawEsts, R=0.2, Q=0.1, Int=100) {
   # Modified from \url{"http://read.pudn.com/downloads88/ebook/336360/Kalman%20Filtering%20Theory%20and%20Practice,%20Using%20MATLAB/CHAPTER4/RTSvsKF.m__.htm"}
-  Ppred <-  rep(Int, length(RawEsts))
+
   nNA <- sum(is.na(RawEsts))
-  while(nNA > 0) { # NAs get replaced with last non-NA
-    RawEsts[is.na(RawEsts)] <- RawEsts[which(is.na(RawEsts))-1]
-    nNA <- sum(is.na(RawEsts))
+  RawEsts2 <- RawEsts
+  if (nNA>0) {
+    RawEsts2 <- RawEsts[!is.na(RawEsts)]
   }
-  Pcorr <- xcorr <- xpred <- rep(0, length(RawEsts))
+  Ppred <-  rep(Int, length(RawEsts2))
+  Pcorr <- xcorr <- xpred <- rep(0, length(RawEsts2))
   # Kalman Filter
   for (X in 1:length(Ppred)) {
     if (X !=1) {
@@ -1259,7 +1273,7 @@ FilterSmooth <- function(RawEsts, R=0.2, Q=0.1, Int=100) {
       xpred[X] <- xcorr[X-1]
     }
     W <- Ppred[X]/(Ppred[X] + R)
-    xcorr[X] <- xpred[X] + W * (RawEsts[X] - xpred[X]) # Kalman filter estimate
+    xcorr[X] <- xpred[X] + W * (RawEsts2[X] - xpred[X]) # Kalman filter estimate
     Pcorr[X] <- Ppred[X] - W * Ppred[X]
   }
   # Smoother
@@ -1267,6 +1281,12 @@ FilterSmooth <- function(RawEsts, R=0.2, Q=0.1, Int=100) {
   for (X in (length(Pcorr)-1):1) {
     A <- Pcorr[X]/Ppred[X+1]
     xsmooth[X] <- xsmooth[X] + A*(xsmooth[X+1] - xpred[X+1])
+  }
+  if (nNA>0) {
+    ind <- which(!is.na(RawEsts))
+    out <- rep(NA, length(RawEsts))
+    out[ind] <- xsmooth
+    xsmooth <- out
   }
   return(xsmooth)
 }
