@@ -935,7 +935,11 @@ LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
     #   }
     # Ests[1:16,]
 
-    if (nrow(Ests)>1) Ests_smooth <- apply(Ests, 2, FilterSmooth)
+    if (nrow(Ests)>1) {
+      Ests_smooth <- apply(Ests, 2, FilterSmooth)
+    } else {
+      Ests_smooth <- Ests
+    }
     Ests_smooth <- as.data.frame(Ests_smooth)
     # if (smoother && nrow(Ests) > 1) Ests <- apply(Ests, 2, FilterSmooth)
 
@@ -943,7 +947,7 @@ LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
     names(Ests) <- c("SL50", "SL95", "FM", "SPR", "NLL")
     Ests$Year <- (yind-n+1):length(Data@Year)
 
-    names(Ests_smooth) <- c("SL50", "SL95", "FM", "SPR")
+    names(Ests_smooth) <- c("SL50", "SL95", "FM", "SPR", "NLL")
     Ests_smooth$Year <- (yind-n+1):length(Data@Year)
 
   } else {
