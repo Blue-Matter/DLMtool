@@ -1,5 +1,11 @@
 The current version of the DLMtool package is available for download from [CRAN](https://CRAN.R-project.org/package=DLMtool).
 
+## DLMtool 6.0.2
+
+### Fixes
+- Fixed issue with `LtargetE` MP where it was incorrectly averaging across simulations (thanks to [Ernesto Carrella](https://github.com/DLMtool/DLMtool/pull/334) for spotting this)
+
+
 ## DLMtool 6.0.1 
 
 ### Fixes
