@@ -945,10 +945,10 @@ LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
 
     Ests <- as.data.frame(Ests)
     names(Ests) <- c("SL50", "SL95", "FM", "SPR", "NLL")
-    Ests$Year <- (yind-n+1):length(Data@Year)
+    Ests$Year <- Data@Year[(yind - n + 1):length(Data@Year)]
 
     names(Ests_smooth) <- c("SL50", "SL95", "FM", "SPR", "NLL")
-    Ests_smooth$Year <- (yind-n+1):length(Data@Year)
+    Ests_smooth$Year <- Data@Year[(yind - n + 1):length(Data@Year)]
 
   } else {
     lastYr <- max(Data@Misc[[x]]$Ests$Year)

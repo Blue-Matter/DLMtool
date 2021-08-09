@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // LBSPRgen
 List LBSPRgen(double SL50, double SL95, double FM, int nage, int nlen, double CVLinf, NumericVector LenBins, NumericVector LenMids, double MK, double Linf, NumericVector rLens, NumericMatrix Prob, NumericVector Ml, double L50, double L95, double Beta);
 RcppExport SEXP _DLMtool_LBSPRgen(SEXP SL50SEXP, SEXP SL95SEXP, SEXP FMSEXP, SEXP nageSEXP, SEXP nlenSEXP, SEXP CVLinfSEXP, SEXP LenBinsSEXP, SEXP LenMidsSEXP, SEXP MKSEXP, SEXP LinfSEXP, SEXP rLensSEXP, SEXP ProbSEXP, SEXP MlSEXP, SEXP L50SEXP, SEXP L95SEXP, SEXP BetaSEXP) {

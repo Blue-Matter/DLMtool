@@ -2531,8 +2531,8 @@ Iratio <- function(x, Data, reps=100, plot=FALSE, yrs = c(2, 5)) {
     I.num <- Data@Ind[x, ind.num]
     I.den <-  Data@Ind[x, ind.den]
   } else {
-    I.num <- MSEtool::trlnorm(reps * length(ind.num), Data@Ind[x, ind.num], Data@CV_Ind[x,1])
-    I.den <- MSEtool::trlnorm(reps * length(ind.den), Data@Ind[x, ind.den], Data@CV_Ind[x,1])
+    I.num <- MSEtool::trlnorm(reps * length(ind.num), Data@Ind[x, ind.num], Data@CV_Ind[x,ind.num])
+    I.den <- MSEtool::trlnorm(reps * length(ind.den), Data@Ind[x, ind.den], Data@CV_Ind[x,ind.den])
   }
 
   I.num <- matrix(I.num, ncol = reps)

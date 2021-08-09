@@ -1,5 +1,10 @@
 The current version of the DLMtool package is available for download from [CRAN](https://CRAN.R-project.org/package=DLMtool).
 
+## DLMtool 6.0.3
+### Fixes
+- Fix `LBSPR` when calendar years are provided in `Data@Year`
+- Fix indexing error for `CV_Ind` in `Iratio`
+
 ## DLMtool 6.0.2
 
 ### Fixes
