@@ -1,6 +1,6 @@
 
 ## Test environments
-* local - Windows 4.0.3
+* local - Windows 4.1.0
 * Github actions - windows-latest (release)
 * Github actions - macOS-latest (release)
 * Github actions - ubuntu-20.04 (release)
