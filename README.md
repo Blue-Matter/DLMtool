@@ -9,7 +9,7 @@
 status](https://www.r-pkg.org/badges/version/DLMtool)](https://CRAN.R-project.org/package=DLMtool)
 [![R build
 status](https://github.com/Blue-Matter/DLMtool/workflows/R-CMD-check/badge.svg)](https://github.com/Blue-Matter/DLMtool/actions)
-[![](https://img.shields.io/badge/devel%20version-6.0.9000-blue.svg)](https://github.com/blue-matter/DLMtool)
+[![](https://img.shields.io/badge/devel%20version-6.0.3-blue.svg)](https://github.com/blue-matter/DLMtool)
 <!-- badges: end -->
 
 The Data-Limited Methods toolkit (DLMtool) is a collection of
