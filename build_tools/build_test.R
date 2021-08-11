@@ -6,9 +6,9 @@ nm <- paste0("DLMtool_", v, ".tar.gz")
 shell(paste0("R CMD check ../", nm))
 
 
-tt = devtools::spell_check()
-
-tt
+# tt = devtools::spell_check()
+#
+# tt
 
 library(rhub)
 
