@@ -125,9 +125,9 @@ Type LBSPR_test(objective_function<Type>* obj) {
   REPORT(sl95);
   REPORT(FM);
   REPORT(SPR);
-  REPORT(res);
-  REPORT(temp);
-  REPORT(sdres);
+  // REPORT(res);
+  // REPORT(temp);
+  // REPORT(sdres);
   REPORT(-nll);
   return(-nll);
 }
