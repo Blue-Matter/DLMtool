@@ -103,8 +103,8 @@ Type LBSPR_test(objective_function<Type>* obj) {
   Type mures = res.sum()/nres;
   vector<Type> temp(nlen);
   temp.setZero();
-  Type varres = pow(res-mures, Type(2.0));
-  Type sdres = pow(varres.sum()/nres, 0.5);
+  Type temp = pow(res-mures, Type(2.0));
+  Type sdres = pow(temp.sum()/nres, 0.5);
 
   vector<Type> nllvec(nlen);
   nllvec.setZero();
