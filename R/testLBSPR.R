@@ -97,8 +97,9 @@ LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
         # bounds on SL50
         lower <- rep(-Inf, 3)
         upper <- rep(Inf, 3)
-        upper[1] <- log(0.98)
+        upper[1] <- log(0.95)
         lower[1] <- log(0.02)
+        lower[2] <- log(0.05)
 
         starts <- obj$par
 
@@ -179,8 +180,9 @@ LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
         # bounds on SL50
         lower <- rep(-Inf, 3)
         upper <- rep(Inf, 3)
-        upper[1] <- log(0.98)
+        upper[1] <- log(0.95)
         lower[1] <- log(0.02)
+        lower[2] <- log(0.05)
 
         starts <- obj$par
         doopt <- optimize_TMB(obj, bounds=list(lower, upper), starts=starts)
@@ -233,7 +235,7 @@ optimize_TMB <- function(obj, bounds, starts, restart=10) {
   step.max <- 1
   control <- list(eval.max=1e4, iter.max=1e4,
                   step.min=step.min, step.max=step.max,
-                  trace=1, abs.tol=1e-20)
+                  trace=0, abs.tol=1e-20)
 
   opt <- suppressWarnings(nlminb(starts, obj$fn, obj$gr,
                                           lower=bounds[[1]], upper=bounds[[2]],
