@@ -80,12 +80,36 @@ Type LBSPR_test(objective_function<Type>* obj) {
 
   // Declare nll
   Type nll=0;
+
   // nll = dmultinom(CAL, Nc_st, true);
+  // for (int l=0; l<nlen; l++) {
+  //   if (CAL_st(l)>0) {
+  //     nll +=  (CAL(l) * log(Nc_st(l)/CAL_st(l)));
+  //   }
+  // }
+
+  // logistic-normal
+  vector<Type> res(nlen);
+  res.setZero();
   for (int l=0; l<nlen; l++) {
-    if (CAL(l)>0) {
-      nll +=  (CAL(l) * log(Nc_st(l)/CAL_st(l)));
+    if (CAL_st(l)>0) {
+      Type t.obs = log(CAL_st(l)/(1-CAL_st(l)));
+      Type t.pred = log(Nc_st(l)/(1-Nc_st(l)));
+      res(l) = t.obs - t.pred;
     }
   }
+
+  Type nres = res.length();
+  Type mures = res.sum()/nres;
+  vector<Type> temp(nlen);
+  temp.setZero();
+  Type varres = pow(res-mures, Type(2.0));
+  Type sdres = pow(varres.sum()/nres, 0.5);
+
+  vector<Type> nllvec(nlen);
+  nllvec.setZero();
+  nllvec = dnorm(res, Type(0), sdres);
+  nll = nllvec.sum();
 
   // Calculate SPR
   vector<Type> N0(nage);
@@ -102,6 +126,9 @@ Type LBSPR_test(objective_function<Type>* obj) {
   REPORT(sl95);
   REPORT(FM);
   REPORT(SPR);
+  REPORT(res);
+  REPORT(varres);
+  REPORT(sdres);
   REPORT(-nll);
   return(-nll);
 }
