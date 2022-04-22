@@ -92,7 +92,7 @@ Type LBSPR_test(objective_function<Type>* obj) {
   res.setZero();
   for (int l=0; l<nlen; l++) {
     // if (CAL_st(l)>0) {
-      Type obs = CAL_st(l) + 1e-6;
+      Type obs = CAL_st(l) + 1e-15;
       Type tobs = log(obs)/(1-obs);
       Type tpred = log(Nc_st(l)/(1-Nc_st(l)));
       res(l) = tobs - tpred;
