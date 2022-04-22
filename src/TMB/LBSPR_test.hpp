@@ -108,7 +108,7 @@ Type LBSPR_test(objective_function<Type>* obj) {
 
   vector<Type> nllvec(nlen);
   nllvec.setZero();
-  nllvec = dnorm(res, Type(0), sdres);
+  nllvec = dnorm(res, Type(0), sdres, true);
   nll = nllvec.sum();
 
   // Calculate SPR
