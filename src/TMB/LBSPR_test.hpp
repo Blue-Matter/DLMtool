@@ -99,7 +99,7 @@ Type LBSPR_test(objective_function<Type>* obj) {
     }
   }
 
-  Type nres = res.length();
+  Type nres = res.len();
   Type mures = res.sum()/nres;
   vector<Type> temp(nlen);
   temp.setZero();
