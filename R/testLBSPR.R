@@ -98,7 +98,7 @@ LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
         lower <- rep(-Inf, 3)
         upper <- rep(Inf, 3)
         upper[1] <- log(modalL/Linf)
-        lower[1] <- log(0.02)
+        lower[1] <- log(minL/Linf)
         lower[2] <- log(0.05)
 
         starts <- obj$par
@@ -179,7 +179,7 @@ LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
         lower <- rep(-Inf, 3)
         upper <- rep(Inf, 3)
         upper[1] <- log(modalL/Linf)
-        lower[1] <- log(0.02)
+        lower[1] <- log(minL/Linf)
         lower[2] <- log(0.05)
 
         starts <- obj$par
