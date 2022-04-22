@@ -69,7 +69,6 @@ Type LBSPR_test(objective_function<Type>* obj) {
     Nc(l) = (Ns * val).sum();
   }
 
-  Type CN = sum(CAL);
   vector<Type> CAL_st(nlen);
   CAL_st.setZero();
   CAL_st = CAL/CAL.sum();
@@ -91,12 +90,13 @@ Type LBSPR_test(objective_function<Type>* obj) {
   // logistic-normal
   vector<Type> res(nlen);
   res.setZero();
+  Type tiny = 0.000001;
   for (int l=0; l<nlen; l++) {
-    if (CAL_st(l)>0) {
-      Type tobs = log(CAL_st(l)/(1-CAL_st(l)));
-      Type tpred = log(Nc_st(l)/(1-Nc_st(l)));
+    // if (CAL_st(l)>0) {
+      Type tobs = log((CAL_st(l)+tiny)/(1-(CAL_st(l)+tiny)));
+      Type tpred = log((Nc_st(l)+tiny)/(1-(Nc_st(l)+tiny)));
       res(l) = tobs - tpred;
-    }
+    // }
   }
 
   Type nres = res.size();
