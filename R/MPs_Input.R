@@ -971,8 +971,6 @@ LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
         minL <- LenMids[min(which(CAL>0))]
         sl50start <-  mean(c(modalL, minL))
         starts <- log(c(sl50start/Linf, sl50start/Linf*0.1, 1))
-        if (MK > 5) MK <- 5
-        if (MK < 0.4) MK <- 0.4
         runOpt <- try(optim(starts, LBSPRopt, CAL=CAL, nage=101, nlen=length(LenMids), CVLinf=CVLinf,
                             LenBins=LenBins, LenMids=LenMids,
                             MK=MK, Linf=Linf, rLens=rLens, Prob=Prob, Ml=Ml, L50=L50,
