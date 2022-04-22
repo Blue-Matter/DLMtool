@@ -14,7 +14,7 @@
 #' @param MK Ratio of M/K
 #' @param Linf Asymptotic length
 #' @param rLens Vector of relative length at ate
-#' @param Prob ALK 
+#' @param Prob ALK
 #' @param Ml Maturity at age vector
 #' @param L50 Length at 50 percent maturity
 #' @param L95 Length at 95 percent maturity
@@ -24,14 +24,14 @@
 #' @keywords internal
 #' @export
 LBSPRgen <- function(SL50, SL95, FM, nage, nlen, CVLinf, LenBins, LenMids, MK, Linf, rLens, Prob, Ml, L50, L95, Beta) {
-    .Call('_DLMtool_LBSPRgen', PACKAGE = 'DLMtool', SL50, SL95, FM, nage, nlen, CVLinf, LenBins, LenMids, MK, Linf, rLens, Prob, Ml, L50, L95, Beta)
+    .Call(`_DLMtool_LBSPRgen`, SL50, SL95, FM, nage, nlen, CVLinf, LenBins, LenMids, MK, Linf, rLens, Prob, Ml, L50, L95, Beta)
 }
 
 LBSPRopt <- function(pars, CAL, nage, nlen, CVLinf, LenBins, LenMids, MK, Linf, rLens, Prob, Ml, L50, L95, Beta) {
-    .Call('_DLMtool_LBSPRopt', PACKAGE = 'DLMtool', pars, CAL, nage, nlen, CVLinf, LenBins, LenMids, MK, Linf, rLens, Prob, Ml, L50, L95, Beta)
+    .Call(`_DLMtool_LBSPRopt`, pars, CAL, nage, nlen, CVLinf, LenBins, LenMids, MK, Linf, rLens, Prob, Ml, L50, L95, Beta)
 }
 
 bhnoneq_LL <- function(stpar, year, Lbar, ss, Linf, K, Lc, nbreaks) {
-    .Call('_DLMtool_bhnoneq_LL', PACKAGE = 'DLMtool', stpar, year, Lbar, ss, Linf, K, Lc, nbreaks)
+    .Call(`_DLMtool_bhnoneq_LL`, stpar, year, Lbar, ss, Linf, K, Lc, nbreaks)
 }
 

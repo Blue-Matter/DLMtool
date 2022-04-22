@@ -26,13 +26,14 @@ Imports:
     graphics,
     methods,
     Rcpp,
-    stats
+    stats,
+    TMB (>= 1.7.22)
+LinkingTo: TMB, RcppEigen, Rcpp
 Suggests:
     gridExtra,
     mvtnorm,
     testthat
 LazyLoad: yes
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
-LinkingTo: Rcpp

@@ -1135,6 +1135,103 @@ LBSPR <- function(x, Data, reps=1, plot=FALSE, SPRtarg=0.4, theta1=0.3,
 }
 class(LBSPR) <- 'MP'
 
+#' Length-Based SPR MPs
+#'
+#' The spawning potential ratio (SPR) is estimated using the LBSPR method
+#' and compared to a target of 0.4.
+#'
+#' Effort is modified according to the harvest control rules described in
+#' Hordyk et al. (2015b):
+#'
+#' @templateVar mp LBSPR
+#' @param x A position in the data object
+#' @param Data A data object
+#' @param reps The number of stochastic samples of the MP recommendation(s)
+#' @param plot Logical. Show the plot?
+#'
+#' @section Required Data:
+#' See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
+#'
+#' @return An object of class \code{\link[MSEtool]{Rec-class}} with the TAE slot populated
+#'
+#' @template MPuses
+#'
+#' @param SPRtarg The target SPR
+#' @param theta1 Control parameter for the harvest control rule
+#' @param theta2 Control parameter for the harvest control rule
+#' @param maxchange Maximum change in effort
+#' @param n Last number of years to run the model on.
+#' @param smoother Logical. Should the SPR estimates be smoothed?
+#' @param R variance of sampling noise for smoother
+#' @export
+#'
+LBSPR2 <- function(x, Data, reps=1, plot=FALSE, SPRtarg=0.4, theta1=0.3,
+                  theta2=0.05, maxchange=0.3,
+                  n=5, smoother=TRUE, R=0.2) {
+
+  runLBSPR <- LBSPR2_(x, Data, reps, n, smoother, R=R)
+
+  if (!smoother) Ests <- runLBSPR$Ests
+  if (smoother) Ests <- runLBSPR$Ests_smooth
+
+  estSPR <- Ests$SPR[length(Ests$SPR)]
+  ratio <- estSPR/SPRtarg - 1
+
+  vt <- theta1 * (ratio^3) + theta2*ratio
+  vt[vt< -maxchange]  <- -maxchange
+  vt[vt> maxchange]  <- maxchange
+
+  Eff <- 1+vt
+
+  if (plot) {
+
+    nyr <- length(runLBSPR$Fit)
+
+    CAL <- Data@CAL[x,,]
+    nyears <- dim(CAL)[1]
+    CAL <- CAL[(nyears-nyr+1):nyears,]
+    LenBins <- Data@CAL_bins
+    By <- LenBins[2] - LenBins[1]
+    LenMids <- seq(from=By*0.5, by=By, length.out = length(LenBins)-1)
+
+    op <- par(no.readonly = TRUE)
+    on.exit(op)
+    nrow <- ceiling(sqrt(nyr))
+    ncol <- ceiling((nyr + 1)/nrow)
+    par(mfrow=c(nrow,ncol))
+
+    if (nyr > 1) {
+      ymin <- min(unlist(apply(CAL > 0, 1, which)))
+      ymax <- max(unlist(apply(CAL > 0, 1, which)))
+      ind <- (ymin-1):(ymax+1)
+      ylim <- c(0, max(c(CAL, unlist(lapply(runLBSPR$Fit, max)))))
+      for (p in 1:nyr) {
+        tt <- barplot(CAL[p,ind], xlab="Length", ylab="Count", bty="l", names=LenMids[ind], ylim=ylim)
+        lines(tt, runLBSPR$Fit[[p]][ind], lwd=2)
+        title(paste0("Year ", runLBSPR$Ests$Year[p]))
+      }
+    } else {
+      ymin <- min(which(CAL > 0))
+      ymax <- max(which(CAL > 0))
+      ind <- (ymin-1):(ymax+1)
+      ylim <- c(0, max(c(CAL, runLBSPR$Fit[[1]])))
+      tt <- barplot(CAL[ind], xlab="Length", ylab="Count", bty="l", names=LenMids[ind], ylim=ylim)
+      lines(tt, runLBSPR$Fit[[1]][ind], lwd=2)
+      title(paste0("Year ", runLBSPR$Ests$Year[p]))
+    }
+
+    plot(runLBSPR$Ests$Year, runLBSPR$Ests$SPR, ylim=c(0,1), xlab="Year",
+         ylab="SPR", type="b", las=1, bty="l")
+
+  }
+  Rec <- new("Rec")
+  Rec@Effort <- Data@MPeff[x] * Eff
+  Rec@Misc$Ests <- runLBSPR$Ests
+  Rec@Misc$Ests_smooth <- runLBSPR$Ests_smooth
+  Rec
+
+}
+class(LBSPR2) <- 'MP'
 
 #' Length-Based SPR
 #'
