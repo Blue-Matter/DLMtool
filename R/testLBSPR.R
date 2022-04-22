@@ -97,7 +97,7 @@ LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
         # bounds on SL50
         lower <- rep(-Inf, 3)
         upper <- rep(Inf, 3)
-        upper[1] <- log(0.95)
+        upper[1] <- log(modalL/Linf)
         lower[1] <- log(0.02)
         lower[2] <- log(0.05)
 
@@ -178,7 +178,7 @@ LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
         # bounds on SL50
         lower <- rep(-Inf, 3)
         upper <- rep(Inf, 3)
-        upper[1] <- log(0.95)
+        upper[1] <- log(modalL/Linf)
         lower[1] <- log(0.02)
         lower[2] <- log(0.05)
 
