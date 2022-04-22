@@ -229,11 +229,16 @@ LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
 
 optimize_TMB <- function(obj, bounds, starts, restart=10) {
 
-  control <- list(eval.max=1e4, iter.max=1e4, step.min=0.25)
+  step.min <- 1
+  step.max <- 1
+  control <- list(eval.max=1e4, iter.max=1e4,
+                  step.min=step.min, step.max=step.max,
+                  trace=1, abs.tol=1e-20)
 
-  opt <- suppressWarnings(nlminb(obj$par, obj$fn, obj$gr,
+  opt <- suppressWarnings(nlminb(starts, obj$fn, obj$gr,
                                           lower=bounds[[1]], upper=bounds[[2]],
                                           control=control))
+
   opt
 
   # opt <- optim(obj$par, obj$fn, obj$gr)
