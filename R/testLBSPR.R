@@ -66,8 +66,6 @@ LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
         Ests[y,] <- NA
         Fit[[y]] <- NA
       } else {
-        if (MK > 5) MK <- 5
-        if (MK < 0.4) MK <- 0.4
         data <- list(model='LBSPR_test',
                      MK=MK,
                      Beta=Beta,
@@ -83,6 +81,8 @@ LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
         modalL <- LenMids[which.max(CAL)]
         minL <- LenMids[min(which(CAL>0))]
         sl50start <-  mean(c(modalL, minL))
+
+        # sl50start <- LenMids[min(which(cumsum(CAL)/sum(CAL)>0.1))]
 
         log_sl50 <- log(sl50start/Linf)
         log_dsl50 <- log(sl50start/Linf*0.1)
@@ -151,8 +151,6 @@ LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
         Ests[y,] <- NA
         Fit[[y]] <- NA
       } else {
-        if (MK > 5) MK <- 5
-        if (MK < 0.4) MK <- 0.4
         data <- list(model='LBSPR_test',
                      MK=MK,
                      Beta=Beta,
