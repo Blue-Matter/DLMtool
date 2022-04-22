@@ -80,7 +80,7 @@ Type LBSPR_test(objective_function<Type>* obj) {
   // Declare nll
   Type nll=0;
 
-  // nll = dmultinom(CAL, Nc_st, true);
+  nll = dmultinom(CAL, Nc_st, true);
   // for (int l=0; l<nlen; l++) {
   //   if (CAL_st(l)>0) {
   //     nll +=  (CAL(l) * log(Nc_st(l)/CAL_st(l)));
@@ -88,27 +88,27 @@ Type LBSPR_test(objective_function<Type>* obj) {
   // }
 
   // logistic-normal
-  vector<Type> res(nlen);
-  res.setZero();
-  for (int l=0; l<nlen; l++) {
-    if (CAL_st(l)>0) {
-      Type tobs = log(CAL_st(l))/(1-CAL_st(l));
-      Type tpred = log(Nc_st(l)/(1-Nc_st(l)));
-      res(l) = tobs - tpred;
-    }
-  }
-
-  Type nres = res.size();
-  Type mures = res.sum()/nres;
-  vector<Type> temp(nlen);
-  temp.setZero();
-  temp = pow(res-mures, Type(2.0));
-  Type sdres = pow(temp.sum()/nres, 0.5);
-
-  vector<Type> nllvec(nlen);
-  nllvec.setZero();
-  nllvec = dnorm(res, Type(0), Type(0.1), true);
-  nll = nllvec.sum();
+  // vector<Type> res(nlen);
+  // res.setZero();
+  // for (int l=0; l<nlen; l++) {
+  //   if (CAL_st(l)>0) {
+  //     Type tobs = log(CAL_st(l))/(1-CAL_st(l));
+  //     Type tpred = log(Nc_st(l)/(1-Nc_st(l)));
+  //     res(l) = tobs - tpred;
+  //   }
+  // }
+  //
+  // Type nres = res.size();
+  // Type mures = res.sum()/nres;
+  // vector<Type> temp(nlen);
+  // temp.setZero();
+  // temp = pow(res-mures, Type(2.0));
+  // Type sdres = pow(temp.sum()/nres, 0.5);
+  //
+  // vector<Type> nllvec(nlen);
+  // nllvec.setZero();
+  // nllvec = dnorm(res, Type(0), Type(0.1), true);
+  // nll = nllvec.sum();
 
   // Calculate SPR
   vector<Type> N0(nage);
