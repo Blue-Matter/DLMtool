@@ -90,13 +90,12 @@ Type LBSPR_test(objective_function<Type>* obj) {
   // logistic-normal
   vector<Type> res(nlen);
   res.setZero();
-  Type tiny = 0.000001;
   for (int l=0; l<nlen; l++) {
-    // if (CAL_st(l)>0) {
-      Type tobs = log((CAL_st(l)+tiny)/(1-(CAL_st(l)+tiny)));
-      Type tpred = log((Nc_st(l)+tiny)/(1-(Nc_st(l)+tiny)));
+    if (CAL_st(l)>0) {
+      Type tobs = log(CAL_st(l)/(1-CAL_st(l)));
+      Type tpred = log(Nc_st(l)/(1-Nc_st(l)));
       res(l) = tobs - tpred;
-    // }
+    }
   }
 
   Type nres = res.size();
