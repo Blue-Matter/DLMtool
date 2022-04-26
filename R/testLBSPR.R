@@ -78,6 +78,7 @@ LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
                      Ml=Ml,
                      Prob=Prob)
 
+
         modalL <- LenMids[which.max(CAL)]
         minL <- LenMids[min(which(CAL>0))]
         sl50start <-  mean(c(modalL, minL))
@@ -94,15 +95,20 @@ LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
         obj <- TMB::MakeADFun(data=data, parameters=parameters, DLL="DLMtool_TMBExports",
                               silent=TRUE, hessian=FALSE)
 
-        # bounds on SL50
+
         lower <- rep(-Inf, 3)
         upper <- rep(Inf, 3)
-        upper[1] <- log(modalL/Linf)
-        lower[1] <- log(minL/Linf)
+        # bounds on SL50
+        min.bin <- min(which(cumsum(CAL)/sum(CAL) >=0.05))
+        if (min.bin !=1) min.bin <- min.bin-1
+        lower[1] <- log(LenMids[min.bin]/Linf)
+        max.bin <- min(which(cumsum(CAL)/sum(CAL) >=0.5))
+        upper[1] <- log(LenMids[max.bin]/Linf)
+
+        # bounds on dsl50
         lower[2] <- log(0.05)
 
         starts <- obj$par
-
         doopt <- optimize_TMB(obj, bounds=list(lower, upper), starts=starts)
 
         report <- obj$report(obj$env$last.par.best)
@@ -175,25 +181,29 @@ LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
                            log_fm=log_fm)
 
         obj <- TMB::MakeADFun(data, parameters, DLL="DLMtool_TMBExports", silent=TRUE, hessian=FALSE)
-        # bounds on SL50
+
         lower <- rep(-Inf, 3)
         upper <- rep(Inf, 3)
-        upper[1] <- log(modalL/Linf)
-        lower[1] <- log(minL/Linf)
+        # bounds on SL50
+        min.bin <- min(which(cumsum(CAL)/sum(CAL) >=0.05))
+        if (min.bin !=1) min.bin <- min.bin-1
+        lower[1] <- log(LenMids[min.bin]/Linf)
+        max.bin <- min(which(cumsum(CAL)/sum(CAL) >=0.5))
+        upper[1] <- log(LenMids[max.bin]/Linf)
+
+        # bounds on dsl50
         lower[2] <- log(0.05)
 
         starts <- obj$par
         doopt <- optimize_TMB(obj, bounds=list(lower, upper), starts=starts)
+
         report <- obj$report(obj$env$last.par.best)
-
-
         SL50 <- report$sl50
         SL95 <- report$sl95
         FM <- report$FM
         SPR <- report$SPR
         pred <- report$Nc_st
         NLL <- report$`-nll`
-
         Ests[y,] <- c(SL50, SL95, FM, SPR, NLL)
         Fit[[y]] <- pred * sum(CALdata[y,])
       }
