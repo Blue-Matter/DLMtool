@@ -903,7 +903,7 @@ LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
         Ests[y,] <- NA
         Fit[[y]] <- NA
       } else {
-        data <- list(model='LBSPR_test',
+        data <- list(model='LBSPR',
                      MK=MK,
                      Beta=Beta,
                      Linf=Linf,
@@ -994,7 +994,7 @@ LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
         Ests[y,] <- NA
         Fit[[y]] <- NA
       } else {
-        data <- list(model='LBSPR_test',
+        data <- list(model='LBSPR',
                      MK=MK,
                      Beta=Beta,
                      Linf=Linf,
