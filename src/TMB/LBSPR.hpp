@@ -3,7 +3,7 @@
 #define TMB_OBJECTIVE_PTR obj
 
 template<class Type>
-Type LBSPR_test(objective_function<Type>* obj) {
+Type LBSPR(objective_function<Type>* obj) {
   // Input Data
   DATA_SCALAR(MK);
   DATA_SCALAR(Beta);
