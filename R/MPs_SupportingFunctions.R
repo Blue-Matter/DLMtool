@@ -742,7 +742,7 @@ bhnoneq <- function(year, mlen, ss, K, Linf, Lc, nbreaks, styrs, stZ) {
   results <- try(optim(stpar, bhnoneq_LL, method = "Nelder-Mead", year = year,
                        Lbar = mlen, ss = ss, nbreaks = nbreaks, K = K, Linf = Linf, Lc = Lc,
                        control = list(maxit = 1e+06), hessian = FALSE), silent=TRUE)
-  if (class(results) == "try-error") {
+  if (inherits(results, "try-error"))  {
     return(FALSE)
   } else return(results$par[1:(nbreaks + 1)])
 }
