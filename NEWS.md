@@ -1,5 +1,10 @@
 The current version of the DLMtool package is available for download from [CRAN](https://CRAN.R-project.org/package=DLMtool).
 
+## DLMtool 6.0.4
+
+### Minor Changes
+- re-wrote LBSPR in TMB for faster run time
+
 ## DLMtool 6.0.3
 ### Fixes
 - Fix `LBSPR` when calendar years are provided in `Data@Year`
