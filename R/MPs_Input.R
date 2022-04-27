@@ -850,7 +850,7 @@ class(LtargetE4) <- "MP"
 #' @export
 #' @keywords internal
 #'
-LBSPR2_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
+LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
   if (MSEtool::NAor0(Data@L50[x])) stop("Data@L50 is NA")
   if (MSEtool::NAor0(Data@L95[x])) stop("Data@L95 is NA")
   if (MSEtool::NAor0(Data@wlb[x])) stop("Data@wlb is NA")
