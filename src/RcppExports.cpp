@@ -11,57 +11,6 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// LBSPRgen
-List LBSPRgen(double SL50, double SL95, double FM, int nage, int nlen, double CVLinf, NumericVector LenBins, NumericVector LenMids, double MK, double Linf, NumericVector rLens, NumericMatrix Prob, NumericVector Ml, double L50, double L95, double Beta);
-RcppExport SEXP _DLMtool_LBSPRgen(SEXP SL50SEXP, SEXP SL95SEXP, SEXP FMSEXP, SEXP nageSEXP, SEXP nlenSEXP, SEXP CVLinfSEXP, SEXP LenBinsSEXP, SEXP LenMidsSEXP, SEXP MKSEXP, SEXP LinfSEXP, SEXP rLensSEXP, SEXP ProbSEXP, SEXP MlSEXP, SEXP L50SEXP, SEXP L95SEXP, SEXP BetaSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< double >::type SL50(SL50SEXP);
-    Rcpp::traits::input_parameter< double >::type SL95(SL95SEXP);
-    Rcpp::traits::input_parameter< double >::type FM(FMSEXP);
-    Rcpp::traits::input_parameter< int >::type nage(nageSEXP);
-    Rcpp::traits::input_parameter< int >::type nlen(nlenSEXP);
-    Rcpp::traits::input_parameter< double >::type CVLinf(CVLinfSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type LenBins(LenBinsSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type LenMids(LenMidsSEXP);
-    Rcpp::traits::input_parameter< double >::type MK(MKSEXP);
-    Rcpp::traits::input_parameter< double >::type Linf(LinfSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type rLens(rLensSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type Prob(ProbSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type Ml(MlSEXP);
-    Rcpp::traits::input_parameter< double >::type L50(L50SEXP);
-    Rcpp::traits::input_parameter< double >::type L95(L95SEXP);
-    Rcpp::traits::input_parameter< double >::type Beta(BetaSEXP);
-    rcpp_result_gen = Rcpp::wrap(LBSPRgen(SL50, SL95, FM, nage, nlen, CVLinf, LenBins, LenMids, MK, Linf, rLens, Prob, Ml, L50, L95, Beta));
-    return rcpp_result_gen;
-END_RCPP
-}
-// LBSPRopt
-double LBSPRopt(NumericVector pars, NumericVector CAL, int nage, int nlen, double CVLinf, NumericVector LenBins, NumericVector LenMids, double MK, double Linf, NumericVector rLens, NumericMatrix Prob, NumericVector Ml, double L50, double L95, double Beta);
-RcppExport SEXP _DLMtool_LBSPRopt(SEXP parsSEXP, SEXP CALSEXP, SEXP nageSEXP, SEXP nlenSEXP, SEXP CVLinfSEXP, SEXP LenBinsSEXP, SEXP LenMidsSEXP, SEXP MKSEXP, SEXP LinfSEXP, SEXP rLensSEXP, SEXP ProbSEXP, SEXP MlSEXP, SEXP L50SEXP, SEXP L95SEXP, SEXP BetaSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type pars(parsSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type CAL(CALSEXP);
-    Rcpp::traits::input_parameter< int >::type nage(nageSEXP);
-    Rcpp::traits::input_parameter< int >::type nlen(nlenSEXP);
-    Rcpp::traits::input_parameter< double >::type CVLinf(CVLinfSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type LenBins(LenBinsSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type LenMids(LenMidsSEXP);
-    Rcpp::traits::input_parameter< double >::type MK(MKSEXP);
-    Rcpp::traits::input_parameter< double >::type Linf(LinfSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type rLens(rLensSEXP);
-    Rcpp::traits::input_parameter< NumericMatrix >::type Prob(ProbSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type Ml(MlSEXP);
-    Rcpp::traits::input_parameter< double >::type L50(L50SEXP);
-    Rcpp::traits::input_parameter< double >::type L95(L95SEXP);
-    Rcpp::traits::input_parameter< double >::type Beta(BetaSEXP);
-    rcpp_result_gen = Rcpp::wrap(LBSPRopt(pars, CAL, nage, nlen, CVLinf, LenBins, LenMids, MK, Linf, rLens, Prob, Ml, L50, L95, Beta));
-    return rcpp_result_gen;
-END_RCPP
-}
 // bhnoneq_LL
 double bhnoneq_LL(NumericVector stpar, NumericVector year, NumericVector Lbar, NumericVector ss, double Linf, double K, double Lc, int nbreaks);
 RcppExport SEXP _DLMtool_bhnoneq_LL(SEXP stparSEXP, SEXP yearSEXP, SEXP LbarSEXP, SEXP ssSEXP, SEXP LinfSEXP, SEXP KSEXP, SEXP LcSEXP, SEXP nbreaksSEXP) {
@@ -82,8 +31,6 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_DLMtool_LBSPRgen", (DL_FUNC) &_DLMtool_LBSPRgen, 16},
-    {"_DLMtool_LBSPRopt", (DL_FUNC) &_DLMtool_LBSPRopt, 15},
     {"_DLMtool_bhnoneq_LL", (DL_FUNC) &_DLMtool_bhnoneq_LL, 8},
     {NULL, NULL, 0}
 };
