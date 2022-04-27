@@ -3,5 +3,7 @@
 .RData
 .Ruserdata
 docs
-src/DLMtool.dll
-
+src/*.dll
+src/*.o
+src/TMB/*.dll
+src/TMB/*.o

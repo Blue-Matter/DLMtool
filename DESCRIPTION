@@ -1,7 +1,7 @@
 Package: DLMtool
 Type: Package
 Title: Data-Limited Methods Toolkit
-Version: 6.0.3
+Version: 6.0.4
 Authors@R: c(
     person("Tom", "Carruthers",, "tom@bluematterscience.com", role="aut"),
     person("Quang", "Huynh", email = "quang@bluematterscience.com", role = "aut"),
@@ -26,13 +26,14 @@ Imports:
     graphics,
     methods,
     Rcpp,
-    stats
+    stats,
+    TMB (>= 1.7.22)
+LinkingTo: TMB, RcppEigen, Rcpp
 Suggests:
     gridExtra,
     mvtnorm,
     testthat
 LazyLoad: yes
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)
-LinkingTo: Rcpp

@@ -849,6 +849,7 @@ class(LtargetE4) <- "MP"
 #'
 #' @export
 #' @keywords internal
+#'
 LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
   if (MSEtool::NAor0(Data@L50[x])) stop("Data@L50 is NA")
   if (MSEtool::NAor0(Data@L95[x])) stop("Data@L95 is NA")
@@ -875,8 +876,9 @@ LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
   EL <- rLens * Linf
   SDL <- EL * CVLinf
   Ml <- 1/(1+exp(-log(19.0)* (LenMids-L50)/(L95-L50)));
+  nlen <- length(LenMids)
 
-  Prob <- matrix(0, nrow=nage, ncol=length(LenMids))
+  Prob <- matrix(1E-4, nrow=nage, ncol=length(LenMids))
   for (aa in 1:nage) {
     d1 <- dnorm(LenMids, EL[aa], SDL[aa])
     t1 <- dnorm(EL[aa] + SDL[aa]*2.5, EL[aa], SDL[aa]) # truncate at 2.5 sd
@@ -901,39 +903,64 @@ LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
         Ests[y,] <- NA
         Fit[[y]] <- NA
       } else {
+        data <- list(model='LBSPR',
+                     MK=MK,
+                     Beta=Beta,
+                     Linf=Linf,
+                     nage=nage,
+                     nlen=nlen,
+                     CAL=CAL,
+                     LenMids=LenMids,
+                     rLens=rLens,
+                     Ml=Ml,
+                     Prob=Prob)
+
+
         modalL <- LenMids[which.max(CAL)]
         minL <- LenMids[min(which(CAL>0))]
         sl50start <-  mean(c(modalL, minL))
-        starts <- log(c(sl50start/Linf, sl50start/Linf*0.1, 1))
 
-        runOpt <- optim(starts, LBSPRopt, CAL=CAL, nage=nage, nlen=length(LenMids), CVLinf=CVLinf,
-                        LenBins=LenBins, LenMids=LenMids,
-                        MK=MK, Linf=Linf, rLens=rLens, Prob=Prob, Ml=Ml,
-                        L50=L50, L95=L95, Beta=Beta)
+        # sl50start <- LenMids[min(which(cumsum(CAL)/sum(CAL)>0.1))]
 
-        SL50 <- exp(runOpt$par[1]) * Linf
-        dSL50 <- exp(runOpt$par[2])
-        SL95 <- SL50 + dSL50 * SL50
-        FM <- exp(runOpt$par[3])
+        log_sl50 <- log(sl50start/Linf)
+        log_dsl50 <- log(sl50start/Linf*0.1)
+        log_fm <- log(0.99)
+        parameters <- list(log_sl50=log_sl50,
+                           log_dsl50=log_dsl50,
+                           log_fm=log_fm)
 
-        runMod <- LBSPRgen(SL50, SL95, FM, nage=nage, nlen=length(LenMids), CVLinf,
-                           LenBins, LenMids,
-                           MK, Linf, rLens, Prob, Ml,L50, L95, Beta)
+        obj <- TMB::MakeADFun(data=data, parameters=parameters, DLL="DLMtool_TMBExports",
+                              silent=TRUE, hessian=FALSE)
 
-        Ests[y,] <- c(SL50, SL95, FM, runMod[[2]], runOpt$value)
-        Fit[[y]] <- runMod[[1]] * sum(CALdata[y,])
+
+        lower <- rep(-Inf, 3)
+        upper <- rep(Inf, 3)
+        # bounds on SL50
+        min.bin <- min(which(cumsum(CAL)/sum(CAL) >=0.05))
+        if (min.bin !=1) min.bin <- min.bin-1
+        lower[1] <- log(LenMids[min.bin]/Linf)
+        max.bin <- min(which(cumsum(CAL)/sum(CAL) >=0.5))
+        upper[1] <- log(LenMids[max.bin]/Linf)
+
+        # bounds on dsl50
+        lower[2] <- log(0.05)
+
+        starts <- obj$par
+        doopt <- optimize_TMB(obj, bounds=list(lower, upper), starts=starts)
+
+        report <- obj$report(obj$env$last.par.best)
+        SL50 <- report$sl50
+        SL95 <- report$sl95
+        FM <- report$FM
+        SPR <- report$SPR
+        pred <- report$Nc_st
+        NLL <- report$`-nll`
+        Ests[y,] <- c(SL50, SL95, FM, SPR, NLL)
+        Fit[[y]] <- pred * sum(CALdata[y,])
       }
 
     }
 
-    # # ## Plot ###
-    # par(mfrow=c(2,3))
-    # for (y in 1:nrow(CALdata)) {
-    #   # for (y in 1:16) {
-    #   tt <- barplot(CALdata[y,], names.arg=LenMids)
-    #   lines(tt, Fit[[y]], lwd=2)
-    #   }
-    # Ests[1:16,]
 
     if (nrow(Ests)>1) {
       Ests_smooth <- apply(Ests, 2, FilterSmooth)
@@ -967,31 +994,55 @@ LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
         Ests[y,] <- NA
         Fit[[y]] <- NA
       } else {
+        data <- list(model='LBSPR',
+                     MK=MK,
+                     Beta=Beta,
+                     Linf=Linf,
+                     nage=nage,
+                     nlen=nlen,
+                     CAL=CAL,
+                     LenMids=LenMids,
+                     rLens=rLens,
+                     Ml=Ml,
+                     Prob=Prob)
+
         modalL <- LenMids[which.max(CAL)]
         minL <- LenMids[min(which(CAL>0))]
         sl50start <-  mean(c(modalL, minL))
-        starts <- log(c(sl50start/Linf, sl50start/Linf*0.1, 1))
-        if (MK > 5) MK <- 5
-        if (MK < 0.4) MK <- 0.4
-        runOpt <- try(optim(starts, LBSPRopt, CAL=CAL, nage=101, nlen=length(LenMids), CVLinf=CVLinf,
-                            LenBins=LenBins, LenMids=LenMids,
-                            MK=MK, Linf=Linf, rLens=rLens, Prob=Prob, Ml=Ml, L50=L50,
-                            L95=L95, Beta=Beta), silent=TRUE)
-        if (inherits(runOpt,'try-error')) {
-          warning("Error in LBSPR ignoring estimate and using previous year. Sim = ", x)
-        } else {
-          SL50 <- exp(runOpt$par[1]) * Linf
-          dSL50 <- exp(runOpt$par[2])
-          SL95 <- SL50 + dSL50 * SL50
-          FM <- exp(runOpt$par[3])
 
-          runMod <- LBSPRgen(SL50, SL95, FM, nage=101, nlen=length(LenMids), CVLinf,
-                             LenBins, LenMids,
-                             MK, Linf, rLens=rLens, Prob=Prob, Ml=Ml, L50, L95, Beta)
+        log_sl50 <- log(sl50start/Linf)
+        log_dsl50 <- log(sl50start/Linf*0.1)
+        log_fm <- log(0.99)
+        parameters <- list(log_sl50=log_sl50,
+                           log_dsl50=log_dsl50,
+                           log_fm=log_fm)
 
-          Ests[y,] <- c(SL50, SL95, FM, runMod[[2]], runOpt$value)
-          Fit[[y]] <- runMod[[1]] * sum(CALdata[y,])
-        }
+        obj <- TMB::MakeADFun(data, parameters, DLL="DLMtool_TMBExports", silent=TRUE, hessian=FALSE)
+
+        lower <- rep(-Inf, 3)
+        upper <- rep(Inf, 3)
+        # bounds on SL50
+        min.bin <- min(which(cumsum(CAL)/sum(CAL) >=0.05))
+        if (min.bin !=1) min.bin <- min.bin-1
+        lower[1] <- log(LenMids[min.bin]/Linf)
+        max.bin <- min(which(cumsum(CAL)/sum(CAL) >=0.5))
+        upper[1] <- log(LenMids[max.bin]/Linf)
+
+        # bounds on dsl50
+        lower[2] <- log(0.05)
+
+        starts <- obj$par
+        doopt <- optimize_TMB(obj, bounds=list(lower, upper), starts=starts)
+
+        report <- obj$report(obj$env$last.par.best)
+        SL50 <- report$sl50
+        SL95 <- report$sl95
+        FM <- report$FM
+        SPR <- report$SPR
+        pred <- report$Nc_st
+        NLL <- report$`-nll`
+        Ests[y,] <- c(SL50, SL95, FM, SPR, NLL)
+        Fit[[y]] <- pred * sum(CALdata[y,])
       }
     }
 
@@ -1020,7 +1071,21 @@ LBSPR_ <- function(x, Data, reps, n=5, smoother=TRUE, R=0.2) {
     }
   }
 
- return(list(Ests=Ests, Ests_smooth=Ests_smooth, Fit=Fit))
+  return(list(Ests=Ests, Ests_smooth=Ests_smooth, Fit=Fit))
+}
+
+optimize_TMB <- function(obj, bounds, starts, restart=10) {
+
+  step.min <- 1
+  step.max <- 1
+  control <- list(eval.max=1e4, iter.max=1e4,
+                  step.min=step.min, step.max=step.max,
+                  trace=0, abs.tol=1e-20)
+
+  opt <- suppressWarnings(nlminb(starts, obj$fn, obj$gr,
+                                 lower=bounds[[1]], upper=bounds[[2]],
+                                 control=control))
+  opt
 }
 
 

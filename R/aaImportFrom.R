@@ -6,6 +6,7 @@
 #' @importFrom methods new
 #' @importFrom MSEtool TACfilter
 #' @importFrom Rcpp evalCpp
-#' @importFrom stats approx coef dbeta dnorm lm loess median optim optimize
+#' @importFrom stats approx coef dbeta dnorm lm loess nlminb median optim optimize
 #' predict quantile rbeta rlnorm rnorm runif sd
+#'
 NULL
