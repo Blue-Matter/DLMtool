@@ -2,13 +2,13 @@
 
 #define TMB_LIB_INIT R_init_DLMtool_TMBExports
 #include <TMB.hpp>
-#include "LBSPR_test.hpp"
+#include "LBSPR.hpp"
 
 template<class Type>
 Type objective_function<Type>::operator() () {
   DATA_STRING(model);
-  if(model == "LBSPR_test") {
-    return LBSPR_test(this);
+  if(model == "LBSPR") {
+    return LBSPR(this);
   } else {
     Rf_error("Unknown model.");
   }
