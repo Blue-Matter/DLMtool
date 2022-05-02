@@ -682,7 +682,7 @@ iVB <- function(t0, K, Linf, L) {
 #'
 #' @return A vector of length `reps` of samples of the negative slope of the catch-curve (Z)
 #' @export
-#'
+#' @keywords internal
 #' @examples
 #' CC(1, MSEtool::SimulatedData, plot=TRUE)
 CC <- function(x, Data, reps = 100, plot=FALSE) {

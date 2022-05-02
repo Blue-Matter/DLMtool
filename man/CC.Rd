@@ -24,3 +24,4 @@ Age-based Catch Curve
 \examples{
 CC(1, MSEtool::SimulatedData, plot=TRUE)
 }
+\keyword{internal}
