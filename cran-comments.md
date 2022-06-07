@@ -1,3 +1,5 @@
+Note to CRAN:
+A minor patch to fix an error associated with latest version of MSEtool package
 
 ## Test environments
 * local - Windows 4.1.3
