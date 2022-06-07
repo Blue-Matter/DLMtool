@@ -18,7 +18,7 @@ derived prior for intrinsic rate of increase (McAllister method, below)"><meta p
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DLMtool Functions</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.0.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.0.5</span>
       </span>
     </div>
 
@@ -90,7 +90,7 @@ a prior for current stock depletion.</p></li>
 
 <p><code>SPSRA</code>: Cat, Dep, FMSY_M, L50, MaxAge, Mort, steep, vbK, vbLinf, vbt0, wla, wlb</p>
 
-<p><code>SPSRA_ML</code>: CAL, Cat, Dep, FMSY_M, L50, Lbar, Lc, MaxAge, Mort, steep, vbK, vbLinf, vbt0, wla, wlb</p>
+<p><code>SPSRA_ML</code>: CAL, Cat, Dep, FMSY_M, L50, Lbar, Lc, MaxAge, Mort, Year, steep, vbK, vbLinf, vbt0, wla, wlb</p>
     </div>
     <div id="rendered-equations">
     <h2>Rendered Equations</h2>
@@ -126,11 +126,11 @@ J. Fish. Aquat. Sci. 58: 1871-1890.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">SPSRA</span><span class="op">(</span><span class="fl">1</span>, <span class="fu">MSEtool</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MSEtool/man/SimulatedData.html" class="external-link">SimulatedData</a></span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="SPSRA-1.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> TAC (median) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      99354.3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     49181.63 </span>
 <span class="r-in"><span class="fu">SPSRA_ML</span><span class="op">(</span><span class="fl">1</span>, <span class="fu">MSEtool</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MSEtool/man/SimulatedData.html" class="external-link">SimulatedData</a></span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="SPSRA-2.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> TAC (median) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      1081226 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      1029254 </span>
 </code></pre></div>
     </div>
   </div>
