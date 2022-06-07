@@ -292,7 +292,7 @@ Fratio_plot <- function(x, Data, TAC, runFrat) {
 
 
 GB_CC_plot <- function(x, Catrec, TAC, Data) {
-  ylim <- range(c(TAC, Catrec))
+  ylim <- range(c(TAC, Catrec), na.rm=TRUE)
   tt <- boxplot(TAC, ylab=paste0("TAC (", Data@Units, ")"), ylim=ylim)
   points(1, Data@Cref[x], pch=16, col="orange", cex=2)
   text(1, Data@Cref[x], pch=16, col="orange", "Cref", pos=2)
@@ -320,7 +320,7 @@ GB_target_plot <- function(Itarg, Irec, I0, Data, Catrec, TAC) {
   on.exit(par(op))
   par(mfrow=c(1,2))
 
-  ylim <- range(c(Itarg, Irec, I0))
+  ylim <- range(c(Itarg, Irec, I0), na.rm=TRUE)
   boxplot(Itarg, ylim=ylim, ylab="Index target")
   points(1, Irec, pch=16, col="blue", cex=2)
   text(1, Irec, "Irec", col="blue", cex=1.25, pos=2)
@@ -381,7 +381,7 @@ ICI_plot <- function(Years, Index, ci.low, ci.high, TAC, Cat, Data) {
   lines(Years, rep(mean(ci.high, na.rm=TRUE), length(Years)), lty=2)
   text(quantile(Years, 0.05), mean(ci.high, na.rm=TRUE), pos=3, "CI_high")
 
-  ylim <- range(c(TAC, Cat))
+  ylim <- range(c(TAC, Cat), na.rm=TRUE)
   boxplot(TAC, col="grey", width=1, outline=TRUE, ylab=paste0("TAC (", Data@Units, ")"), ylim=ylim)
   points(Cat, pch=16, cex=1.5, col="blue", xpd=NA)
   text(1, Cat, "Last Catch", pos=2, col="blue")
@@ -401,7 +401,7 @@ Iratio_plot <- function(Data, I.num, ind.num, I.den, ind.den, alpha, TAC, Cat) {
 
   boxplot(alpha, ylab="alpha", col="grey")
 
-  ylim <- range(c(TAC, Cat))
+  ylim <- range(c(TAC, Cat), na.rm=TRUE)
   boxplot(TAC, col="grey", width=1, outline=TRUE, ylab=paste0("TAC (", Data@Units, ")"), ylim=ylim)
   points(Cat, pch=16, cex=1.5, col="blue", xpd=NA)
   text(1, Cat, "Last Catch", pos=2, col="blue")
@@ -416,7 +416,7 @@ Islope_plot <- function(runIslope, Data) {
   par(mfrow=c(1,2))
   plot(runIslope$Years, log(runIslope$I_hist), xlab="Year", ylab="log Index", bty="l", type="l", lwd=2)
 
-  ylim <- range(c(runIslope$C_dat, runIslope$TACstar, runIslope$TAC))
+  ylim <- range(c(runIslope$C_dat, runIslope$TACstar, runIslope$TAC), na.rm=TRUE)
   Years1 <- c(runIslope$Years, max(runIslope$Years)+1)
   plot(Years1, c(runIslope$C_dat, NA), xlab="Year", ylab=paste0("Catch (", Data@Units, ")"),
        bty="l", type="l", lwd=2, ylim=ylim)
@@ -436,7 +436,7 @@ ITe_plot <- function(x, Data, rec, yrsmth) {
   on.exit(op)
   par(mfrow=c(1,2), oma=c(1,1,1,1), mar=c(5,4,1,4))
 
-  ylim <- range(c(Data@Ind[x, ind],Data@Iref[x]))
+  ylim <- range(c(Data@Ind[x, ind],Data@Iref[x]), na.rm=TRUE)
   plot(Data@Year[ind], Data@Ind[x, ind], ylim=ylim, type="b", bty="l",
        xlab="Year", ylab="Index", lwd=2)
   abline(h= mean(Data@Ind[x, ind]), lty=2)
@@ -462,7 +462,7 @@ Lratio_BHI_plot <- function(mlbin, CAL, LSQ, Lref, Data, x, TAC, Cc, yrsmth) {
   text(mean(Lref), quantile(CAL, 0.95), pos=4, "Reference length", col="blue")
 
 
-  ylim <- range(c(Data@Cat[x,], TAC, Cc ))
+  ylim <- range(c(Data@Cat[x,], TAC, Cc ), na.rm=TRUE)
 
   plot(c(Data@Year, max(Data@Year)+1), c(Data@Cat[x,],NA), type="l", xlab="Year",
        ylab=paste0("Catch (", Data@Units, ")"),
@@ -502,14 +502,14 @@ Rcontrol_plot <- function(rsamp, ind, G_new, B_hist, SP_hist, SP_mu, B_dat, Data
        ylab="Smoothed Biomass", lwd=2)
   points(Data@Year[ind], exp(B_dat))
 
-  ylim <- range(c(SP_hist, SP_mu))
+  ylim <- range(c(SP_hist, SP_mu), na.rm=TRUE)
   plot(c(Data@Year[yind], max(Data@Year[yind])+1), c(SP_hist, NA), type="l",
        bty="l", xlab="Year", ylab="Surplus Production", lwd=2, ylim=ylim)
   points(max(Data@Year[yind])+1, mean(SP_mu), pch=16, cex=1.5, col='blue')
   text(max(Data@Year[yind])+1, mean(SP_mu), pos=2, "predicted SP", col="blue", xpd=NA)
 
 
-  ylim <- range(c(C_hist, TAC, TACa))
+  ylim <- range(c(C_hist, TAC, TACa), na.rm=TRUE)
   plot(c(Data@Year[ind], max(Data@Year[ind])+1), c(C_hist, NA), type="l",
        bty="l", xlab="Year", ylab=paste0("Catch (", Data@Units, ")"), lwd=2, ylim=ylim)
   points(max(Data@Year[ind])+1, median(TACa, na.rm=TRUE), cex=1.5, pch=16, col="red")

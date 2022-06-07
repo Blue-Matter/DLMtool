@@ -1,5 +1,10 @@
 The current version of the DLMtool package is available for download from [CRAN](https://CRAN.R-project.org/package=DLMtool).
 
+## DLMtool 6.0.5
+
+### Minor Changes
+- fixed minor bug in plotting MP output when NAs in the TAC
+
 ## DLMtool 6.0.4
 
 ### Minor Changes
