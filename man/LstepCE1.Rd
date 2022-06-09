@@ -56,7 +56,7 @@ The TAE is calculated as:
              \textrm{TAE}^* - S \textrm{TAE}^* & \textrm{if } r < 0.98 \\
              \textrm{TAE}^* & \textrm{if } > 1.058 \\
              \end{array}\right.
-           }{}
+           }
 where \eqn{\textrm{TAE}^*} is effort in the previous year, \eqn{S} is
 step-size determined by \code{stepsz},
 and \eqn{r} is the ratio of \eqn{L_\textrm{recent}} and \eqn{L_\textrm{ave}}

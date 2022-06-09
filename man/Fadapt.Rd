@@ -55,7 +55,7 @@ and:
              2 & \textrm{if }  F_\textrm{old} > F_{\textrm{lim}_2} \\
              \log{\frac{F_\textrm{frac}}{1-F_\textrm{frac}}} & \textrm{if } F_{\textrm{lim}_1} \leq F_\textrm{old} \leq F_{\textrm{lim}_2} \\
              \end{array}\right.
-           }{}
+           }
 where \eqn{-F_{\textrm{frac}} = \frac{F_{\textrm{old}} - F_{\textrm{lim}_1}}{F_{\textrm{lim}_3}} },
 \eqn{F_\textrm{old} = \sum{\frac{C_\textrm{hist}}{B_\textrm{hist}}}/n}
 where \eqn{C_\textrm{hist}} and \eqn{B_\textrm{hist}} are smooth catch and biomass over last \code{yrsmth},

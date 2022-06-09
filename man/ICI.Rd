@@ -36,7 +36,7 @@ defined as:
              u & \textrm{if } I > \textrm{CI}_H \\
              1 & \textrm{if } \textrm{CI}_L \leq I \leq \textrm{CI}_H \\
              \end{array}\right.
-           }{}
+           }
 where \eqn{I} is the index in the most recent year, \eqn{d} is 0.75 for \code{ICI} and \code{ICI2},
 \eqn{u} is 1.05 and 1.25 for\code{ICI} and \code{ICI2} respectively, and \eqn{\textrm{CI}_L}
 and \eqn{\textrm{CI}_L} are the lower and upper bound of the confidence

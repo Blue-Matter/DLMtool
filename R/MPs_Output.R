@@ -1588,7 +1588,7 @@ class(DynF) <- "MP"
 #'              2 & \textrm{if }  F_\textrm{old} > F_{\textrm{lim}_2} \\
 #'              \log{\frac{F_\textrm{frac}}{1-F_\textrm{frac}}} & \textrm{if } F_{\textrm{lim}_1} \leq F_\textrm{old} \leq F_{\textrm{lim}_2} \\
 #'              \end{array}\right.
-#'            }{}
+#'            }
 #' where \eqn{-F_{\textrm{frac}} = \frac{F_{\textrm{old}} - F_{\textrm{lim}_1}}{F_{\textrm{lim}_3}} },
 #' \eqn{F_\textrm{old} = \sum{\frac{C_\textrm{hist}}{B_\textrm{hist}}}/n}
 #' where \eqn{C_\textrm{hist}} and \eqn{B_\textrm{hist}} are smooth catch and biomass over last `yrsmth`,
@@ -2374,7 +2374,7 @@ class(Gcontrol) <- "MP"
 #'              u & \textrm{if } I > \textrm{CI}_H \\
 #'              1 & \textrm{if } \textrm{CI}_L \leq I \leq \textrm{CI}_H \\
 #'              \end{array}\right.
-#'            }{}
+#'            }
 #'  where \eqn{I} is the index in the most recent year, \eqn{d} is 0.75 for `ICI` and `ICI2`,
 #'  \eqn{u} is 1.05 and 1.25 for`ICI` and `ICI2` respectively, and \eqn{\textrm{CI}_L}
 #'  and \eqn{\textrm{CI}_L} are the lower and upper bound of the confidence
@@ -3411,7 +3411,7 @@ LstepCC_ <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 5, xx = 0, stepsz
 #'              \textrm{TAC}^* - S \textrm{TAC}^* & \textrm{if } r < 0.98 \\
 #'              \textrm{TAC}^* & \textrm{if } > 1.058 \\
 #'              \end{array}\right.
-#'            }{}
+#'            }
 #' where \eqn{\textrm{TAC}^*} is (1-`xx`) times average catch in the first year,
 #' and previous catch in all projection years, \eqn{S} is step-size determined by `stepsz`,
 #' and \eqn{r} is the ratio of \eqn{L_\textrm{recent}} and \eqn{L_\textrm{ave}}
@@ -3805,7 +3805,7 @@ class(Rcontrol2) <- "MP"
 #'               C_{y-1} (1+K_2 \left| \lambda \right| ) & \textrm{if } \lambda \geq 0 \\
 #'               C_{y-1} (1-K_1 \left| \lambda \right| ^\gamma) & \textrm{if } \lambda < 0\\
 #'              \end{array}\right.
-#'            }{}
+#'            }
 #'  where \eqn{\lambda} is the slope of index over the last `yrmsth` years, and
 #'  \eqn{K_1}, \eqn{K_2}, and \eqn{\gamma} are arguments to the MP.
 #'
@@ -3818,7 +3818,7 @@ class(Rcontrol2) <- "MP"
 #'              R^{1-\textrm{epsR}} & \textrm{if } R \geq 1 \\
 #'              R^{1+\textrm{epsR}} & \textrm{if } R < 1 \\
 #'              \end{array}\right.
-#'            }{}
+#'            }
 #' where \eqn{\textrm{epsR}} is a control parameter and:
 #' \eqn{R = \frac{\bar{r}}{\phi}}
 #' where \eqn{\bar{r}} is mean recruitment over last `tauR` years and \eqn{\phi}
@@ -3969,7 +3969,7 @@ class(SBT2) <- "MP"
 #'               C_{y-1} & \textrm{if } \alpha_1 < r < \alpha_2 \\
 #'               \textrm{bet}_2 (b_2 - b_1 + C_{y-2} )  & \textrm{if } r > \alpha_2 \\
 #'              \end{array}\right.
-#'            }{}
+#'            }
 #'  where \eqn{\textrm{bet}_1} and \eqn{\textrm{bet}_2} are elements in `bet`,
 #'  \eqn{r} is the ratio of the index in the most recent two years, \eqn{C_{y-1}}
 #'   is catch in the previous year, \eqn{b_1} and \eqn{b_2} are ratio of index
@@ -4053,7 +4053,7 @@ class(SPmod) <- "MP"
 #'               \bar{C} & \textrm{if } \alpha_1 < r < \alpha_2 \\
 #'               \textrm{bet}_2 \textrm{SP}  & \textrm{if } r > \alpha_2 \\
 #'              \end{array}\right.
-#'            }{}
+#'            }
 #'  where \eqn{r} is the ratio of predicted biomass in next year to biomass in
 #'  current year \eqn{\bar{C}} is the mean catch over the last `yrmsth` years, \eqn{\alpha_1}
 #'  and  \eqn{\alpha_2} are specified in `alp`, \eqn{\textrm{bet}_1} and \eqn{\textrm{bet}_2}

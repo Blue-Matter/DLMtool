@@ -56,7 +56,7 @@ For \code{SBT1} the TAC is calculated as:
               C_{y-1} (1+K_2 \left| \lambda \right| ) & \textrm{if } \lambda \geq 0 \\
               C_{y-1} (1-K_1 \left| \lambda \right| ^\gamma) & \textrm{if } \lambda < 0\\
              \end{array}\right.
-           }{}
+           }
 where \eqn{\lambda} is the slope of index over the last \code{yrmsth} years, and
 \eqn{K_1}, \eqn{K_2}, and \eqn{\gamma} are arguments to the MP.
 
@@ -69,7 +69,7 @@ is a target catch (\code{Data@Cref}), and :
              R^{1-\textrm{epsR}} & \textrm{if } R \geq 1 \\
              R^{1+\textrm{epsR}} & \textrm{if } R < 1 \\
              \end{array}\right.
-           }{}
+           }
 where \eqn{\textrm{epsR}} is a control parameter and:
 \eqn{R = \frac{\bar{r}}{\phi}}
 where \eqn{\bar{r}} is mean recruitment over last \code{tauR} years and \eqn{\phi}

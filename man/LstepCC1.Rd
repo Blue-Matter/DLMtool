@@ -85,7 +85,7 @@ The TAC is calculated as:
              \textrm{TAC}^* - S \textrm{TAC}^* & \textrm{if } r < 0.98 \\
              \textrm{TAC}^* & \textrm{if } > 1.058 \\
              \end{array}\right.
-           }{}
+           }
 where \eqn{\textrm{TAC}^*} is (1-\code{xx}) times average catch in the first year,
 and previous catch in all projection years, \eqn{S} is step-size determined by \code{stepsz},
 and \eqn{r} is the ratio of \eqn{L_\textrm{recent}} and \eqn{L_\textrm{ave}}

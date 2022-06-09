@@ -50,7 +50,7 @@ The TAC is calculated as:
               \bar{C} & \textrm{if } \alpha_1 < r < \alpha_2 \\
               \textrm{bet}_2 \textrm{SP}  & \textrm{if } r > \alpha_2 \\
              \end{array}\right.
-           }{}
+           }
 where \eqn{r} is the ratio of predicted biomass in next year to biomass in
 current year \eqn{\bar{C}} is the mean catch over the last \code{yrmsth} years, \eqn{\alpha_1}
 and  \eqn{\alpha_2} are specified in \code{alp}, \eqn{\textrm{bet}_1} and \eqn{\textrm{bet}_2}

@@ -40,7 +40,7 @@ The TAC is calculated as:
               C_{y-1} & \textrm{if } \alpha_1 < r < \alpha_2 \\
               \textrm{bet}_2 (b_2 - b_1 + C_{y-2} )  & \textrm{if } r > \alpha_2 \\
              \end{array}\right.
-           }{}
+           }
 where \eqn{\textrm{bet}_1} and \eqn{\textrm{bet}_2} are elements in \code{bet},
 \eqn{r} is the ratio of the index in the most recent two years, \eqn{C_{y-1}}
 is catch in the previous year, \eqn{b_1} and \eqn{b_2} are ratio of index
