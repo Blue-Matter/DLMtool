@@ -51,37 +51,46 @@
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>Iteration number</p></dd>
+
+
 <dt>Data</dt>
 <dd><p>An object of class <code>Data</code></p></dd>
+
+
 <dt>reps</dt>
 <dd><p>Number of reps</p></dd>
+
+
 <dt>plot</dt>
 <dd><p>Logical. Show the plot?</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A vector of length <code>reps</code> of samples of the negative slope of the catch-curve (Z)</p>
+    
+
+<p>A vector of length <code>reps</code> of samples of the negative slope of the catch-curve (Z)</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">CC</span><span class="op">(</span><span class="fl">1</span>, <span class="fu">MSEtool</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MSEtool/man/SimulatedData.html" class="external-link">SimulatedData</a></span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="CC-1.png" alt="" width="700" height="433"></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] 0.6990496 0.6476062 0.5617006 0.5311358 0.6081002 0.6919404 0.7819479</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   [8] 0.6408509 0.7074919 0.4664821 0.6587687 0.5471040 0.6151472 0.6072823</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [15] 0.6365262 0.7171379 0.5817345 0.5275734 0.5468464 0.5351727 0.6859143</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [22] 0.5013986 0.6225579 0.6059024 0.7670824 0.5735749 0.7022698 0.5578037</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] 0.5152351 0.6548091 0.6423037 0.7665736 0.6475645 0.5490392 0.5420989</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [36] 0.6423098 0.5855763 0.6689745 0.6576768 0.8279332 0.5420900 0.6052716</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] 0.7326956 0.5180633 0.6358075 0.6012823 0.7796253 0.5802369 0.7023720</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [50] 0.6937296 0.5840068 0.6839560 0.5735117 0.6828253 0.6964849 0.5589159</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] 0.5075989 0.6803791 0.5238686 0.4927381 0.5148577 0.5821881 0.5458715</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [64] 0.6510838 0.7169246 0.5268734 0.7123964 0.6456359 0.6676325 0.6639810</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [71] 0.7968340 0.5087242 0.6720941 0.6423552 0.5740801 0.6362861 0.8674468</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] 0.5694342 0.5544660 0.5492244 0.5171802 0.5815503 0.5959338 0.6578036</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] 0.6049527 0.5645805 0.7008810 0.8024837 0.6200079 0.5264208 0.5497118</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [92] 0.6702968 0.6475164 0.5204150 0.7354310 0.7673619 0.7386371 0.7861685</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [99] 0.5263547 0.5831185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] 0.6393838 0.5114897 0.5010312 0.6304802 0.7331742 0.6010162 0.4110346</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [8] 0.6712704 0.7011324 0.7220530 0.5225550 0.4870786 0.5116627 0.5026399</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [15] 0.7527466 0.7417920 0.6564195 0.5540611 0.5837026 0.5235939 0.7375968</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [22] 0.5588724 0.6015661 0.5349872 0.6439979 0.7613302 0.6681837 0.6411048</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] 0.5328285 0.5296512 0.5066011 0.5058586 0.5362010 0.6269554 0.6171490</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [36] 0.6169940 0.6619589 0.4033376 0.6739999 0.5752035 0.5615641 0.7691221</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] 0.5210151 0.6738198 0.7142160 0.6790225 0.6342893 0.7315200 0.8061341</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [50] 0.4915443 0.8222233 0.8077742 0.5756720 0.6319381 0.5438207 0.7304189</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] 0.5535921 0.7461896 0.5519831 0.5243382 0.6114687 0.6716687 0.6820846</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [64] 0.6468989 0.5673807 0.6001486 0.6811975 0.6217619 0.6481718 0.5900355</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [71] 0.6380217 0.7394329 0.6080923 0.5600576 0.7508654 0.6710688 0.6799470</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [78] 0.7957056 0.5415479 0.5358666 0.5102592 0.6982259 0.5895596 0.8097519</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] 0.6075502 0.6519148 0.8201570 0.7646015 0.7456576 0.6493079 0.7192931</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [92] 0.5773885 0.7266942 0.6489859 0.5238411 0.6446359 0.6591064 0.5466132</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [99] 0.6140479 0.4762874</span>
 </code></pre></div>
     </div>
   </div>
@@ -96,7 +105,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>

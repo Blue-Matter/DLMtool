@@ -63,21 +63,36 @@ multiplied by (1-<code>xx</code>)</p>
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A position in the data object</p></dd>
+
+
 <dt>Data</dt>
 <dd><p>A data object</p></dd>
+
+
 <dt>reps</dt>
 <dd><p>The number of stochastic samples of the MP recommendation(s)</p></dd>
+
+
 <dt>plot</dt>
 <dd><p>Logical. Show the plot?</p></dd>
+
+
 <dt>yrsmth</dt>
 <dd><p>Years over which to calculate mean catches</p></dd>
+
+
 <dt>xx</dt>
 <dd><p>Parameter controlling the TAC. Mean catches are multiplied by
 (1-<code>xx</code>)</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An object of class <code><a href="https://rdrr.io/pkg/MSEtool/man/Rec-class.html" class="external-link">Rec-class</a></code> with the <code>TAC</code> slot populated with a numeric vector of length <code>reps</code></p>
+    
+
+<p>An object of class <code><a href="https://rdrr.io/pkg/MSEtool/man/Rec-class.html" class="external-link">Rec-class</a></code> with the <code>TAC</code> slot populated with a numeric vector of length <code>reps</code></p>
+
+
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -132,32 +147,32 @@ ICES Journal of Marine Science: Journal Du Conseil 72 (1). 251-61.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">CC1</span><span class="op">(</span><span class="fl">1</span>, <span class="fu">MSEtool</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html" class="external-link">Cobia</a></span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="CC1-1.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> TAC (median) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     800.7497 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     793.4484 </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">CC2</span><span class="op">(</span><span class="fl">1</span>, <span class="fu">MSEtool</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html" class="external-link">Cobia</a></span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="CC1-2.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> TAC (median) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     736.4136 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     723.0742 </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">CC3</span><span class="op">(</span><span class="fl">1</span>, <span class="fu">MSEtool</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html" class="external-link">Cobia</a></span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="CC1-3.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> TAC (median) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     638.0769 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     631.4726 </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">CC4</span><span class="op">(</span><span class="fl">1</span>, <span class="fu">MSEtool</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html" class="external-link">Cobia</a></span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="CC1-4.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> TAC (median) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     546.9178 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     555.7753 </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">CC5</span><span class="op">(</span><span class="fl">1</span>, <span class="fu">MSEtool</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html" class="external-link">Cobia</a></span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="CC1-5.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> TAC (median) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      475.338 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     484.1779 </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">CurC</span><span class="op">(</span><span class="fl">1</span>, <span class="fu">MSEtool</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html" class="external-link">Cobia</a></span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="CC1-6.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> TAC (median) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     499.3641 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     481.9526 </span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
@@ -173,7 +188,7 @@ ICES Journal of Marine Science: Journal Du Conseil 72 (1). 251-61.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>

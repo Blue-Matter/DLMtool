@@ -53,21 +53,38 @@ fishing mortality rate to update a TAC</p>
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>A position in the data object</p></dd>
+
+
 <dt>Data</dt>
 <dd><p>A data object</p></dd>
+
+
 <dt>reps</dt>
 <dd><p>The number of stochastic samples of the MP recommendation(s)</p></dd>
+
+
 <dt>plot</dt>
 <dd><p>Logical. Show the plot?</p></dd>
+
+
 <dt>yrsmth</dt>
 <dd><p>Years over which to smooth recent estimates of surplus
 production</p></dd>
+
+
 <dt>gg</dt>
 <dd><p>A gain parameter controlling the speed in update in TAC.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>An object of class <code><a href="https://rdrr.io/pkg/MSEtool/man/Rec-class.html" class="external-link">Rec-class</a></code> with the <code>TAC</code> slot populated with a numeric vector of length <code>reps</code>A numeric vector of quota recommendations</p>
+    
+
+<p>An object of class <code><a href="https://rdrr.io/pkg/MSEtool/man/Rec-class.html" class="external-link">Rec-class</a></code> with the <code>TAC</code> slot populated with a numeric vector of length <code>reps</code></p>
+
+
+
+<p>A numeric vector of quota recommendations</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -143,7 +160,7 @@ http://www.iattc.org/Meetings/Meetings2014/MAYSAC/PDFs/SAC-05-10b-Management-Str
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">Fadapt</span><span class="op">(</span><span class="fl">1</span>, Data<span class="op">=</span><span class="fu">MSEtool</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/MSEtool/man/Data-class-objects.html" class="external-link">Atlantic_mackerel</a></span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-plt img"><img src="Fadapt-1.png" alt="" width="700" height="433"></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> TAC (median) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     8.148702 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      8.11752 </span>
 </code></pre></div>
     </div>
   </div>
@@ -158,7 +175,7 @@ http://www.iattc.org/Meetings/Meetings2014/MAYSAC/PDFs/SAC-05-10b-Management-Str
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>
