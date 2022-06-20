@@ -1,5 +1,5 @@
 Note to CRAN:
-A minor patch to fix an error associated with latest version of MSEtool package
+A minor patch to fix incorrectly specified equations as noted by CRAN checks
 
 ## Test environments
 * local - Windows 4.1.3
