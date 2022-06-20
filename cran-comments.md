@@ -1,5 +1,5 @@
 Note to CRAN:
-A minor patch to fix incorrectly specified equations as noted by CRAN checks
+A minor patch to fix incorrectly specified equations in Rd files as noted by CRAN team
 
 ## Test environments
 * local - Windows 4.1.3

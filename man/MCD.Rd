@@ -64,6 +64,4 @@ MCD4010(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 }
 \author{
 T. Carruthers
-
-T. Carruthers
 }

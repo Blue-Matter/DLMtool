@@ -6,7 +6,7 @@
 \alias{DLMtool-package}
 \title{DLMtool: Data-Limited Methods Toolkit}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
 A collection of data-limited management procedures that can be evaluated with management strategy evaluation with the 'MSEtool' package, or applied to fishery data to provide management recommendations.
 }
