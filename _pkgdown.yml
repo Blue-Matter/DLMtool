@@ -1,8 +1,7 @@
 title: DLMtool Functions
 icon: logo.png
-templates: 
-   params: 
-    bootswatch: yeti
+template:
+  bootstrap: 5
 navbar: 
    title: DLMtool Documentation
    type: inverse
