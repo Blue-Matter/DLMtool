@@ -1,4 +1,4 @@
-#' @rawNamespace useDynLib(DLMtool, .registration=TRUE); useDynLib(DLMtool_TMBExports)
+#' @rawNamespace useDynLib(DLMtool)
 #' @keywords internal
 "_PACKAGE"
 

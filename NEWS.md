@@ -2,6 +2,7 @@ The current version of the DLMtool package is available for download from [CRAN]
 
 ## DLMtool 6.0.7
 - patch to fix issues with NEWS.md
+- removed `LBSPR` MP due to issues with compiling the C+ code
 
 ## DLMtool 6.0.6
 - patch to fix typos in help documentation 

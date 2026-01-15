@@ -2,6 +2,6 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 bhnoneq_LL <- function(stpar, year, Lbar, ss, Linf, K, Lc, nbreaks) {
-    .Call(`_DLMtool_bhnoneq_LL`, stpar, year, Lbar, ss, Linf, K, Lc, nbreaks)
+    .Call('_DLMtool_bhnoneq_LL', PACKAGE = 'DLMtool', stpar, year, Lbar, ss, Linf, K, Lc, nbreaks)
 }
 

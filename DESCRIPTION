@@ -26,9 +26,8 @@ Imports:
     graphics,
     methods,
     Rcpp,
-    stats,
-    TMB (>= 1.7.22)
-LinkingTo: TMB, RcppEigen, Rcpp
+    stats
+LinkingTo: Rcpp
 Suggests:
     gridExtra,
     mvtnorm,

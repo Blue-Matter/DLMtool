@@ -1,6 +1,0 @@
-CXX_STD = CXX14
-
-# REQUIRED for TMB on Windows
-PKG_CXXFLAGS += -Wa,-mbig-obj
-
-
