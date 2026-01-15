@@ -1,0 +1,127 @@
+# DLMtool
+
+The Data-Limited Methods toolkit (DLMtool) is a collection of
+data-limited management procedures that can be evaluated with management
+strategy evaluation (MSE).
+
+DLMtool is part of the `openMSE` collection of packages.
+
+You can learn more about the `openMSE` packages at the [openMSE
+documentation site](https://openMSE.com).
+
+## Installation
+
+You can install the released version of DLMtool from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("DLMtool")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("Blue-Matter/DLMtool")
+```
+
+# Package index
+
+## Output Controls
+
+Management Procedures that return a total allowable catch (TAC)
+
+- [`AvC()`](AvC.md) : Average Catch
+- [`BK()`](BK.md) [`BK_CC()`](BK.md) [`BK_ML()`](BK.md) : Beddington and
+  Kirkwood life-history MP
+- [`CC1()`](CC1.md) [`CC2()`](CC1.md) [`CC3()`](CC1.md)
+  [`CC4()`](CC1.md) [`CC5()`](CC1.md) [`CurC()`](CC1.md) : Geromont and
+  Butterworth (2015) Constant Catch
+- [`CompSRA()`](CompSRA.md) [`CompSRA4010()`](CompSRA.md) :
+  Age-Composition Stock-Reduction Analysis
+- [`DCACs()`](DCAC.md) [`DCAC()`](DCAC.md) [`DCAC_40()`](DCAC.md)
+  [`DCAC4010()`](DCAC.md) [`DCAC_ML()`](DCAC.md) [`DAAC()`](DCAC.md)
+  [`HDAAC()`](DCAC.md) : Depletion Corrected Average Catch
+- [`DBSRA()`](DBSRA.md) [`DBSRA_40()`](DBSRA.md)
+  [`DBSRA4010()`](DBSRA.md) : Depletion-Based Stock Reduction Analysis
+- [`DD()`](DD.md) [`DD4010()`](DD.md) : Delay - Difference Stock
+  Assessment
+- [`Fratio()`](Fratio.md) [`Fratio4010()`](Fratio.md)
+  [`DepF()`](Fratio.md) [`Fratio_CC()`](Fratio.md)
+  [`Fratio_ML()`](Fratio.md) : FMSY/M ratio methods
+- [`DynF()`](DynF.md) : Dynamic Fratio MP
+- [`Fadapt()`](Fadapt.md) : Adaptive Fratio
+- [`Fdem()`](Fdem.md) [`Fdem_CC()`](Fdem.md) [`Fdem_ML()`](Fdem.md) :
+  Demographic FMSY method
+- [`GB_CC()`](GB_CC.md) : Geromont and Butterworth Constant Catch
+  Harvest Control Rule
+- [`GB_slope()`](GB_slope.md) : Geromont and Butterworth index slope
+  Harvest Control Rule
+- [`GB_target()`](GB_target.md) : Geromont and Butterworth target CPUE
+  and catch MP
+- [`Gcontrol()`](Gcontrol.md) : G-control MP
+- [`ICI()`](ICI.md) [`ICI2()`](ICI.md) : Index Confidence Interval
+- [`Iratio()`](Iratio.md) : Mean Index Ratio
+- [`Islope1()`](Islope1.md) [`Islope2()`](Islope1.md)
+  [`Islope3()`](Islope1.md) [`Islope4()`](Islope1.md) : Index Slope
+  Tracking MP
+- [`IT5()`](IT5.md) [`IT10()`](IT5.md) : Iterative Index Target MP
+- [`Itarget1()`](Itarget1.md) [`Itarget2()`](Itarget1.md)
+  [`Itarget3()`](Itarget1.md) [`Itarget4()`](Itarget1.md) : Incremental
+  Index Target MP
+- [`ITM()`](ITM.md) : Index Target based on natural mortality rate
+- [`Ltarget1()`](Ltarget1.md) [`Ltarget2()`](Ltarget1.md)
+  [`Ltarget3()`](Ltarget1.md) [`Ltarget4()`](Ltarget1.md)
+  [`L95target()`](Ltarget1.md) : Length Target TAC MP
+- [`Lratio_BHI()`](Lratio_BHI.md) [`Lratio_BHI2()`](Lratio_BHI.md)
+  [`Lratio_BHI3()`](Lratio_BHI.md) : Mean length-based indicator MP of
+  Jardim et al. 2015
+- [`LstepCC1()`](LstepCC1.md) [`LstepCC2()`](LstepCC1.md)
+  [`LstepCC3()`](LstepCC1.md) [`LstepCC4()`](LstepCC1.md) : Step-wise
+  Constant Catch
+- [`MCD()`](MCD.md) [`MCD4010()`](MCD.md) : Mean Catch Depletion
+- [`Rcontrol()`](Rcontrol.md) [`Rcontrol2()`](Rcontrol.md) : Intrinsic
+  rate of Increase MP
+- [`SBT1()`](SBT1.md) [`SBT2()`](SBT1.md) : SBT simple MP
+- [`SPmod()`](SPmod.md) : Surplus production based catch-limit modifier
+- [`SPMSY()`](SPMSY.md) : Catch trend Surplus Production MSY MP
+- [`SPslope()`](SPslope.md) : Slope in surplus production MP
+- [`SPSRA()`](SPSRA.md) [`SPSRA_ML()`](SPSRA.md) : Surplus Production
+  Stock Reduction Analysis
+- [`YPR()`](YPR.md) [`YPR_CC()`](YPR.md) [`YPR_ML()`](YPR.md) : Yield
+  Per Recruit analysis to get FMSY proxy F01
+
+## Input Controls
+
+Management Procedures that return a total allowable effort (TAE),
+spatial closure, or size regulation
+
+- [`curE()`](curE.md) [`curE75()`](curE.md) : Fishing at current effort
+  levels
+- [`DDe()`](DDe.md) [`DDes()`](DDe.md) [`DDe75()`](DDe.md) :
+  Effort-based Delay - Difference Stock Assessment
+- [`DTe40()`](DTe40.md) [`DTe50()`](DTe40.md) : Effort searching MP
+  aiming for a fixed stock depletion
+- [`EtargetLopt()`](EtargetLopt.md) : Effort Target Optimum Length
+- [`ItargetE1()`](ItargetE1.md) [`ItargetE2()`](ItargetE1.md)
+  [`ItargetE3()`](ItargetE1.md) [`ItargetE4()`](ItargetE1.md) :
+  Incremental Index Target MP - Effort-Based
+- [`ITe5()`](ITe5.md) [`ITe10()`](ITe5.md) : Index Target Effort-Based
+- [`LstepCE1()`](LstepCE1.md) [`LstepCE2()`](LstepCE1.md) : Step-wise
+  Constant Effort
+- [`LtargetE1()`](LtargetE1.md) [`LtargetE4()`](LtargetE1.md) : Length
+  Target TAE MP
+- [`matlenlim()`](matlenlim.md) [`matlenlim2()`](matlenlim.md)
+  [`minlenLopt1()`](matlenlim.md) [`slotlim()`](matlenlim.md) : Size
+  limit management procedures
+- [`MRreal()`](MRreal.md) [`MRnoreal()`](MRreal.md) : Spatial closure
+  and allocation management procedures
+
+## Mixed Controls
+
+Management Procedures that return a combination of Output and Input
+controls
+
+- [`AvC_MLL()`](AvC_MLL.md) : Average Catch with a size limit
+- [`Itarget1_MPA()`](Itarget1_MPA.md) : Itarget1 with an MPA
+
