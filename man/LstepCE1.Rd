@@ -67,11 +67,11 @@ The conditions are specified in the \code{llim} argument to the function.
 }
 \section{Functions}{
 \itemize{
-\item \code{LstepCE1}: The least biologically precautionary effort-based MP.
+\item \code{LstepCE1()}: The least biologically precautionary effort-based MP.
 
-\item \code{LstepCE2}: Step size is increased to 0.1
+\item \code{LstepCE2()}: Step size is increased to 0.1
+
 }}
-
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

@@ -45,11 +45,11 @@ uncertainty the in reference index.
 }
 \section{Functions}{
 \itemize{
-\item \code{IT5}: Maximum annual changes in TAC are 5 per cent.
+\item \code{IT5()}: Maximum annual changes in TAC are 5 per cent.
 
-\item \code{IT10}: Maximum annual changes are 10 per cent.
+\item \code{IT10()}: Maximum annual changes are 10 per cent.
+
 }}
-
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

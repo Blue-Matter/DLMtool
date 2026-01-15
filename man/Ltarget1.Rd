@@ -61,19 +61,19 @@ where \eqn{\textrm{TAC}^*} is (1 - \code{xx}) mean catches from the last \code{y
 }
 \section{Functions}{
 \itemize{
-\item \code{Ltarget1}: The least biologically precautionary TAC-based MP.
+\item \code{Ltarget1()}: The least biologically precautionary TAC-based MP.
 
-\item \code{Ltarget2}: Increasingly biologically precautionary (\code{xL} = 1.1).
+\item \code{Ltarget2()}: Increasingly biologically precautionary (\code{xL} = 1.1).
 
-\item \code{Ltarget3}: Increasingly biologically precautionary (\code{xL} = 1.1).
+\item \code{Ltarget3()}: Increasingly biologically precautionary (\code{xL} = 1.1).
 
-\item \code{Ltarget4}: The most biologically precautionary TAC-based MP (\code{xL} = 1.1, \code{xx}=0.2).
+\item \code{Ltarget4()}: The most biologically precautionary TAC-based MP (\code{xL} = 1.1, \code{xx}=0.2).
 
-\item \code{L95target}: Same as Ltarget1 but here the target and limit
+\item \code{L95target()}: Same as Ltarget1 but here the target and limit
 mean lengths are based on the length at maturity distribution rather
 than an arbitrary multiplicative of the mean length
-}}
 
+}}
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

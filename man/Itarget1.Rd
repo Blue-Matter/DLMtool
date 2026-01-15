@@ -60,15 +60,15 @@ where \eqn{x} is argument \code{xx} and C is the average catch over the last 5 y
 }
 \section{Functions}{
 \itemize{
-\item \code{Itarget1}: The less precautionary TAC-based MP
+\item \code{Itarget1()}: The less precautionary TAC-based MP
 
-\item \code{Itarget2}: Increasing biologically precautionary TAC-based MP
+\item \code{Itarget2()}: Increasing biologically precautionary TAC-based MP
 
-\item \code{Itarget3}: Increasing biologically precautionary TAC-based MP
+\item \code{Itarget3()}: Increasing biologically precautionary TAC-based MP
 
-\item \code{Itarget4}: The most biologically precautionary TAC-based MP
+\item \code{Itarget4()}: The most biologically precautionary TAC-based MP
+
 }}
-
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

@@ -52,19 +52,19 @@ The TAC is constant for all future projections.
 }
 \section{Functions}{
 \itemize{
-\item \code{CC1}: TAC is average historical catch from recent \code{yrsmth} years
+\item \code{CC1()}: TAC is average historical catch from recent \code{yrsmth} years
 
-\item \code{CC2}: TAC is average historical catch from recent \code{yrsmth} years reduced by 10\\%.
+\item \code{CC2()}: TAC is average historical catch from recent \code{yrsmth} years reduced by 10\\%.
 
-\item \code{CC3}: TAC is average historical catch from recent \code{yrsmth} years reduced by 20\\%.
+\item \code{CC3()}: TAC is average historical catch from recent \code{yrsmth} years reduced by 20\\%.
 
-\item \code{CC4}: TAC is average historical catch from recent \code{yrsmth} years reduced by 30\\%.
+\item \code{CC4()}: TAC is average historical catch from recent \code{yrsmth} years reduced by 30\\%.
 
-\item \code{CC5}: TAC is average historical catch from recent \code{yrsmth} years reduced by 40\\%.
+\item \code{CC5()}: TAC is average historical catch from recent \code{yrsmth} years reduced by 40\\%.
 
-\item \code{CurC}: TAC is fixed at last historical catch
+\item \code{CurC()}: TAC is fixed at last historical catch
+
 }}
-
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

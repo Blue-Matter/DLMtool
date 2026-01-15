@@ -41,13 +41,13 @@ from the life-history parameters using the methods of McAllister et al. (2001).
 }
 \section{Functions}{
 \itemize{
-\item \code{Fdem}: Current abundance is assumed to be known (i.e \code{Data@Abun})
+\item \code{Fdem()}: Current abundance is assumed to be known (i.e \code{Data@Abun})
 
-\item \code{Fdem_CC}: Current abundance is estimated from catch curve analysis
+\item \code{Fdem_CC()}: Current abundance is estimated from catch curve analysis
 
-\item \code{Fdem_ML}: Current abundance is estimated from mean length
+\item \code{Fdem_ML()}: Current abundance is estimated from mean length
+
 }}
-
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

@@ -1,7 +1,7 @@
 Package: DLMtool
 Type: Package
 Title: Data-Limited Methods Toolkit
-Version: 6.0.6
+Version: 6.0.7
 Authors@R: c(
     person("Tom", "Carruthers",, "tom@bluematterscience.com", role="aut"),
     person("Quang", "Huynh", email = "quang@bluematterscience.com", role = "aut"),
@@ -35,5 +35,5 @@ Suggests:
     testthat
 LazyLoad: yes
 Encoding: UTF-8
-RoxygenNote: 7.2.0
+RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)

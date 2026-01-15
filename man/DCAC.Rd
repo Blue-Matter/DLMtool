@@ -54,39 +54,39 @@ The methods differ in the assumptions of current depletion (\emph{D}). See the \
 }
 \section{Functions}{
 \itemize{
-\item \code{DCACs}: Depletion is not updated in the future projections.
+\item \code{DCACs()}: Depletion is not updated in the future projections.
 The TAC is static and not updated in the future years. This represents
 an application of the DCAC method where a catch limit is calculated based on
 current estimate of depletion and time-series of catch from the beginning
 of the fishery, and the TAC is fixed at this level for all future projections.
 
-\item \code{DCAC}: Depletion is estimated each management interval and used to
+\item \code{DCAC()}: Depletion is estimated each management interval and used to
 update the catch limit recommendation based on the historical catch (which is
 not updated in the future projections).
 
-\item \code{DCAC_40}: Current stock biomass is assumed to be exactly at 40 per cent
+\item \code{DCAC_40()}: Current stock biomass is assumed to be exactly at 40 per cent
 of unfished levels. The 40 percent depletion assumption may not
 really affect DCAC that much as it already makes TAC recommendations that are
 quite MSY-like.
 
-\item \code{DCAC4010}: The dynamic DCAC (depletion is updated) is paired with the 40-10 rule that throttles
+\item \code{DCAC4010()}: The dynamic DCAC (depletion is updated) is paired with the 40-10 rule that throttles
 back the OFL to zero at 10 percent of unfished stock size (the OFL is not subject to downward
 adjustment above 40 percent unfished). DCAC can overfish below BMSY levels. The 40-10
 harvest control rule largely resolves this problem providing an MP with surprisingly good
 performance even at low stock levels.
 
-\item \code{DCAC_ML}: This variant uses the mean length estimator to calculate current stock
+\item \code{DCAC_ML()}: This variant uses the mean length estimator to calculate current stock
 depletion. The mean length extension was programmed by Gary Nelson as part of his
 excellent R package 'fishmethods'.
 
-\item \code{DAAC}: Depletion Adjusted Average Catch: essentially DCAC (with updated Depletion)
+\item \code{DAAC()}: Depletion Adjusted Average Catch: essentially DCAC (with updated Depletion)
 divided by BMSY/B0 (Bpeak) (Harford and Carruthers, 2017).
 
-\item \code{HDAAC}: Hybrid Depletion Adjusted Average Catch: essentially DCAC  (with updated Depletion)
+\item \code{HDAAC()}: Hybrid Depletion Adjusted Average Catch: essentially DCAC  (with updated Depletion)
 divided by BMSY/B0 (Bpeak) when below BMSY,
 and DCAC above BMSY (Harford and Carruthers 2017).
-}}
 
+}}
 \note{
 It's probably worth noting that DCAC TAC recommendations do not tend
 to zero as depletion tends to zero. It adjusts for depletion only in
@@ -98,25 +98,25 @@ below BMSY, DCAC tends to chronically overfish.
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
 
 
-\code{DCACs}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
+\code{DCACs}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
 
 
-\code{DCAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
+\code{DCAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
 
 
-\code{DCAC_40}: AvC, BMSY_B0, FMSY_M, LHYear, Mort, Year, t
+\code{DCAC_40}: AvC, BMSY_B0, FMSY_M, LHYear, Mort, t, Year
 
 
-\code{DCAC4010}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
+\code{DCAC4010}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
 
 
-\code{DCAC_ML}: AvC, CAL, Cat, LHYear, Lbar, Lc, Mort, Year, t, vbK, vbLinf
+\code{DCAC_ML}: AvC, CAL, Cat, Lbar, Lc, LHYear, Mort, t, vbK, vbLinf, Year
 
 
-\code{DAAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
+\code{DAAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
 
 
-\code{HDAAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
+\code{HDAAC}: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
 }
 
 \section{Rendered Equations}{
@@ -168,8 +168,8 @@ static and adaptive management procedures. Fish. Res. 190, 84-94.
 }
 \seealso{
 Other Average Catch MPs: 
-\code{\link{AvC_MLL}()},
-\code{\link{AvC}()}
+\code{\link{AvC}()},
+\code{\link{AvC_MLL}()}
 }
 \author{
 T. Carruthers

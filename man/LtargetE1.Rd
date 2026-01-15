@@ -49,11 +49,11 @@ where \eqn{\textrm{TAE}^*} is the effort in the previous year,
 }
 \section{Functions}{
 \itemize{
-\item \code{LtargetE1}: The least biologically precautionary TAE-based MP.
+\item \code{LtargetE1()}: The least biologically precautionary TAE-based MP.
 
-\item \code{LtargetE4}: The \code{xL} argument is increased to 1.15.
+\item \code{LtargetE4()}: The \code{xL} argument is increased to 1.15.
+
 }}
-
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

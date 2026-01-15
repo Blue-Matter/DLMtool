@@ -47,16 +47,16 @@ first year and catch from the previous year in projection years,
 }
 \section{Functions}{
 \itemize{
-\item \code{Islope1}: The least biologically precautionary of the Islope methods
+\item \code{Islope1()}: The least biologically precautionary of the Islope methods
 
-\item \code{Islope2}: More biologically precautionary. Reference TAC is 0.7 average catch
+\item \code{Islope2()}: More biologically precautionary. Reference TAC is 0.7 average catch
 
-\item \code{Islope3}: More biologically precautionary. Reference TAC is 0.6 average catch
+\item \code{Islope3()}: More biologically precautionary. Reference TAC is 0.6 average catch
 
-\item \code{Islope4}: The most biologically precautionary of the Islope methods.
+\item \code{Islope4()}: The most biologically precautionary of the Islope methods.
 Reference TAC is 0.6 average catch and gain parameter is 0.2
-}}
 
+}}
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
@@ -91,8 +91,8 @@ Other Index methods:
 \code{\link{Gcontrol}()},
 \code{\link{ICI}()},
 \code{\link{Iratio}()},
-\code{\link{Itarget1_MPA}()},
 \code{\link{Itarget1}()},
+\code{\link{Itarget1_MPA}()},
 \code{\link{ItargetE1}()}
 }
 \author{

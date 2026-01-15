@@ -96,15 +96,15 @@ The conditions are specified in the \code{llim} argument to the function.
 }
 \section{Functions}{
 \itemize{
-\item \code{LstepCC1}: The least biologically precautionary TAC-based MP.
+\item \code{LstepCC1()}: The least biologically precautionary TAC-based MP.
 
-\item \code{LstepCC2}: More biologically precautionary than \code{LstepCC1} (\code{xx} = 0.1)
+\item \code{LstepCC2()}: More biologically precautionary than \code{LstepCC1} (\code{xx} = 0.1)
 
-\item \code{LstepCC3}: More biologically precautionary than \code{LstepCC2} (\code{xx} = 0.2)
+\item \code{LstepCC3()}: More biologically precautionary than \code{LstepCC2} (\code{xx} = 0.2)
 
-\item \code{LstepCC4}: The most precautionary TAC-based MP.
+\item \code{LstepCC4()}: The most precautionary TAC-based MP.
+
 }}
-
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

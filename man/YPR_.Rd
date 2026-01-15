@@ -37,11 +37,11 @@ Internal function for YPR MPs
 }
 \section{Functions}{
 \itemize{
-\item \code{YPR_}: Internal function for YPR MPs
+\item \code{YPR_()}: Internal function for YPR MPs
 
-\item \code{YPRopt}: YPR calculation function
+\item \code{YPRopt()}: YPR calculation function
+
 }}
-
 \note{
 Yield per recruit estimate of FMSY Meaghan Bryan 2013
 }

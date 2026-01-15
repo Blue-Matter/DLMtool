@@ -51,19 +51,19 @@ The MP variants differ in the assumption of current abundance (see Functions sec
 }
 \section{Functions}{
 \itemize{
-\item \code{Fratio}: Requires an estimate of current abundance (i.e \code{Data@Abun})
+\item \code{Fratio()}: Requires an estimate of current abundance (i.e \code{Data@Abun})
 
-\item \code{Fratio4010}: Paired with the 40-10 rule that throttles back the OFL to zero at 10 percent of unfished biomass. Requires an estimate of current depletion.
+\item \code{Fratio4010()}: Paired with the 40-10 rule that throttles back the OFL to zero at 10 percent of unfished biomass. Requires an estimate of current depletion.
 
-\item \code{DepF}: Depletion Corrected Fratio: the Fratio MP with a harvest control
+\item \code{DepF()}: Depletion Corrected Fratio: the Fratio MP with a harvest control
 rule that reduces F according to the production curve given an estimate of current
 stock depletion (made-up for this package).
 
-\item \code{Fratio_CC}: Current abundance is estimated using average catch and estimate of F from an age-based catch curve
+\item \code{Fratio_CC()}: Current abundance is estimated using average catch and estimate of F from an age-based catch curve
 
-\item \code{Fratio_ML}: Current abundance is estimated using average catch and estimate of F from mean lengths
+\item \code{Fratio_ML()}: Current abundance is estimated using average catch and estimate of F from mean lengths
+
 }}
-
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

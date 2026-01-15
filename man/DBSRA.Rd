@@ -50,16 +50,16 @@ The catch limit, for the Base Version, is calculated as:
 }
 \section{Functions}{
 \itemize{
-\item \code{DBSRA}: Base Version. TAC is calculated assumed MSY harvest rate
+\item \code{DBSRA()}: Base Version. TAC is calculated assumed MSY harvest rate
 multiplied by the estimated current abundance (estimated B0 x Depletion)
 
-\item \code{DBSRA_40}: Same as the Base Version but assumes 40 percent current depletion (Bcurrent/B0 = 0.4), which is
+\item \code{DBSRA_40()}: Same as the Base Version but assumes 40 percent current depletion (Bcurrent/B0 = 0.4), which is
 more or less the most optimistic state for a stock (ie very close to BMSY/B0 for many stocks).
 
-\item \code{DBSRA4010}: Base version paired with the 40-10 rule that linearly throttles
+\item \code{DBSRA4010()}: Base version paired with the 40-10 rule that linearly throttles
 back the TAC when depletion is below 0.4 down to zero at 10 percent of unfished biomass.
-}}
 
+}}
 \note{
 The DB-SRA method of this package isn't exactly the same as the
 original method of Dick and MacCall (2011) because it has to work for

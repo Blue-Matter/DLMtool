@@ -47,16 +47,16 @@ See Functions section below for the estimation of \emph{F}.
 }
 \section{Functions}{
 \itemize{
-\item \code{BK}: Assumes that abundance is known, i.e. \code{Data@Abun}
+\item \code{BK()}: Assumes that abundance is known, i.e. \code{Data@Abun}
 and \code{Data@CV_abun} contain values
 
-\item \code{BK_CC}: Abundance is estimated using an age-based catch curve
+\item \code{BK_CC()}: Abundance is estimated using an age-based catch curve
 to estimate \emph{Z} and \emph{F}, and abundance estimated from recent catches and \emph{F}.
 
-\item \code{BK_ML}: Abundance is estimated using mean length
+\item \code{BK_ML()}: Abundance is estimated using mean length
 to estimate \emph{Z} and \emph{F}, and abundance estimated from recent catches and \emph{F}.
+
 }}
-
 \note{
 Note that the Beddington-Kirkwood method is designed to estimate \eqn{F_\textrm{max}},
 that is, the fishing mortality that produces the maximum yield \emph{assuming constant
@@ -78,7 +78,7 @@ See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object 
 \code{BK_CC}: CAA, Cat, LFC, vbK, vbLinf
 
 
-\code{BK_ML}: CAL, Cat, LFC, Lbar, Lc, Mort, vbK, vbLinf
+\code{BK_ML}: CAL, Cat, Lbar, Lc, LFC, Mort, vbK, vbLinf
 }
 
 \section{Rendered Equations}{

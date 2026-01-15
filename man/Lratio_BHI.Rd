@@ -41,16 +41,16 @@ mean length expected at MSY. Here, Lc is the length at full selection (LFS).
 }
 \section{Functions}{
 \itemize{
-\item \code{Lratio_BHI}: Assumes M/K = 1.5 and FMSY/M = 1. Natural mortality M and von Bertalanffy
+\item \code{Lratio_BHI()}: Assumes M/K = 1.5 and FMSY/M = 1. Natural mortality M and von Bertalanffy
 K are not used in this MP (see Appendix A of Jardim et al. 2015).
 
-\item \code{Lratio_BHI2}: More general version that calculates the reference mean length as a
+\item \code{Lratio_BHI2()}: More general version that calculates the reference mean length as a
 function of M, K, and presumed FMSY/M.
 
-\item \code{Lratio_BHI3}: A modified version of Lratio_BHI2 where mean length
+\item \code{Lratio_BHI3()}: A modified version of Lratio_BHI2 where mean length
 is calculated for lengths > modal length (Lc)
-}}
 
+}}
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

@@ -39,11 +39,11 @@ The maximum fractional change in TAE is specified in \code{mc}.
 }
 \section{Functions}{
 \itemize{
-\item \code{ITe5}: Maximum annual changes are 5 per cent.
+\item \code{ITe5()}: Maximum annual changes are 5 per cent.
 
-\item \code{ITe10}: Maximum annual changes are 10 per cent.
+\item \code{ITe10()}: Maximum annual changes are 10 per cent.
+
 }}
-
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

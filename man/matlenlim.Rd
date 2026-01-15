@@ -50,24 +50,24 @@ parameters (\code{Rec@L5}, \code{Rec@LFS} and \code{Rec@Vmaxlen}).
 }
 \section{Functions}{
 \itemize{
-\item \code{matlenlim}: Fishing retention-at-length is set equivalent to the maturity curve.
+\item \code{matlenlim()}: Fishing retention-at-length is set equivalent to the maturity curve.
 
-\item \code{matlenlim2}: Fishing retention-at-length is set slightly higher (110\\%)
+\item \code{matlenlim2()}: Fishing retention-at-length is set slightly higher (110\\%)
 than the length-at-maturity
 
-\item \code{minlenLopt1}: The minimum length of retention is set to a fraction of
+\item \code{minlenLopt1()}: The minimum length of retention is set to a fraction of
 the length that maximises the biomass, Lopt. The aim
 of this simple MP is restrict the catch of small fish to rebuild
 the stock biomass towards the optimal length, Lopt, expressed in terms of
 the growth parameters Lopt=b/(M/k+b) (Hordyk et al. 2015)
 
-\item \code{slotlim}: Retention-at-length is set using a upper harvest slot limit;
+\item \code{slotlim()}: Retention-at-length is set using a upper harvest slot limit;
 that is, a minimum and maximum legal length. The maximum limit is set here,
 completely arbitrarily, as the 75th percentile between the new minimum legal
 length and the estimated asymptotic length Linf. This MP has been included
 to demonstrate an upper harvest slot limit.
-}}
 
+}}
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

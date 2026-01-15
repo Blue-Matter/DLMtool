@@ -37,7 +37,7 @@ Internal demographic function
 }
 \section{Functions}{
 \itemize{
-\item \code{demofn}: Internal function
-}}
+\item \code{demofn()}: Internal function
 
+}}
 \keyword{internal}

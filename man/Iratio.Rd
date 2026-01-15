@@ -66,8 +66,8 @@ Other Index methods:
 \code{\link{Gcontrol}()},
 \code{\link{ICI}()},
 \code{\link{Islope1}()},
-\code{\link{Itarget1_MPA}()},
 \code{\link{Itarget1}()},
+\code{\link{Itarget1_MPA}()},
 \code{\link{ItargetE1}()}
 }
 \author{

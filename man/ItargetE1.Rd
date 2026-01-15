@@ -52,15 +52,15 @@ where \eqn{I_0} is \eqn{0.8 I_{\textrm{ave}}} (the average index over the 2 x \c
 }
 \section{Functions}{
 \itemize{
-\item \code{ItargetE1}: The less precautionary TAE-based MP
+\item \code{ItargetE1()}: The less precautionary TAE-based MP
 
-\item \code{ItargetE2}: Increasing biologically precautionary TAE-based MP
+\item \code{ItargetE2()}: Increasing biologically precautionary TAE-based MP
 
-\item \code{ItargetE3}: Increasing biologically precautionary TAE-based MP
+\item \code{ItargetE3()}: Increasing biologically precautionary TAE-based MP
 
-\item \code{ItargetE4}: The most biologically precautionary TAE-based MP
+\item \code{ItargetE4()}: The most biologically precautionary TAE-based MP
+
 }}
-
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
@@ -96,8 +96,8 @@ Other Index methods:
 \code{\link{ICI}()},
 \code{\link{Iratio}()},
 \code{\link{Islope1}()},
-\code{\link{Itarget1_MPA}()},
-\code{\link{Itarget1}()}
+\code{\link{Itarget1}()},
+\code{\link{Itarget1_MPA}()}
 }
 \author{
 T. Carruthers

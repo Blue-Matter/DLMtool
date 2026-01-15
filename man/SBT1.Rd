@@ -83,11 +83,11 @@ this approach.
 }
 \section{Functions}{
 \itemize{
-\item \code{SBT1}: Simple SBT MP
+\item \code{SBT1()}: Simple SBT MP
 
-\item \code{SBT2}: Complex SBT MP
+\item \code{SBT2()}: Complex SBT MP
+
 }}
-
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

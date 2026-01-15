@@ -40,11 +40,11 @@ The maximum fractional change in TAE is specified with arguments \code{LB} and \
 }
 \section{Functions}{
 \itemize{
-\item \code{DTe40}: Effort is adjusted to reach 40 percent stock depletion
+\item \code{DTe40()}: Effort is adjusted to reach 40 percent stock depletion
 
-\item \code{DTe50}: Effort is adjusted to reach 50 percent stock depletion
+\item \code{DTe50()}: Effort is adjusted to reach 50 percent stock depletion
+
 }}
-
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

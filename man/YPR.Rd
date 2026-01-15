@@ -44,15 +44,15 @@ The variants of the YPR MP differ in the method to estimate current abundance (s
 }
 \section{Functions}{
 \itemize{
-\item \code{YPR}: Requires an external estimate of abundance.
+\item \code{YPR()}: Requires an external estimate of abundance.
 
-\item \code{YPR_CC}: A catch-curve analysis is used to determine recent Z which given M (Mort)
+\item \code{YPR_CC()}: A catch-curve analysis is used to determine recent Z which given M (Mort)
 gives F and thus abundance = Ct/(1-exp(-F))
 
-\item \code{YPR_ML}: A mean-length estimate of recent Z is used to infer current
+\item \code{YPR_ML()}: A mean-length estimate of recent Z is used to infer current
 abundance.
-}}
 
+}}
 \note{
 Based on the code of Meaghan Bryan
 }
@@ -67,7 +67,7 @@ See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object 
 \code{YPR_CC}: CAA, Cat, LFS, MaxAge, vbK, vbLinf, vbt0
 
 
-\code{YPR_ML}: CAL, Cat, LFS, Lbar, Lc, MaxAge, Mort, vbK, vbLinf, vbt0
+\code{YPR_ML}: CAL, Cat, Lbar, Lc, LFS, MaxAge, Mort, vbK, vbLinf, vbt0
 }
 
 \section{Rendered Equations}{

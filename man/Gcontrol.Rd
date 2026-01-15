@@ -76,8 +76,8 @@ Other Index methods:
 \code{\link{ICI}()},
 \code{\link{Iratio}()},
 \code{\link{Islope1}()},
-\code{\link{Itarget1_MPA}()},
 \code{\link{Itarget1}()},
+\code{\link{Itarget1_MPA}()},
 \code{\link{ItargetE1}()}
 }
 \author{

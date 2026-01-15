@@ -43,11 +43,11 @@ and Walters (1992).
 }
 \section{Functions}{
 \itemize{
-\item \code{DD}: Base version where the TAC = UMSY * Current Biomass.
+\item \code{DD()}: Base version where the TAC = UMSY * Current Biomass.
 
-\item \code{DD4010}: A 40-10 rule is imposed over the TAC recommendation.
+\item \code{DD4010()}: A 40-10 rule is imposed over the TAC recommendation.
+
 }}
-
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

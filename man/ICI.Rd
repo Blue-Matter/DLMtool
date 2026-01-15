@@ -45,15 +45,15 @@ calculated using Z-scores described in the Functions section below.
 }
 \section{Functions}{
 \itemize{
-\item \code{ICI}: The catch is reduced by 0.75 if the Z-score of the current year's index is less than -0.44.
+\item \code{ICI()}: The catch is reduced by 0.75 if the Z-score of the current year's index is less than -0.44.
 The catch is increased by 1.05 if the Z-score of the current year's index is greater than 1.96. Otherwise, the catch is held constant.
 
-\item \code{ICI2}: This method is less precautionary of the two ICI MPs by allowing for a
+\item \code{ICI2()}: This method is less precautionary of the two ICI MPs by allowing for a
 larger increase in TAC and a lower threshold of the index to decrease the TAC. The catch is reduced by 0.75
 if the Z-score of the current year's index is less than -1.96. The catch is increased by 1.25
 if the Z-score of the current year's index is greater than 1.96. Otherwise, the catch is held constant.
-}}
 
+}}
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
@@ -90,8 +90,8 @@ Other Index methods:
 \code{\link{Gcontrol}()},
 \code{\link{Iratio}()},
 \code{\link{Islope1}()},
-\code{\link{Itarget1_MPA}()},
 \code{\link{Itarget1}()},
+\code{\link{Itarget1_MPA}()},
 \code{\link{ItargetE1}()}
 }
 \author{

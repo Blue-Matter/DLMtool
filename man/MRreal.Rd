@@ -27,13 +27,13 @@ fishing effort spatially.
 }
 \section{Functions}{
 \itemize{
-\item \code{MRreal}: A spatial control that prevents fishing in area 1 and reallocates this
+\item \code{MRreal()}: A spatial control that prevents fishing in area 1 and reallocates this
 fishing effort to area 2 (or over other areas).
 
-\item \code{MRnoreal}: A spatial control that prevents fishing in area 1
+\item \code{MRnoreal()}: A spatial control that prevents fishing in area 1
 and does not reallocate this fishing effort to area 2.
-}}
 
+}}
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

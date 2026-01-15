@@ -34,9 +34,9 @@ SPSRA Optimizer
 }
 \section{Functions}{
 \itemize{
-\item \code{SPSRA_}: internal function
+\item \code{SPSRA_()}: internal function
 
-\item \code{SPSRAopt}: internal function
+\item \code{SPSRAopt()}: internal function
+
 }}
-
 \keyword{internal}

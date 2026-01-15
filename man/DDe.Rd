@@ -51,19 +51,19 @@ and Walters (1992).
 }
 \section{Functions}{
 \itemize{
-\item \code{DDe}: Effort-control version. The recommended effort is EMSY.
+\item \code{DDe()}: Effort-control version. The recommended effort is EMSY.
 
-\item \code{DDes}: Variant of \code{DDe} that limits the maximum change in effort to 10 percent.
+\item \code{DDes()}: Variant of \code{DDe} that limits the maximum change in effort to 10 percent.
 
-\item \code{DDe75}: Variant of \code{DDe} where the recommended effort is 75\\% EMSY.
+\item \code{DDe75()}: Variant of \code{DDe} where the recommended effort is 75\\% EMSY.
+
 }}
-
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
 
 
-\code{DDe}: Cat, Ind, L50, MPeff, MaxAge, Mort, vbK, vbLinf, vbt0, wla, wlb
+\code{DDe}: Cat, Ind, L50, MaxAge, Mort, MPeff, vbK, vbLinf, vbt0, wla, wlb
 }
 
 \section{Rendered Equations}{

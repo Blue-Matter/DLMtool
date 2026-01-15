@@ -39,11 +39,11 @@ harvest control rule to reduce TAC at low biomass.
 }
 \section{Functions}{
 \itemize{
-\item \code{CompSRA}: TAC is FMSY x Abundance
+\item \code{CompSRA()}: TAC is FMSY x Abundance
 
-\item \code{CompSRA4010}: With a 40-10 control rule based on estimated depletion
+\item \code{CompSRA4010()}: With a 40-10 control rule based on estimated depletion
+
 }}
-
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr

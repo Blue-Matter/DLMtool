@@ -15,9 +15,6 @@ SPMSY(x, Data, reps = 100, plot = FALSE)
 
 \item{plot}{Logical. Show the plot?}
 }
-\value{
-An object of class \code{\link[MSEtool]{Rec-class}} with the \code{TAC} slot populated with a numeric vector of length \code{reps}
-}
 \description{
 An MP that uses Martell and Froese (2012) method for estimating MSY to
 determine the OFL. Since their approach estimates stock trajectories based
@@ -45,12 +42,6 @@ this case this method widens the search.
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
 
 
-\code{SPMSY}: Cat, L50, MaxAge, vbK, vbLinf, vbt0
-}
-
-\section{Rendered Equations}{
-
-See \href{https://dlmtool.openmse.com/reference/SPMSY.html}{Online Documentation} for correctly rendered equations
 }
 
 \examples{

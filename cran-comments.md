@@ -1,8 +1,10 @@
 Note to CRAN:
-A minor patch to fix incorrectly specified equations in Rd files as noted by CRAN team
+A minor patch to fix issues in NEWS.md as noted by CRAN team
+
+All problems have now been resolved.
 
 ## Test environments
-* local - Windows 4.1.3
+* local - Windows 4.5.1
 * Github actions - windows-latest (release)
 * Github actions - macOS-latest (release)
 * Github actions - ubuntu-20.04 (release)

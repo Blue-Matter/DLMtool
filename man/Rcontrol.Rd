@@ -67,19 +67,19 @@ is 2 x average catch.
 }
 \section{Functions}{
 \itemize{
-\item \code{Rcontrol}: Base version \code{Rcontrol}
+\item \code{Rcontrol()}: Base version \code{Rcontrol}
 
-\item \code{Rcontrol2}: This is different from
+\item \code{Rcontrol2()}: This is different from
 \code{Rcontrol} because it includes a quadratic approximation of recent trend in
 surplus production given biomass
-}}
 
+}}
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
 
 
-\code{Rcontrol}: Abun, Cat, Dep, FMSY_M, Ind, L50, MaxAge, Mort, Year, steep, vbK, vbLinf, vbt0, wla, wlb
+\code{Rcontrol}: Abun, Cat, Dep, FMSY_M, Ind, L50, MaxAge, Mort, steep, vbK, vbLinf, vbt0, wla, wlb, Year
 }
 
 \section{Rendered Equations}{

@@ -66,16 +66,16 @@ Hordyk et al. (2015b):
 }
 \section{Functions}{
 \itemize{
-\item \code{LBSPR_MLL}: Fishing retention-at-length is set equivalent to slightly
+\item \code{LBSPR_MLL()}: Fishing retention-at-length is set equivalent to slightly
 higher than the maturity curve if SPR < 0.4
-}}
 
+}}
 \section{Required Data}{
 
 See \code{\link[MSEtool]{Data-class}} for information on the \code{Data} object \cr
 
 
-\code{LBSPR}: CAL, CAL_bins, L50, L95, LHYear, MPeff, Mort, Year, vbK, vbLinf, wlb
+\code{LBSPR}: CAL, CAL_bins, L50, L95, LHYear, Mort, MPeff, vbK, vbLinf, wlb, Year
 }
 
 \section{Rendered Equations}{
