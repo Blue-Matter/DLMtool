@@ -2,6 +2,8 @@
 
 ## DLMtool 6.0.7
 
+CRAN release: 2026-02-05
+
 - patch to fix issues with NEWS.md
 - removed `LBSPR` MP due to issues with compiling the C+ code
 
