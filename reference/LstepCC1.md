@@ -122,7 +122,7 @@ The conditions are specified in the `llim` argument to the function.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `LstepCC1`: Cat, LHYear, ML, Year
@@ -158,18 +158,18 @@ T. Carruthers
 LstepCC1(1, Data=MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     2391.568 
+#>     2378.001 
 
 LstepCC2(1, Data=MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     2125.036 
+#>     2151.918 
 LstepCC3(1, Data=MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1873.837 
+#>     1883.772 
 LstepCC4(1, Data=MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1666.387 
+#>      1680.32 
 ```

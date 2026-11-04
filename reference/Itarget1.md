@@ -87,7 +87,7 @@ C is the average catch over the last 5 years of the historical period.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `Itarget1`: Cat, Ind, LHYear, Year
@@ -124,7 +124,7 @@ T. Carruthers
 Itarget1(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>     7.025526 
+#>     7.063114 
 Itarget2(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
@@ -132,9 +132,9 @@ Itarget2(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 Itarget3(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>     7.158908 
+#>     7.129358 
 Itarget4(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>     4.950853 
+#>     4.964035 
 ```

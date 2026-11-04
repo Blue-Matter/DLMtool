@@ -68,7 +68,7 @@ selection (LFS).
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `Lratio_BHI`: CAL, CAL_bins, Cat, LFS, vbLinf
@@ -105,15 +105,15 @@ Coded by Q. Huynh. Developed by Jardim et al. (2015)
 Lratio_BHI(1, Data=MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1404.026 
+#>     1401.608 
 
 Lratio_BHI2(1, Data=MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1464.231 
+#>     1460.572 
 
 Lratio_BHI3(1, Data=MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     2154.358 
+#>     2097.509 
 ```

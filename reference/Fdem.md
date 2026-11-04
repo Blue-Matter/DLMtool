@@ -62,7 +62,7 @@ McAllister et al. (2001).
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `Fdem`: Abun, FMSY_M, L50, MaxAge, Mort, steep, vbK, vbLinf, vbt0, wla,
@@ -97,13 +97,13 @@ T. Carruthers
 Fdem(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>      1281.54 
+#>     1302.129 
 Fdem_CC(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     2138.293 
+#>     2251.832 
 Fdem_ML(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     637.7165 
+#>     616.2736 
 ```

@@ -51,7 +51,7 @@ years are specified as `yrs` argument.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `Iratio`: Cat, Ind
@@ -90,5 +90,5 @@ Coded by Q. Huynh. Developed by Jardim et al. (2015)
 Iratio(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>     9.341731 
+#>     10.33636 
 ```

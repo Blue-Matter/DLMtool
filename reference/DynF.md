@@ -74,7 +74,7 @@ abundance (`Data@Abun`) for the current year.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `DynF`: Abun, Cat, FMSY_M, Ind, Mort, Year
@@ -103,5 +103,5 @@ T. Carruthers
 DynF(1, Data=MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>     3.496328 
+#>     4.873551 
 ```

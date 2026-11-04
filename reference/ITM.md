@@ -46,7 +46,7 @@ The maximum fractional change in TAC is determined by \\mc\\, defined as
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `ITM`: Ind, Iref, Mort, MPrec
@@ -67,5 +67,5 @@ T. Carruthers
 ITM(1, Data=MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1942.567 
+#>     1950.633 
 ```

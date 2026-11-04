@@ -62,7 +62,7 @@ to stock declines.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `GB_slope`: Cat, Ind, Year
@@ -96,5 +96,5 @@ T. Carruthers
 GB_slope(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1893.841 
+#>     1923.971 
 ```

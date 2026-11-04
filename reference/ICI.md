@@ -66,7 +66,7 @@ the Functions section below.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `ICI`: Cat, Ind
@@ -104,7 +104,7 @@ Coded by Q. Huynh. Developed by Jardim et al. (2015)
 ICI(1, Data=MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>     13.44202 
+#>     13.79784 
 
 ICI2(1, Data=MSEtool::Atlantic_mackerel, plot=TRUE)
 

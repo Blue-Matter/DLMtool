@@ -72,7 +72,7 @@ Based on the code of Meaghan Bryan
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `YPR`: Abun, LFS, MaxAge, vbK, vbLinf, vbt0
@@ -101,13 +101,13 @@ Meaghan Bryan and Tom Carruthers
 YPR(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     2366.721 
+#>     2515.466 
 YPR_CC(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     3059.548 
+#>     3337.387 
 YPR_ML(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1230.086 
+#>      1246.49 
 ```

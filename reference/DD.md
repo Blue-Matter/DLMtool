@@ -64,7 +64,7 @@ Chapter 9 of Hilborn and Walters (1992).
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `DD`: Cat, Ind, L50, MaxAge, Mort, vbK, vbLinf, vbt0, wla, wlb
@@ -101,9 +101,9 @@ T. Carruthers
 DD(1, Data=MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>     2.010006 
+#>     1.947672 
 DD4010(1, Data=MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>    0.4622389 
+#>    0.4334987 
 ```

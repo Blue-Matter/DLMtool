@@ -78,7 +78,7 @@ is a gain parameter, and \\I\\ is the slope of log index over the past
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `Islope1`: Cat, Ind, LHYear, Year
@@ -115,17 +115,17 @@ T. Carruthers
 Islope1(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>      1650.62 
+#>     1636.087 
 Islope2(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1622.748 
+#>     1629.304 
 Islope3(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1649.048 
+#>     1644.498 
 Islope4(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1677.654 
+#>     1677.275 
 ```

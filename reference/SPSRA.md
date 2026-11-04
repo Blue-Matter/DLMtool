@@ -54,7 +54,7 @@ from the beginning of exploitation.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `SPSRA`: Cat, Dep, FMSY_M, L50, MaxAge, Mort, steep, vbK, vbLinf, vbt0,
@@ -79,7 +79,7 @@ Can. J. Fish. Aquat. Sci. 58: 1871-1890.
 ## See also
 
 Other Surplus production MPs: [`Fadapt()`](Fadapt.md),
-[`Rcontrol()`](Rcontrol.md), [`SPMSY()`](SPMSY.md),
+[`Rcontrol()`](Rcontrol.md), [`SP_MSY()`](SP_MSY.md),
 [`SPmod()`](SPmod.md), [`SPslope()`](SPslope.md)
 
 ## Author
@@ -92,9 +92,9 @@ T. Carruthers
 SPSRA(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1074.187 
+#>     1130.069 
 SPSRA_ML(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     3989.192 
+#>     3953.368 
 ```

@@ -52,7 +52,7 @@ The TAC is modified by a harvest control rule in `MCD4010`.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `MCD`: Cat, Dep
@@ -75,9 +75,9 @@ T. Carruthers
 MCD(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>     13.25549 
+#>     13.93164 
 MCD4010(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>     8.203385 
+#>     8.862437 
 ```

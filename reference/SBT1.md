@@ -104,7 +104,7 @@ CSIRO about this approach.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `SBT1`: Cat, Ind, Year
@@ -131,9 +131,9 @@ T. Carruthers
 SBT1(1, Data=MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     2070.237 
+#>     2119.745 
 SBT2(1, Data=MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1407.458 
+#>      1408.56 
 ```

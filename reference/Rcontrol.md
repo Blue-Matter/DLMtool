@@ -93,7 +93,7 @@ is 50% of average catch and maximum increase is 2 x average catch.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `Rcontrol`: Abun, Cat, Dep, FMSY_M, Ind, L50, MaxAge, Mort, steep, vbK,
@@ -112,7 +112,7 @@ Made-up for this package.
 ## See also
 
 Other Surplus production MPs: [`Fadapt()`](Fadapt.md),
-[`SPMSY()`](SPMSY.md), [`SPSRA()`](SPSRA.md), [`SPmod()`](SPmod.md),
+[`SPSRA()`](SPSRA.md), [`SP_MSY()`](SP_MSY.md), [`SPmod()`](SPmod.md),
 [`SPslope()`](SPslope.md)
 
 ## Author

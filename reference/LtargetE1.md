@@ -75,7 +75,7 @@ historical (pre-projection years) (\\L\_\textrm{ave}\\), and
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `LtargetE1`: LHYear, ML, MPeff, Year

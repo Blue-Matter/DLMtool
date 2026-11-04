@@ -77,7 +77,7 @@ Chapter 9 of Hilborn and Walters (1992).
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `DDe`: Cat, Ind, L50, MaxAge, Mort, MPeff, vbK, vbLinf, vbt0, wla, wlb

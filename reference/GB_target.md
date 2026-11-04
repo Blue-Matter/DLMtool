@@ -69,7 +69,7 @@ The TAC is subject to the following conditions:
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `GB_target`: Cref, Ind, Iref
@@ -103,5 +103,5 @@ T. Carruthers
  GB_target(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1733.747 
+#>     1698.236 
 ```

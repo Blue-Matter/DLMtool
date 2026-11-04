@@ -1,5 +1,10 @@
 # Changelog
 
+## DLMtool 7.0.0
+
+- part of the `openMSE 2.0` release; requires `MSEtool (>= 4.0.0)`
+- renamed MP `SPMSY` to `SP_MSY`
+
 ## DLMtool 6.0.7
 
 CRAN release: 2026-02-05

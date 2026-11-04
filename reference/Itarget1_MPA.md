@@ -80,7 +80,7 @@ MP.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `Itarget1_MPA`: Cat, Ind, LHYear, Year
@@ -104,5 +104,5 @@ Other Index methods: [`GB_slope()`](GB_slope.md),
 Itarget1_MPA(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median)       Area 1       Area 2 
-#>     7.235553     0.000000     1.000000 
+#>     7.180982     0.000000     1.000000 
 ```

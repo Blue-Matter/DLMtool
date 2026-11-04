@@ -81,7 +81,7 @@ Functions section below)
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `Fratio`: Abun, FMSY_M, Mort
@@ -122,17 +122,17 @@ T. Carruthers
 Fratio(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>       3.6892 
+#>     3.668003 
 Fratio4010(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>     2.256353 
+#>     2.332493 
 Fratio_CC(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     2254.957 
+#>     2249.549 
 Fratio_ML(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     796.5974 
+#>     816.1283 
 ```

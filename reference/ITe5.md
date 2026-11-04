@@ -61,7 +61,7 @@ The maximum fractional change in TAE is specified in `mc`.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `ITe5`: Ind, Iref, MPeff
@@ -84,9 +84,9 @@ T. Carruthers
 ITe5(1, MSEtool::SimulatedData, plot=TRUE)
 
 #>   Effort 
-#> 1.035653 
+#> 1.027335 
 ITe10(1, MSEtool::SimulatedData, plot=TRUE)
 
 #>   Effort 
-#> 1.103444 
+#> 1.117852 
 ```

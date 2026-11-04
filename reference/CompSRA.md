@@ -58,7 +58,7 @@ The TAC is calculated as \\F\_\textrm{MSY} A\\. `CompSRA4010` uses a
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `CompSRA`: CAA, Cat, L50, LFC, LFS, MaxAge, Mort, steep, vbK, vbLinf,

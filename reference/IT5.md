@@ -66,7 +66,7 @@ is strongly determined by the uncertainty the in reference index.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `IT5`: Ind, Iref, MPrec
@@ -93,5 +93,5 @@ IT5(1, MSEtool::SimulatedData, plot=TRUE)
 IT10(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1867.581 
+#>     1865.308 
 ```

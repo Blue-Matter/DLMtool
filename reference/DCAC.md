@@ -109,7 +109,7 @@ much below BMSY, DCAC tends to chronically overfish.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `DCACs`: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
@@ -155,7 +155,7 @@ T. Carruthers
 DCACs(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>     5.547678 
+#>     5.573582 
 
 DCAC(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 
@@ -165,14 +165,14 @@ DCAC(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 DCAC_40(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>     6.823931 
+#>     6.752719 
 
 Data <- MSEtool::Atlantic_mackerel
 Data@LHYear <- 2005
 DCAC4010(1, Data, plot=TRUE)
 
 #> TAC (median) 
-#>     1.558266 
+#>     1.601936 
 
 DCAC_ML(1, MSEtool::SimulatedData, plot=TRUE)
 
@@ -184,12 +184,12 @@ Data@LHYear <- 2005
 DAAC(1, Data, plot=TRUE)
 
 #> TAC (median) 
-#>     3.093458 
+#>     3.050483 
 
 Data <- MSEtool::Atlantic_mackerel
 Data@LHYear <- 2005
 HDAAC(1, Data, plot=TRUE)
 
 #> TAC (median) 
-#>     3.062779 
+#>     2.991074 
 ```

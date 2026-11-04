@@ -80,7 +80,7 @@ The TAC is constant for all future projections.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `CC1`: Cat, LHYear, Year
@@ -111,17 +111,17 @@ T. Carruthers
 CC1(1, MSEtool::Cobia, plot=TRUE)
 
 #> TAC (median) 
-#>     801.4697 
+#>     797.0115 
 
 CC2(1, MSEtool::Cobia, plot=TRUE)
 
 #> TAC (median) 
-#>     728.6202 
+#>     729.2348 
 
 CC3(1, MSEtool::Cobia, plot=TRUE)
 
 #> TAC (median) 
-#>     643.6182 
+#>     641.7771 
 
 CC4(1, MSEtool::Cobia, plot=TRUE)
 
@@ -131,10 +131,10 @@ CC4(1, MSEtool::Cobia, plot=TRUE)
 CC5(1, MSEtool::Cobia, plot=TRUE)
 
 #> TAC (median) 
-#>     483.8586 
+#>     485.2225 
 
 CurC(1, MSEtool::Cobia, plot=TRUE)
 
 #> TAC (median) 
-#>     502.9635 
+#>     499.6737 
 ```

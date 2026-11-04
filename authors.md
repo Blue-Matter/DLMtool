@@ -23,11 +23,11 @@
 ## Citation
 
 Carruthers T, Huynh Q, Hordyk A (2026). *DLMtool: Data-Limited Methods
-Toolkit*. R package version 6.0.7.
+Toolkit*. R package version 7.0.0.
 
     @Manual{,
       title = {DLMtool: Data-Limited Methods Toolkit},
       author = {Tom Carruthers and Quang Huynh and Adrian Hordyk},
       year = {2026},
-      note = {R package version 6.0.7},
+      note = {R package version 7.0.0},
     }

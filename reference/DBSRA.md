@@ -86,7 +86,7 @@ been applied by Dick and MacCall (2011).
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `DBSRA`: BMSY_B0, Cat, Dep, FMSY_M, L50, vbK, vbLinf, vbt0

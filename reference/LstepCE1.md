@@ -86,7 +86,7 @@ The conditions are specified in the `llim` argument to the function.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `LstepCE1`: LHYear, ML, MPeff, Year

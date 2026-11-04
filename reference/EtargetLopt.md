@@ -59,7 +59,7 @@ mortality, and \\K\\ is von Bertalanffy growth coefficient.#'
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `EtargetLopt`: ML, Mort, MPeff, vbK, vbLinf, wlb, Year

@@ -82,7 +82,7 @@ Tested in Carruthers et al. 2015.
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `Fadapt`: Abun, Cat, FMSY_M, Ind, Mort, Year
@@ -106,7 +106,7 @@ http://www.iattc.org/Meetings/Meetings2014/MAYSAC/PDFs/SAC-05-10b-Management-Str
 Other Fmsy/M methods: [`DynF()`](DynF.md), [`Fratio()`](Fratio.md)
 
 Other Surplus production MPs: [`Rcontrol()`](Rcontrol.md),
-[`SPMSY()`](SPMSY.md), [`SPSRA()`](SPSRA.md), [`SPmod()`](SPmod.md),
+[`SPSRA()`](SPSRA.md), [`SP_MSY()`](SP_MSY.md), [`SPmod()`](SPmod.md),
 [`SPslope()`](SPslope.md)
 
 ## Author
@@ -119,5 +119,5 @@ T. Carruthers
 Fadapt(1, Data=MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>     8.128322 
+#>     8.126846 
 ```

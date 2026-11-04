@@ -57,7 +57,7 @@ Management Procedures that return a total allowable catch (TAC)
   rate of Increase MP
 - [`SBT1()`](SBT1.md) [`SBT2()`](SBT1.md) : SBT simple MP
 - [`SPmod()`](SPmod.md) : Surplus production based catch-limit modifier
-- [`SPMSY()`](SPMSY.md) : Catch trend Surplus Production MSY MP
+- [`SP_MSY()`](SP_MSY.md) : Catch trend Surplus Production MSY MP
 - [`SPslope()`](SPslope.md) : Slope in surplus production MP
 - [`SPSRA()`](SPSRA.md) [`SPSRA_ML()`](SPSRA.md) : Surplus Production
   Stock Reduction Analysis

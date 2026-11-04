@@ -95,7 +95,7 @@ years) (\\L\_\textrm{ave}\\), and \\L\_\textrm{target}\\ is (except for
 ## Required Data
 
 See
-[`Data-class`](https://msetool.openmse.com/reference/Data-class.html)
+[`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
 `Ltarget1`: Cat, LHYear, ML, Year
@@ -138,21 +138,21 @@ T. Carruthers
 Ltarget1(1, Data=MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1978.981 
+#>     1972.638 
 Ltarget2(1, Data=MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1792.583 
+#>     1774.109 
 Ltarget3(1, Data=MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1688.731 
+#>     1695.918 
 Ltarget4(1, Data=MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     1371.336 
+#>     1369.049 
 L95target(1, Data=MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     853.8575 
+#>      855.973 
 ```

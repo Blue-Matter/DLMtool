@@ -10,6 +10,8 @@ applied to fishery data to provide management recommendations.
 
 Authors:
 
+- Adrian Hordyk <adrian@bluematterscience.com>
+
 - Tom Carruthers <tom@bluematterscience.com>
 
 - Quang Huynh <quang@bluematterscience.com>
