@@ -143,7 +143,9 @@ static and adaptive management procedures. Fish. Res. 190, 84-94.
 
 ## See also
 
-Other Average Catch MPs: [`AvC()`](AvC.md), [`AvC_MLL()`](AvC_MLL.md)
+Other Average Catch MPs:
+[`AvC()`](https://dlmtool.openmse.com/reference/AvC.md),
+[`AvC_MLL()`](https://dlmtool.openmse.com/reference/AvC_MLL.md)
 
 ## Author
 

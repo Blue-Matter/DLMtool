@@ -89,7 +89,8 @@ York.
 
 ## See also
 
-Other Delay-Difference MPs: [`DDe()`](DDe.md)
+Other Delay-Difference MPs:
+[`DDe()`](https://dlmtool.openmse.com/reference/DDe.md)
 
 ## Author
 

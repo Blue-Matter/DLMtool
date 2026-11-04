@@ -81,10 +81,15 @@ study. ICES J. Mar. Sci. doi:10.1093/icesjms/fsu017
 
 ## See also
 
-Other Index methods: [`GB_target()`](GB_target.md),
-[`Gcontrol()`](Gcontrol.md), [`ICI()`](ICI.md), [`Iratio()`](Iratio.md),
-[`Islope1()`](Islope1.md), [`Itarget1()`](Itarget1.md),
-[`Itarget1_MPA()`](Itarget1_MPA.md), [`ItargetE1()`](ItargetE1.md)
+Other Index methods:
+[`GB_target()`](https://dlmtool.openmse.com/reference/GB_target.md),
+[`Gcontrol()`](https://dlmtool.openmse.com/reference/Gcontrol.md),
+[`ICI()`](https://dlmtool.openmse.com/reference/ICI.md),
+[`Iratio()`](https://dlmtool.openmse.com/reference/Iratio.md),
+[`Islope1()`](https://dlmtool.openmse.com/reference/Islope1.md),
+[`Itarget1()`](https://dlmtool.openmse.com/reference/Itarget1.md),
+[`Itarget1_MPA()`](https://dlmtool.openmse.com/reference/Itarget1_MPA.md),
+[`ItargetE1()`](https://dlmtool.openmse.com/reference/ItargetE1.md)
 
 ## Author
 

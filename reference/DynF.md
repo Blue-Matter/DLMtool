@@ -91,7 +91,9 @@ Made-up for this package.
 
 ## See also
 
-Other Fmsy/M methods: [`Fadapt()`](Fadapt.md), [`Fratio()`](Fratio.md)
+Other Fmsy/M methods:
+[`Fadapt()`](https://dlmtool.openmse.com/reference/Fadapt.md),
+[`Fratio()`](https://dlmtool.openmse.com/reference/Fratio.md)
 
 ## Author
 

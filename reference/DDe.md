@@ -90,7 +90,8 @@ correctly rendered equations
 
 ## See also
 
-Other Delay-Difference MPs: [`DD()`](DD.md)
+Other Delay-Difference MPs:
+[`DD()`](https://dlmtool.openmse.com/reference/DD.md)
 
 ## Examples
 

@@ -125,8 +125,9 @@ doi:10.1093/icesjms/fst232
 
 ## See also
 
-Other Length target MPs: [`Lratio_BHI()`](Lratio_BHI.md),
-[`LtargetE1()`](LtargetE1.md)
+Other Length target MPs:
+[`Lratio_BHI()`](https://dlmtool.openmse.com/reference/Lratio_BHI.md),
+[`LtargetE1()`](https://dlmtool.openmse.com/reference/LtargetE1.md)
 
 ## Author
 

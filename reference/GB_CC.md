@@ -73,7 +73,8 @@ study. ICES J. Mar. Sci. doi:10.1093/icesjms/fsu017
 
 ## See also
 
-Other Constant Catch MPs: [`CC1()`](CC1.md)
+Other Constant Catch MPs:
+[`CC1()`](https://dlmtool.openmse.com/reference/CC1.md)
 
 ## Author
 

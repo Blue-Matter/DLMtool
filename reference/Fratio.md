@@ -110,7 +110,9 @@ catch and resilience. Fish Fish. doi: 10.1111/j.1467-2979.2012.00485.x.
 
 ## See also
 
-Other Fmsy/M methods: [`DynF()`](DynF.md), [`Fadapt()`](Fadapt.md)
+Other Fmsy/M methods:
+[`DynF()`](https://dlmtool.openmse.com/reference/DynF.md),
+[`Fadapt()`](https://dlmtool.openmse.com/reference/Fadapt.md)
 
 ## Author
 

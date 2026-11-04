@@ -92,8 +92,9 @@ biomass indices, Fisheries Research, Volume 171, November 2015, Pages
 
 ## See also
 
-Other Length target MPs: [`Ltarget1()`](Ltarget1.md),
-[`LtargetE1()`](LtargetE1.md)
+Other Length target MPs:
+[`Ltarget1()`](https://dlmtool.openmse.com/reference/Ltarget1.md),
+[`LtargetE1()`](https://dlmtool.openmse.com/reference/LtargetE1.md)
 
 ## Author
 

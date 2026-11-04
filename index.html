@@ -11,14 +11,15 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" sizes="any" href="favicon.ico">
 <link rel="manifest" href="site.webmanifest">
-<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- katex math --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script><script src="katex-auto.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Data-Limited Methods Toolkit">
 <meta name="description" content="A collection of data-limited management procedures that can be evaluated with management strategy evaluation with the MSEtool package, or applied to fishery data to provide management recommendations.">
 <meta property="og:description" content="A collection of data-limited management procedures that can be evaluated with management strategy evaluation with the MSEtool package, or applied to fishery data to provide management recommendations.">
-<meta property="og:image" content="/logo.png">
+<meta property="og:image" content="https://dlmtool.openmse.com/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -57,9 +58,24 @@
 </div>
 <!-- badges: start -->
 
-<p>The Data-Limited Methods toolkit (DLMtool) is a collection of data-limited management procedures that can be evaluated with management strategy evaluation (MSE).</p>
-<p>DLMtool is part of the <code>openMSE</code> collection of packages.</p>
-<p>You can learn more about the <code>openMSE</code> packages at the <a href="https://openMSE.com" class="external-link">openMSE documentation site</a>.</p>
+<p>The Data-Limited Methods toolkit (<code>DLMtool</code>) is a library of over 100 data-limited management procedures (MPs) for use in fisheries management strategy evaluation (MSE). It is part of the <a href="https://openMSE.com" class="external-link">openMSE</a> collection of R packages.</p>
+<div class="section level2">
+<h2 id="key-features">Key Features<a class="anchor" aria-label="anchor" href="#key-features"></a>
+</h2>
+<ul>
+<li>
+<strong>Large MP library</strong>: output control (TAC), input control (effort, size limits, spatial closures), and mixed-control MPs, ranging from simple catch-based rules to model-based estimators</li>
+<li>
+<strong>Works with <code>MSEtool</code> v4.0+</strong>: legacy MPs run directly against <code>data</code>-class objects produced by <code>MSEtool</code>’s current <code>om</code>/<code>data</code> simulation engine, via automatic object conversion (<code><a href="https://msetool.openmse.com/reference/Convert.html" class="external-link">MSEtool::Convert()</a></code>)</li>
+<li>
+<strong>Works with the legacy engine</strong>: MPs remain fully compatible with the original <code>OM</code>/<code>Data</code> classes for existing workflows</li>
+<li>
+<strong>Plain R functions</strong>: every MP is a function that accepts a <code>Data</code> object and returns a <code>Rec</code> (recommendation) object, so new MPs are easy to write and test</li>
+<li>
+<strong>Diagnostic tools</strong>: functions for checking MP behaviour and data requirements before running a full MSE</li>
+</ul>
+<p>Not every legacy MP maps cleanly onto the new engine: a small number rely on legacy-only <code>Data</code> slots (e.g., <code>Data@Abun</code>, <code>Data@FMSY_M</code>, <code>Data@BMSY_B0</code>) that <code>MSEtool</code>’s new observation model does not yet populate when converting <code>data</code> to <code>Data</code>. These MPs fail with an informative error rather than silently returning an invalid recommendation; see <code>?Required</code> for each MP’s data requirements.</p>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -68,8 +84,21 @@
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"DLMtool"</span><span class="op">)</span></span></code></pre></div>
 <p>And the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Blue-Matter/DLMtool"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"Blue-Matter/DLMtool"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
+</h2>
+<ul>
+<li>
+<strong><a href="https://openMSE.com" class="external-link">openMSE.com</a></strong>: general information about the openMSE framework</li>
+<li>
+<strong><a href="https://docs.openMSE.com" class="external-link">docs.openMSE.com</a></strong>: technical manual with worked examples covering operating model construction, simulation, and MSE analysis</li>
+<li>
+<strong><a href="https://dlmtool.openmse.com">dlmtool.openmse.com</a></strong>: full function reference for <code>DLMtool</code>
+</li>
+</ul>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -110,7 +139,7 @@
 <ul class="list-unstyled">
 <li><a href="https://CRAN.R-project.org/package=DLMtool" class="external-link"><img src="https://www.r-pkg.org/badges/version/DLMtool" alt="CRAN status"></a></li>
 <li><a href="https://github.com/Blue-Matter/DLMtool/actions" class="external-link"><img src="https://github.com/Blue-Matter/DLMtool/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://github.com/blue-matter/DLMtool" class="external-link"><img src="https://img.shields.io/badge/devel%20version-6.0.3-blue.svg"></a></li>
+<li><a href="https://github.com/blue-matter/DLMtool" class="external-link"><img src="https://img.shields.io/badge/devel%20version-7.0.0-blue.svg"></a></li>
 </ul>
 </div>
 

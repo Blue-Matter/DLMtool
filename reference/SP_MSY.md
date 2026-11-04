@@ -69,9 +69,12 @@ catch and resilience. Fish and Fisheries. DOI:
 
 ## See also
 
-Other Surplus production MPs: [`Fadapt()`](Fadapt.md),
-[`Rcontrol()`](Rcontrol.md), [`SPSRA()`](SPSRA.md),
-[`SPmod()`](SPmod.md), [`SPslope()`](SPslope.md)
+Other Surplus production MPs:
+[`Fadapt()`](https://dlmtool.openmse.com/reference/Fadapt.md),
+[`Rcontrol()`](https://dlmtool.openmse.com/reference/Rcontrol.md),
+[`SPSRA()`](https://dlmtool.openmse.com/reference/SPSRA.md),
+[`SPmod()`](https://dlmtool.openmse.com/reference/SPmod.md),
+[`SPslope()`](https://dlmtool.openmse.com/reference/SPslope.md)
 
 ## Author
 

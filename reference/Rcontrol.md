@@ -111,9 +111,12 @@ Made-up for this package.
 
 ## See also
 
-Other Surplus production MPs: [`Fadapt()`](Fadapt.md),
-[`SPSRA()`](SPSRA.md), [`SP_MSY()`](SP_MSY.md), [`SPmod()`](SPmod.md),
-[`SPslope()`](SPslope.md)
+Other Surplus production MPs:
+[`Fadapt()`](https://dlmtool.openmse.com/reference/Fadapt.md),
+[`SPSRA()`](https://dlmtool.openmse.com/reference/SPSRA.md),
+[`SP_MSY()`](https://dlmtool.openmse.com/reference/SP_MSY.md),
+[`SPmod()`](https://dlmtool.openmse.com/reference/SPmod.md),
+[`SPslope()`](https://dlmtool.openmse.com/reference/SPslope.md)
 
 ## Author
 

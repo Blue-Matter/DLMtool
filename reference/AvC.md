@@ -64,7 +64,9 @@ correctly rendered equations
 
 ## See also
 
-Other Average Catch MPs: [`AvC_MLL()`](AvC_MLL.md), [`DCACs()`](DCAC.md)
+Other Average Catch MPs:
+[`AvC_MLL()`](https://dlmtool.openmse.com/reference/AvC_MLL.md),
+[`DCACs()`](https://dlmtool.openmse.com/reference/DCAC.md)
 
 ## Author
 

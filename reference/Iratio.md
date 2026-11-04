@@ -74,11 +74,15 @@ ICES. 2012. ICES Implementation of Advice for Data-limited Stocks in
 
 ## See also
 
-Other Index methods: [`GB_slope()`](GB_slope.md),
-[`GB_target()`](GB_target.md), [`Gcontrol()`](Gcontrol.md),
-[`ICI()`](ICI.md), [`Islope1()`](Islope1.md),
-[`Itarget1()`](Itarget1.md), [`Itarget1_MPA()`](Itarget1_MPA.md),
-[`ItargetE1()`](ItargetE1.md)
+Other Index methods:
+[`GB_slope()`](https://dlmtool.openmse.com/reference/GB_slope.md),
+[`GB_target()`](https://dlmtool.openmse.com/reference/GB_target.md),
+[`Gcontrol()`](https://dlmtool.openmse.com/reference/Gcontrol.md),
+[`ICI()`](https://dlmtool.openmse.com/reference/ICI.md),
+[`Islope1()`](https://dlmtool.openmse.com/reference/Islope1.md),
+[`Itarget1()`](https://dlmtool.openmse.com/reference/Itarget1.md),
+[`Itarget1_MPA()`](https://dlmtool.openmse.com/reference/Itarget1_MPA.md),
+[`ItargetE1()`](https://dlmtool.openmse.com/reference/ItargetE1.md)
 
 ## Author
 

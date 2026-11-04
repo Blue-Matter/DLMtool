@@ -99,7 +99,8 @@ Journal of Marine Science: Journal Du Conseil 72 (1). 251-61.
 
 ## See also
 
-Other Constant Catch MPs: [`GB_CC()`](GB_CC.md)
+Other Constant Catch MPs:
+[`GB_CC()`](https://dlmtool.openmse.com/reference/GB_CC.md)
 
 ## Author
 

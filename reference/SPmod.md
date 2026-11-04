@@ -80,9 +80,12 @@ http://www.iattc.org/Meetings/Meetings2014/MAYSAC/PDFs/SAC-05-10b-Management-Str
 
 ## See also
 
-Other Surplus production MPs: [`Fadapt()`](Fadapt.md),
-[`Rcontrol()`](Rcontrol.md), [`SPSRA()`](SPSRA.md),
-[`SP_MSY()`](SP_MSY.md), [`SPslope()`](SPslope.md)
+Other Surplus production MPs:
+[`Fadapt()`](https://dlmtool.openmse.com/reference/Fadapt.md),
+[`Rcontrol()`](https://dlmtool.openmse.com/reference/Rcontrol.md),
+[`SPSRA()`](https://dlmtool.openmse.com/reference/SPSRA.md),
+[`SP_MSY()`](https://dlmtool.openmse.com/reference/SP_MSY.md),
+[`SPslope()`](https://dlmtool.openmse.com/reference/SPslope.md)
 
 ## Author
 

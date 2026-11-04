@@ -103,11 +103,16 @@ http://www.iattc.org/Meetings/Meetings2014/MAYSAC/PDFs/SAC-05-10b-Management-Str
 
 ## See also
 
-Other Fmsy/M methods: [`DynF()`](DynF.md), [`Fratio()`](Fratio.md)
+Other Fmsy/M methods:
+[`DynF()`](https://dlmtool.openmse.com/reference/DynF.md),
+[`Fratio()`](https://dlmtool.openmse.com/reference/Fratio.md)
 
-Other Surplus production MPs: [`Rcontrol()`](Rcontrol.md),
-[`SPSRA()`](SPSRA.md), [`SP_MSY()`](SP_MSY.md), [`SPmod()`](SPmod.md),
-[`SPslope()`](SPslope.md)
+Other Surplus production MPs:
+[`Rcontrol()`](https://dlmtool.openmse.com/reference/Rcontrol.md),
+[`SPSRA()`](https://dlmtool.openmse.com/reference/SPSRA.md),
+[`SP_MSY()`](https://dlmtool.openmse.com/reference/SP_MSY.md),
+[`SPmod()`](https://dlmtool.openmse.com/reference/SPmod.md),
+[`SPslope()`](https://dlmtool.openmse.com/reference/SPslope.md)
 
 ## Author
 
