@@ -2,7 +2,7 @@ The current version of the DLMtool package is available for download from [CRAN]
 
 ## DLMtool 7.0.0
 - part of the `openMSE 2.0` release; requires `MSEtool (>= 4.0.0)`
-- renamed MP `SPMSY` to `SP_MSY`
+- removed MP `SPMSY` as it clashes with `MSEtool` functions
 
 ## DLMtool 6.0.7
 - patch to fix issues with NEWS.md

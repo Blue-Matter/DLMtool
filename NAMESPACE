@@ -143,7 +143,12 @@ importFrom(graphics,
   legend,
   lines,
   matplot,
-  mtext
+  mtext,
+  par,
+  plot,
+  points,
+  text,
+  title
 )
 importFrom(methods,new)
 importFrom(stats,
@@ -156,6 +161,13 @@ importFrom(stats,
   median,
   nlminb,
   optim,
-  optimize
+  optimize,
+  predict,
+  quantile,
+  rbeta,
+  rlnorm,
+  rnorm,
+  runif,
+  sd
 )
 useDynLib(DLMtool)

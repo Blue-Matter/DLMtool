@@ -13,3 +13,5 @@ man-roxygen
 ^CRAN-RELEASE$
 ^README\.Rmd$
 ^CRAN-SUBMISSION$
+^\.positai$
+^\.claude$
