@@ -96,8 +96,8 @@ See
 [`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
-`Rcontrol`: Abun, Cat, Dep, FMSY_M, Ind, L50, MaxAge, Mort, steep, vbK,
-vbLinf, vbt0, wla, wlb, Year
+`Rcontrol`: Abun, Cat, Dep, FMSY_M, Ind, L50, MaxAge, Mort, Year, steep,
+vbK, vbLinf, vbt0, wla, wlb
 
 ## Rendered Equations
 

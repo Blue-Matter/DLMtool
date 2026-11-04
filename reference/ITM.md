@@ -49,7 +49,7 @@ See
 [`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
-`ITM`: Ind, Iref, Mort, MPrec
+`ITM`: Ind, Iref, MPrec, Mort
 
 ## Rendered Equations
 

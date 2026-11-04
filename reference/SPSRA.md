@@ -60,8 +60,8 @@ for information on the `Data` object
 `SPSRA`: Cat, Dep, FMSY_M, L50, MaxAge, Mort, steep, vbK, vbLinf, vbt0,
 wla, wlb
 
-`SPSRA_ML`: CAL, Cat, Dep, FMSY_M, L50, Lbar, Lc, MaxAge, Mort, steep,
-vbK, vbLinf, vbt0, wla, wlb, Year
+`SPSRA_ML`: CAL, Cat, Dep, FMSY_M, L50, Lbar, Lc, MaxAge, Mort, Year,
+steep, vbK, vbLinf, vbt0, wla, wlb
 
 ## Rendered Equations
 

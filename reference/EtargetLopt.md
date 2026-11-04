@@ -62,7 +62,7 @@ See
 [`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
-`EtargetLopt`: ML, Mort, MPeff, vbK, vbLinf, wlb, Year
+`EtargetLopt`: ML, MPeff, Mort, Year, vbK, vbLinf, wlb
 
 ## Rendered Equations
 

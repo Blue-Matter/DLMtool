@@ -79,7 +79,7 @@ for information on the `Data` object
 
 `YPR_CC`: CAA, Cat, LFS, MaxAge, vbK, vbLinf, vbt0
 
-`YPR_ML`: CAL, Cat, Lbar, Lc, LFS, MaxAge, Mort, vbK, vbLinf, vbt0
+`YPR_ML`: CAL, Cat, LFS, Lbar, Lc, MaxAge, Mort, vbK, vbLinf, vbt0
 
 ## Rendered Equations
 

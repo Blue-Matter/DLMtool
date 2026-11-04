@@ -112,19 +112,19 @@ See
 [`Data-class`](https://msetool.openmse.com/reference/Data-legacy-class.html)
 for information on the `Data` object  
 
-`DCACs`: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
+`DCACs`: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
 
-`DCAC`: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
+`DCAC`: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
 
-`DCAC_40`: AvC, BMSY_B0, FMSY_M, LHYear, Mort, t, Year
+`DCAC_40`: AvC, BMSY_B0, FMSY_M, LHYear, Mort, Year, t
 
-`DCAC4010`: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
+`DCAC4010`: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
 
-`DCAC_ML`: AvC, CAL, Cat, Lbar, Lc, LHYear, Mort, t, vbK, vbLinf, Year
+`DCAC_ML`: AvC, CAL, Cat, LHYear, Lbar, Lc, Mort, Year, t, vbK, vbLinf
 
-`DAAC`: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
+`DAAC`: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
 
-`HDAAC`: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, t, Year
+`HDAAC`: AvC, BMSY_B0, Dt, FMSY_M, LHYear, Mort, Year, t
 
 ## Rendered Equations
 
