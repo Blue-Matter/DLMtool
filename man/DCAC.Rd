@@ -167,9 +167,9 @@ Harford W. and Carruthers, T. 2017. Interim and long-term performance of
 static and adaptive management procedures. Fish. Res. 190, 84-94.
 }
 \seealso{
-Other Average Catch MPs: 
-\code{\link{AvC}()},
-\code{\link{AvC_MLL}()}
+Other Average Catch MPs:
+\code{\link[=AvC]{AvC()}},
+\code{\link[=AvC_MLL]{AvC_MLL()}}
 }
 \author{
 T. Carruthers

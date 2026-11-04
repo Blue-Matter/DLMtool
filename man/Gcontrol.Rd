@@ -70,15 +70,15 @@ Carruthers et al. 2015. Performance evaluation of simple
 management procedures. ICES J. Mar Sci. 73, 464-482.
 }
 \seealso{
-Other Index methods: 
-\code{\link{GB_slope}()},
-\code{\link{GB_target}()},
-\code{\link{ICI}()},
-\code{\link{Iratio}()},
-\code{\link{Islope1}()},
-\code{\link{Itarget1}()},
-\code{\link{Itarget1_MPA}()},
-\code{\link{ItargetE1}()}
+Other Index methods:
+\code{\link[=GB_slope]{GB_slope()}},
+\code{\link[=GB_target]{GB_target()}},
+\code{\link[=ICI]{ICI()}},
+\code{\link[=Iratio]{Iratio()}},
+\code{\link[=Islope1]{Islope1()}},
+\code{\link[=Itarget1]{Itarget1()}},
+\code{\link[=Itarget1_MPA]{Itarget1_MPA()}},
+\code{\link[=ItargetE1]{ItargetE1()}}
 }
 \author{
 C. Walters and T. Carruthers

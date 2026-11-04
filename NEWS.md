@@ -1,5 +1,9 @@
 The current version of the DLMtool package is available for download from [CRAN](https://CRAN.R-project.org/package=DLMtool).
 
+## DLMtool 7.0.0
+- part of the `openMSE 2.0` release; requires `MSEtool (>= 4.0.0)`
+- renamed MP `SPMSY` to `SP_MSY`
+
 ## DLMtool 6.0.7
 - patch to fix issues with NEWS.md
 - removed `LBSPR` MP due to issues with compiling the C+ code

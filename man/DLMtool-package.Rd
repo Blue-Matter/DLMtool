@@ -15,6 +15,7 @@ A collection of data-limited management procedures that can be evaluated with ma
 
 Authors:
 \itemize{
+  \item Adrian Hordyk \email{adrian@bluematterscience.com}
   \item Tom Carruthers \email{tom@bluematterscience.com}
   \item Quang Huynh \email{quang@bluematterscience.com}
 }

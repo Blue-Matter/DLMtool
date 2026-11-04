@@ -109,6 +109,7 @@ class(AvC) <- "MP"
 #'
 BK <- function(x, Data, reps = 100, plot=FALSE) {
   dependencies = "Data@LFC, Data@vbLinf, Data@CV_vbLinf, Data@Abun, Data@CV_Abun, Data@vbK, Data@CV_vbK"
+  if (MSEtool::NAor0(Data@Abun[x])) stop("Data@Abun is NA")
   Lc <- MSEtool::trlnorm(reps * 10, Data@LFC[x], 0.2)
   Linfc <- MSEtool::trlnorm(reps * 10, Data@vbLinf[x], Data@CV_vbLinf[x])
   Ac <- MSEtool::trlnorm(reps * 10, Data@Abun[x], Data@CV_Abun[x])
@@ -919,6 +920,7 @@ DBSRAopt <- function(lnK, C_hist, nys, Mdb, FMSY_M, BMSY_K, Bt_K, adelay, opt=1)
 DBSRA_ <- function(x, Data, reps = 100, depo=NULL, hcr=NULL) {
   # returns a vector of DBSRA estimates of the TAC for a particular
   # simulation x for(x in 1:nsim){
+  if (MSEtool::NAor0(Data@BMSY_B0[x])) stop("Data@BMSY_B0 is NA")
   if (MSEtool::NAor0(Data@CV_BMSY_B0[x])) stop("Data@CV_BMSY_B0 is NA")
   C_hist <- Data@Cat[x, ]
   TAC <- rep(NA, reps)
@@ -933,11 +935,6 @@ DBSRA_ <- function(x, Data, reps = 100, depo=NULL, hcr=NULL) {
      }
   } else {
     Data@CV_Dep[x] <- tiny
-  }
-  if (is.na(Data@BMSY_B0[x])){
-    out <- new("Rec")
-    out@TAC <- rep(as.numeric(NA), reps)
-    return(out)
   }
 
   while (DBSRAcount < (reps + 1)) {
@@ -1512,6 +1509,8 @@ class(DD4010) <- "MP"
 DynF <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 10, gg = 2) {
 
   dependencies = "Data@Year, Data@Cat, Data@Ind, Data@Abun, Data@Mort, Data@FMSY_M"
+  if (MSEtool::NAor0(Data@Abun[x])) stop("Data@Abun is NA")
+  if (MSEtool::NAor0(Data@FMSY_M[x])) stop("Data@FMSY_M is NA")
   ind <- (length(Data@Year) - (yrsmth - 1)):length(Data@Year)
   years <- Data@Year[ind]
   C_dat <- log(Data@Cat[x, ind])
@@ -1619,6 +1618,8 @@ class(DynF) <- "MP"
 Fadapt <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 7, gg = 1) {
 
   dependencies = "Data@Year, Data@Cat, Data@Ind, Data@Abun, Data@Mort, Data@FMSY_M"
+  if (MSEtool::NAor0(Data@Abun[x])) stop("Data@Abun is NA")
+  if (MSEtool::NAor0(Data@FMSY_M[x])) stop("Data@FMSY_M is NA")
   ind <- (length(Data@Year) - (yrsmth - 1)):length(Data@Year)
   years <- Data@Year[ind]
   C_dat <- log(Data@Cat[x, ind])
@@ -1932,6 +1933,8 @@ class(Fdem_ML) <- "MP"
 #'
 #' @keywords internal
 Fratio_ <- function(x, Data, reps=100, Abun=NULL) {
+  if (MSEtool::NAor0(Data@FMSY_M[x])) stop("Data@FMSY_M is NA")
+  if (is.null(Abun) && MSEtool::NAor0(Data@Abun[x])) stop("Data@Abun is NA")
   Frat <- MSEtool::trlnorm(reps, Data@Mort[x], Data@CV_Mort[x]) * MSEtool::trlnorm(reps, Data@FMSY_M[x], Data@CV_FMSY_M[x]) # estimate of Fmsy
   if (is.null(Abun)) Abun <- MSEtool::trlnorm(reps, Data@Abun[x], Data@CV_Abun[x])
 
@@ -2316,6 +2319,7 @@ class(GB_target) <- "MP"
 #' @family Index methods
 Gcontrol <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 10, gg = 2, glim = c(0.5, 2)) {
   dependencies = "Data@Year, Data@Cat, Data@Ind, Data@Abun"
+  if (MSEtool::NAor0(Data@Abun[x])) stop("Data@Abun is NA")
   ind <- (length(Data@Year) - (yrsmth - 1)):length(Data@Year)
   years <- Data@Year[ind]
   C_dat <- log(Data@Cat[x, ind])
@@ -3248,6 +3252,7 @@ Lratio_BHI2 <- function(x, Data, reps=100, plot=FALSE, yrsmth = 3) {
   dependencies = "Data@vb_Linf, Data@CV_vbLinf, Data@Cat, Data@CV_Cat, Data@Mort, Data@CV_Mort,
   Data@vb_K, Data@CV_vbK, Data@FMSY_M, Data@CV_FMSY_M, Data@CAL, Data@CAL_bins,
   Data@LFS, Data@CV_LFS"
+  if (MSEtool::NAor0(Data@FMSY_M[x])) stop("Data@FMSY_M is NA")
   Linfc <- MSEtool::trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
   Lc <- MSEtool::trlnorm(reps, Data@LFS[x], Data@CV_LFS[x])
 
@@ -3299,6 +3304,7 @@ Lratio_BHI3 <- function(x, Data, reps=100, plot=FALSE, yrsmth = 3) {
   dependencies = "Data@vb_Linf, Data@CV_vbLinf, Data@Cat, Data@CV_Cat, Data@Mort, Data@CV_Mort,
   Data@vb_K, Data@CV_vbK, Data@FMSY_M, Data@CV_FMSY_M, Data@CAL, Data@CAL_bins,
   Data@LFS, Data@CV_LFS"
+  if (MSEtool::NAor0(Data@FMSY_M[x])) stop("Data@FMSY_M is NA")
   Linfc <- MSEtool::trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
   Lc <- MSEtool::trlnorm(reps, Data@LFS[x], Data@CV_LFS[x])
 
@@ -4083,6 +4089,7 @@ SPslope <- function(x, Data, reps = 100, plot=FALSE, yrsmth = 4, alp = c(0.9, 1.
                     bet = c(1.5, 0.9)) {
 
   dependencies = "Data@Year, Data@Cat, Data@Ind, Data@Abun"
+  if (MSEtool::NAor0(Data@Abun[x])) stop("Data@Abun is NA")
   ind <- (length(Data@Year) - (yrsmth - 1)):length(Data@Year)
   yind <- 1:yrsmth
   C_dat <- Data@Cat[x, ind]
@@ -4147,7 +4154,7 @@ class(SPslope) <- "MP"
 #' be found that lead to the depletion inferred by the catch trajectories. In
 #' this case this method widens the search.
 #'
-#' @templateVar mp SPMSY
+#' @templateVar mp SP_MSY
 #' @template MPtemplate
 #' @template MPuses
 #'
@@ -4158,8 +4165,8 @@ class(SPslope) <- "MP"
 #' @family Surplus production MPs
 #' @export
 #' @examples
-#' SPMSY(1, Data=MSEtool::SimulatedData, plot=TRUE)
-SPMSY <- function(x, Data, reps = 100, plot=FALSE) {
+#' SP_MSY(1, Data=MSEtool::SimulatedData, plot=TRUE)
+SP_MSY <- function(x, Data, reps = 100, plot=FALSE) {
   # Martell and Froese 2012 Schaefer SP estimate of MSY given priors on
   # r, k and depletion for(x in 1:100){
   dependencies = "Data@MaxAge, Data@vbK, Data@L50, Data@Cat"
@@ -4281,7 +4288,7 @@ SPMSY <- function(x, Data, reps = 100, plot=FALSE) {
   Rec@TAC <- TAC
   Rec
 }
-class(SPMSY) <- "MP"
+class(SP_MSY) <- "MP"
 
 
 
@@ -4567,6 +4574,7 @@ class(SPSRA_ML) <- "MP"
 #'
 #' @keywords internal
 YPR_ <- function(x, Data, reps = 100, Abun=NULL) {
+  if (is.null(Abun) && MSEtool::NAor0(Data@Abun[x])) stop("Data@Abun is NA")
   Linfc <- MSEtool::trlnorm(reps, Data@vbLinf[x], Data@CV_vbLinf[x])
   Kc <- MSEtool::trlnorm(reps, Data@vbK[x], Data@CV_vbK[x])
   if (Data@vbt0[x] != 0 & Data@CV_vbt0[x] != tiny) {

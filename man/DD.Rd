@@ -78,8 +78,8 @@ Hilborn, R., and Walters, C. 1992. Quantitative Fisheries Stock Assessment: Choi
 Dynamics and Uncertainty. Chapman and Hall, New York.
 }
 \seealso{
-Other Delay-Difference MPs: 
-\code{\link{DDe}()}
+Other Delay-Difference MPs:
+\code{\link[=DDe]{DDe()}}
 }
 \author{
 T. Carruthers

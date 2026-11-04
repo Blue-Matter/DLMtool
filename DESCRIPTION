@@ -1,7 +1,7 @@
 Package: DLMtool
 Type: Package
 Title: Data-Limited Methods Toolkit
-Version: 6.0.7
+Version: 7.0.0
 Authors@R: c(
     person("Tom", "Carruthers",, "tom@bluematterscience.com", role="aut"),
     person("Quang", "Huynh", email = "quang@bluematterscience.com", role = "aut"),
@@ -19,7 +19,7 @@ Description: A collection of data-limited management procedures that can be eval
 License: GPL-3
 Depends:
     R (>= 3.5.0),
-    MSEtool
+    MSEtool (>= 4.0.0)
 Imports:
     dplyr,
     ggplot2,
@@ -34,5 +34,5 @@ Suggests:
     testthat
 LazyLoad: yes
 Encoding: UTF-8
-RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.1.0

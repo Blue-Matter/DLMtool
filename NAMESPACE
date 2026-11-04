@@ -103,11 +103,11 @@ export(Rcontrol)
 export(Rcontrol2)
 export(SBT1)
 export(SBT2)
-export(SPMSY)
 export(SPSRA)
 export(SPSRA_)
 export(SPSRA_ML)
 export(SPSRAopt)
+export(SP_MSY)
 export(SPmod)
 export(SPslope)
 export(YPR)
@@ -128,41 +128,35 @@ export(slotlim)
 importFrom(MSEtool,TACfilter)
 importFrom(Rcpp,evalCpp)
 importFrom(dplyr,"%>%")
-importFrom(ggplot2,aes)
-importFrom(ggplot2,expand_limits)
-importFrom(ggplot2,geom_boxplot)
-importFrom(ggplot2,ggplot)
-importFrom(ggplot2,labs)
-importFrom(ggplot2,theme_classic)
-importFrom(graphics,abline)
-importFrom(graphics,axis)
-importFrom(graphics,barplot)
-importFrom(graphics,boxplot)
-importFrom(graphics,legend)
-importFrom(graphics,lines)
-importFrom(graphics,matplot)
-importFrom(graphics,mtext)
-importFrom(graphics,par)
-importFrom(graphics,plot)
-importFrom(graphics,points)
-importFrom(graphics,text)
-importFrom(graphics,title)
+importFrom(ggplot2,
+  aes,
+  expand_limits,
+  geom_boxplot,
+  ggplot,
+  labs,
+  theme_classic
+)
+importFrom(graphics,
+  abline,
+  axis,
+  barplot,
+  boxplot,
+  legend,
+  lines,
+  matplot,
+  mtext
+)
 importFrom(methods,new)
-importFrom(stats,approx)
-importFrom(stats,coef)
-importFrom(stats,dbeta)
-importFrom(stats,dnorm)
-importFrom(stats,lm)
-importFrom(stats,loess)
-importFrom(stats,median)
-importFrom(stats,nlminb)
-importFrom(stats,optim)
-importFrom(stats,optimize)
-importFrom(stats,predict)
-importFrom(stats,quantile)
-importFrom(stats,rbeta)
-importFrom(stats,rlnorm)
-importFrom(stats,rnorm)
-importFrom(stats,runif)
-importFrom(stats,sd)
+importFrom(stats,
+  approx,
+  coef,
+  dbeta,
+  dnorm,
+  lm,
+  loess,
+  median,
+  nlminb,
+  optim,
+  optimize
+)
 useDynLib(DLMtool)

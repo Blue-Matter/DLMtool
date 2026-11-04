@@ -51,9 +51,9 @@ Rec <- AvC(1, MSEtool::Cobia, reps=1000, plot=TRUE) # 1,000 log-normal samples w
 
 }
 \seealso{
-Other Average Catch MPs: 
-\code{\link{AvC_MLL}()},
-\code{\link{DCACs}()}
+Other Average Catch MPs:
+\code{\link[=AvC_MLL]{AvC_MLL()}},
+\code{\link[=DCACs]{DCACs()}}
 }
 \author{
 T. Carruthers

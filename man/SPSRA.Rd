@@ -71,12 +71,12 @@ increase in the Schaefer model and implications for stock rebuilding. Can.
 J. Fish. Aquat. Sci. 58: 1871-1890.
 }
 \seealso{
-Other Surplus production MPs: 
-\code{\link{Fadapt}()},
-\code{\link{Rcontrol}()},
-\code{\link{SPMSY}()},
-\code{\link{SPmod}()},
-\code{\link{SPslope}()}
+Other Surplus production MPs:
+\code{\link[=Fadapt]{Fadapt()}},
+\code{\link[=Rcontrol]{Rcontrol()}},
+\code{\link[=SP_MSY]{SP_MSY()}},
+\code{\link[=SPmod]{SPmod()}},
+\code{\link[=SPslope]{SPslope()}}
 }
 \author{
 T. Carruthers

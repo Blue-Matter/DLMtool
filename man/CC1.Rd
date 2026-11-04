@@ -98,8 +98,8 @@ Generic Management Procedures for Data-Poor Fisheries: Forecasting with Few Data
 ICES Journal of Marine Science: Journal Du Conseil 72 (1). 251-61.
 }
 \seealso{
-Other Constant Catch MPs: 
-\code{\link{GB_CC}()}
+Other Constant Catch MPs:
+\code{\link[=GB_CC]{GB_CC()}}
 }
 \author{
 T. Carruthers

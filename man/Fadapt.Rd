@@ -87,16 +87,16 @@ Maunder, M. 2014.
 http://www.iattc.org/Meetings/Meetings2014/MAYSAC/PDFs/SAC-05-10b-Management-Strategy-Evaluation.pdf
 }
 \seealso{
-Other Fmsy/M methods: 
-\code{\link{DynF}()},
-\code{\link{Fratio}()}
+Other Fmsy/M methods:
+\code{\link[=DynF]{DynF()}},
+\code{\link[=Fratio]{Fratio()}}
 
-Other Surplus production MPs: 
-\code{\link{Rcontrol}()},
-\code{\link{SPMSY}()},
-\code{\link{SPSRA}()},
-\code{\link{SPmod}()},
-\code{\link{SPslope}()}
+Other Surplus production MPs:
+\code{\link[=Rcontrol]{Rcontrol()}},
+\code{\link[=SPSRA]{SPSRA()}},
+\code{\link[=SP_MSY]{SP_MSY()}},
+\code{\link[=SPmod]{SPmod()}},
+\code{\link[=SPslope]{SPslope()}}
 }
 \author{
 T. Carruthers

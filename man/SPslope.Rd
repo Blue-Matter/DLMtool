@@ -80,12 +80,12 @@ SPslope(1, Data=MSEtool::Atlantic_mackerel, plot=TRUE)
 http://www.iattc.org/Meetings/Meetings2014/MAYSAC/PDFs/SAC-05-10b-Management-Strategy-Evaluation.pdf
 }
 \seealso{
-Other Surplus production MPs: 
-\code{\link{Fadapt}()},
-\code{\link{Rcontrol}()},
-\code{\link{SPMSY}()},
-\code{\link{SPSRA}()},
-\code{\link{SPmod}()}
+Other Surplus production MPs:
+\code{\link[=Fadapt]{Fadapt()}},
+\code{\link[=Rcontrol]{Rcontrol()}},
+\code{\link[=SPSRA]{SPSRA()}},
+\code{\link[=SP_MSY]{SP_MSY()}},
+\code{\link[=SPmod]{SPmod()}}
 }
 \author{
 T. Carruthers

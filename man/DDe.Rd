@@ -77,7 +77,7 @@ DDes(1, Data=MSEtool::Atlantic_mackerel, plot=TRUE)
 DDe75(1, Data=MSEtool::Atlantic_mackerel, plot=TRUE)
 }
 \seealso{
-Other Delay-Difference MPs: 
-\code{\link{DD}()}
+Other Delay-Difference MPs:
+\code{\link[=DD]{DD()}}
 }
 \concept{Delay-Difference MPs}

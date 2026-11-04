@@ -95,12 +95,12 @@ Rcontrol2(1, Data=MSEtool::Atlantic_mackerel, plot=TRUE)
 Made-up for this package.
 }
 \seealso{
-Other Surplus production MPs: 
-\code{\link{Fadapt}()},
-\code{\link{SPMSY}()},
-\code{\link{SPSRA}()},
-\code{\link{SPmod}()},
-\code{\link{SPslope}()}
+Other Surplus production MPs:
+\code{\link[=Fadapt]{Fadapt()}},
+\code{\link[=SPSRA]{SPSRA()}},
+\code{\link[=SP_MSY]{SP_MSY()}},
+\code{\link[=SPmod]{SPmod()}},
+\code{\link[=SPslope]{SPslope()}}
 }
 \author{
 C. Walters and T. Carruthers

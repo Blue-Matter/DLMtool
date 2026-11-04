@@ -89,15 +89,15 @@ data-poor fisheries; forecasting with few data. ICES J. Mar. Sci. 72, 251-261.
 doi:10.1093/icesjms/fst232
 }
 \seealso{
-Other Index methods: 
-\code{\link{GB_slope}()},
-\code{\link{GB_target}()},
-\code{\link{Gcontrol}()},
-\code{\link{ICI}()},
-\code{\link{Iratio}()},
-\code{\link{Islope1}()},
-\code{\link{Itarget1}()},
-\code{\link{Itarget1_MPA}()}
+Other Index methods:
+\code{\link[=GB_slope]{GB_slope()}},
+\code{\link[=GB_target]{GB_target()}},
+\code{\link[=Gcontrol]{Gcontrol()}},
+\code{\link[=ICI]{ICI()}},
+\code{\link[=Iratio]{Iratio()}},
+\code{\link[=Islope1]{Islope1()}},
+\code{\link[=Itarget1]{Itarget1()}},
+\code{\link[=Itarget1_MPA]{Itarget1_MPA()}}
 }
 \author{
 T. Carruthers

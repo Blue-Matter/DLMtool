@@ -75,14 +75,14 @@ See \href{https://dlmtool.openmse.com/reference/Itarget1_MPA.html}{Online Docume
 Itarget1_MPA(1, MSEtool::Atlantic_mackerel, plot=TRUE)
 }
 \seealso{
-Other Index methods: 
-\code{\link{GB_slope}()},
-\code{\link{GB_target}()},
-\code{\link{Gcontrol}()},
-\code{\link{ICI}()},
-\code{\link{Iratio}()},
-\code{\link{Islope1}()},
-\code{\link{Itarget1}()},
-\code{\link{ItargetE1}()}
+Other Index methods:
+\code{\link[=GB_slope]{GB_slope()}},
+\code{\link[=GB_target]{GB_target()}},
+\code{\link[=Gcontrol]{Gcontrol()}},
+\code{\link[=ICI]{ICI()}},
+\code{\link[=Iratio]{Iratio()}},
+\code{\link[=Islope1]{Islope1()}},
+\code{\link[=Itarget1]{Itarget1()}},
+\code{\link[=ItargetE1]{ItargetE1()}}
 }
 \concept{Index methods}

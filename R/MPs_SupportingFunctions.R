@@ -1,4 +1,5 @@
 ##### MP plotting #####
+# these take a legacy `Data` object directly; call MSEtool::Convert() first if starting from a `data`-class object
 
 AvC_plot <- function(x, Data, Rec, meanC, histCatch, yr.ind, lwd=3, cex.lab=1.25) {
   op <- par(no.readonly = TRUE)

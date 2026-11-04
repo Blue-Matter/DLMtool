@@ -55,8 +55,8 @@ See \href{https://dlmtool.openmse.com/reference/AvC_MLL.html}{Online Documentati
 Rec <- AvC_MLL(1, MSEtool::Cobia, reps=1000, plot=TRUE) # 1,000 log-normal samples with CV = 0.2
 }
 \seealso{
-Other Average Catch MPs: 
-\code{\link{AvC}()},
-\code{\link{DCACs}()}
+Other Average Catch MPs:
+\code{\link[=AvC]{AvC()}},
+\code{\link[=DCACs]{DCACs()}}
 }
 \concept{Average Catch MPs}
