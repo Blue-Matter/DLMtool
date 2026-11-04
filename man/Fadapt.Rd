@@ -94,7 +94,6 @@ Other Fmsy/M methods:
 Other Surplus production MPs:
 \code{\link[=Rcontrol]{Rcontrol()}},
 \code{\link[=SPSRA]{SPSRA()}},
-\code{\link[=SP_MSY]{SP_MSY()}},
 \code{\link[=SPmod]{SPmod()}},
 \code{\link[=SPslope]{SPslope()}}
 }

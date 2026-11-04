@@ -74,7 +74,6 @@ J. Fish. Aquat. Sci. 58: 1871-1890.
 Other Surplus production MPs:
 \code{\link[=Fadapt]{Fadapt()}},
 \code{\link[=Rcontrol]{Rcontrol()}},
-\code{\link[=SP_MSY]{SP_MSY()}},
 \code{\link[=SPmod]{SPmod()}},
 \code{\link[=SPslope]{SPslope()}}
 }
