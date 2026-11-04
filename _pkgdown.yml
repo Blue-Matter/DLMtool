@@ -1,7 +1,9 @@
 title: DLMtool Functions
 icon: logo.png
+url: "https://dlmtool.openmse.com"
 template:
   bootstrap: 5
+  math-rendering: katex
 navbar:
    title: DLMtool Documentation
    type: inverse
