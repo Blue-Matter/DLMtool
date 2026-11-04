@@ -124,7 +124,7 @@ export(matlenlim)
 export(matlenlim2)
 export(minlenLopt1)
 export(slotlim)
-importFrom(MSEtool,TACfilter)
+import(MSEtool)
 importFrom(Rcpp,evalCpp)
 importFrom(dplyr,"%>%")
 importFrom(ggplot2,
@@ -145,7 +145,6 @@ importFrom(graphics,
   matplot,
   mtext,
   par,
-  plot,
   points,
   text,
   title
