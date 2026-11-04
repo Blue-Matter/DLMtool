@@ -103,8 +103,6 @@ Management Procedures that return a total allowable catch (TAC)
   MP
 - [`SPmod()`](https://dlmtool.openmse.com/reference/SPmod.md) : Surplus
   production based catch-limit modifier
-- [`SP_MSY()`](https://dlmtool.openmse.com/reference/SP_MSY.md) : Catch
-  trend Surplus Production MSY MP
 - [`SPslope()`](https://dlmtool.openmse.com/reference/SPslope.md) :
   Slope in surplus production MP
 - [`SPSRA()`](https://dlmtool.openmse.com/reference/SPSRA.md)

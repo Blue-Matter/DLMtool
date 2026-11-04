@@ -101,13 +101,13 @@ Meaghan Bryan and Tom Carruthers
 YPR(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     2515.466 
+#>     2509.189 
 YPR_CC(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>     3337.387 
+#>     3530.388 
 YPR_ML(1, MSEtool::SimulatedData, plot=TRUE)
 
 #> TAC (median) 
-#>      1246.49 
+#>     1195.598 
 ```

@@ -81,7 +81,6 @@ Can. J. Fish. Aquat. Sci. 58: 1871-1890.
 Other Surplus production MPs:
 [`Fadapt()`](https://dlmtool.openmse.com/reference/Fadapt.md),
 [`Rcontrol()`](https://dlmtool.openmse.com/reference/Rcontrol.md),
-[`SP_MSY()`](https://dlmtool.openmse.com/reference/SP_MSY.md),
 [`SPmod()`](https://dlmtool.openmse.com/reference/SPmod.md),
 [`SPslope()`](https://dlmtool.openmse.com/reference/SPslope.md)
 

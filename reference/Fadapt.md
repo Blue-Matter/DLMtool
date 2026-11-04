@@ -110,7 +110,6 @@ Other Fmsy/M methods:
 Other Surplus production MPs:
 [`Rcontrol()`](https://dlmtool.openmse.com/reference/Rcontrol.md),
 [`SPSRA()`](https://dlmtool.openmse.com/reference/SPSRA.md),
-[`SP_MSY()`](https://dlmtool.openmse.com/reference/SP_MSY.md),
 [`SPmod()`](https://dlmtool.openmse.com/reference/SPmod.md),
 [`SPslope()`](https://dlmtool.openmse.com/reference/SPslope.md)
 

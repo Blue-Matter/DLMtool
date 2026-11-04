@@ -5,6 +5,25 @@ data-limited management procedures (MPs) for use in fisheries management
 strategy evaluation (MSE). It is part of the
 [openMSE](https://openMSE.com) collection of R packages.
 
+## openMSE 2.0
+
+`DLMtool` 7.0 is part of the `openMSE` 2.0 release, alongside `MSEtool`
+4.0. `MSEtool` 4.0 introduces a modular operating model structure, with
+stock, fleet, observation, and implementation components defined as
+independent objects, and a closed-loop MSE workflow based on `om`,
+`hist`, and `mse` objects, replacing the earlier `OM`, `Hist`, and `MSE`
+classes. The [technical documentation](https://docs.openMSE.com) covers
+this workflow with worked examples.
+
+`DLMtool`’s management procedures (MPs) predate this new structure and
+are written against the legacy `Data` and `Rec` classes. They remain
+fully supported:
+[`MSEtool::Convert()`](https://msetool.openmse.com/reference/Convert.html)
+automatically converts between the new `data` class and the legacy
+`Data` class, so existing MPs run unchanged in either engine. See
+[NEWS](https://dlmtool.openmse.com/news/) for details of what changed in
+this release.
+
 ## Key Features
 
 - **Large MP library**: output control (TAC), input control (effort,
@@ -56,6 +75,9 @@ pak::pak("Blue-Matter/DLMtool")
   simulation, and MSE analysis
 - **[dlmtool.openmse.com](https://dlmtool.openmse.com)**: full function
   reference for `DLMtool`
+- **[msetool.openmse.com](https://msetool.openmse.com)**: function
+  reference for `MSEtool`, the core package providing the new
+  `om`/`data` simulation engine
 
 # Package index
 
@@ -162,8 +184,6 @@ Management Procedures that return a total allowable catch (TAC)
   MP
 - [`SPmod()`](https://dlmtool.openmse.com/reference/SPmod.md) : Surplus
   production based catch-limit modifier
-- [`SP_MSY()`](https://dlmtool.openmse.com/reference/SP_MSY.md) : Catch
-  trend Surplus Production MSY MP
 - [`SPslope()`](https://dlmtool.openmse.com/reference/SPslope.md) :
   Slope in surplus production MP
 - [`SPSRA()`](https://dlmtool.openmse.com/reference/SPSRA.md)

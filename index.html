@@ -60,6 +60,12 @@
 
 <p>The Data-Limited Methods toolkit (<code>DLMtool</code>) is a library of over 100 data-limited management procedures (MPs) for use in fisheries management strategy evaluation (MSE). It is part of the <a href="https://openMSE.com" class="external-link">openMSE</a> collection of R packages.</p>
 <div class="section level2">
+<h2 id="openmse-20">openMSE 2.0<a class="anchor" aria-label="anchor" href="#openmse-20"></a>
+</h2>
+<p><code>DLMtool</code> 7.0 is part of the <code>openMSE</code> 2.0 release, alongside <code>MSEtool</code> 4.0. <code>MSEtool</code> 4.0 introduces a modular operating model structure, with stock, fleet, observation, and implementation components defined as independent objects, and a closed-loop MSE workflow based on <code>om</code>, <code>hist</code>, and <code>mse</code> objects, replacing the earlier <code>OM</code>, <code>Hist</code>, and <code>MSE</code> classes. The <a href="https://docs.openMSE.com" class="external-link">technical documentation</a> covers this workflow with worked examples.</p>
+<p><code>DLMtool</code>’s management procedures (MPs) predate this new structure and are written against the legacy <code>Data</code> and <code>Rec</code> classes. They remain fully supported: <code><a href="https://msetool.openmse.com/reference/Convert.html" class="external-link">MSEtool::Convert()</a></code> automatically converts between the new <code>data</code> class and the legacy <code>Data</code> class, so existing MPs run unchanged in either engine. See <a href="https://dlmtool.openmse.com/news/">NEWS</a> for details of what changed in this release.</p>
+</div>
+<div class="section level2">
 <h2 id="key-features">Key Features<a class="anchor" aria-label="anchor" href="#key-features"></a>
 </h2>
 <ul>
@@ -98,6 +104,8 @@
 <li>
 <strong><a href="https://dlmtool.openmse.com">dlmtool.openmse.com</a></strong>: full function reference for <code>DLMtool</code>
 </li>
+<li>
+<strong><a href="https://msetool.openmse.com" class="external-link">msetool.openmse.com</a></strong>: function reference for <code>MSEtool</code>, the core package providing the new <code>om</code>/<code>data</code> simulation engine</li>
 </ul>
 </div>
 </div>

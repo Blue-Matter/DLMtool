@@ -84,7 +84,6 @@ Other Surplus production MPs:
 [`Fadapt()`](https://dlmtool.openmse.com/reference/Fadapt.md),
 [`Rcontrol()`](https://dlmtool.openmse.com/reference/Rcontrol.md),
 [`SPSRA()`](https://dlmtool.openmse.com/reference/SPSRA.md),
-[`SP_MSY()`](https://dlmtool.openmse.com/reference/SP_MSY.md),
 [`SPslope()`](https://dlmtool.openmse.com/reference/SPslope.md)
 
 ## Author
@@ -97,5 +96,5 @@ T. Carruthers
 SPmod(1, Data=MSEtool::Atlantic_mackerel, plot=TRUE)
 
 #> TAC (median) 
-#>     15.62888 
+#>     14.78764 
 ```
